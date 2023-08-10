@@ -143,8 +143,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th style="text-align: center;">Tanggal</th>
                         <th style="text-align: center;">Data Outline</th>
                         <th style="text-align: center;">Subag LAA</th>
-                        <th style="text-align: center;">Dosen PA</th>
                         <th style="text-align: center;">Kaprodi</th>
+                        <th style="text-align: center;">Komentar</th>
                       </tr>
                       </thead>
                       <tbody>
@@ -327,31 +327,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <br/>
                                   <img src="<?=base_url('uploads/'.$log_outline['ufmhs'])?>" onerror="this.src='<?= $notfound; ?>'" height="320px">
                                 </div>
-                                <div class="form-group col-md-12">
-                                  <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Slip Bimbingan Skripsi :</label>
-                                  <br/>
-                                  <img src="<?=base_url('uploads/'.$log_outline['usbs'])?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
-                                </div>
-                                <div class="form-group col-md-12">
-                                  <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Slip Pendaftaran Ulang :</label>
-                                  <br/>
-                                  <img src="<?=base_url('uploads/'.$log_outline['uspu'])?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
-                                </div>
-                                <div class="form-group col-md-12">
-                                  <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;KST :</label>
-                                  <br/>
-                                  <img src="<?=base_url('uploads/'.$log_outline['ukst'])?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
-                                </div>
-                                <div class="form-group col-md-12">
-                                  <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Transkrip Nilai :</label>
-                                  <br/>
-                                  <img src="<?=base_url('uploads/'.$log_outline['utn'])?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
-                                </div>
-                                <div class="form-group col-md-12">
-                                  <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;KHS :</label>
-                                  <br/>
-                                  <img src="<?=base_url('uploads/'.$log_outline['ukhs'])?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
-                                </div>
+                                <?php if (empty($log_outline['ufps'])) {?>
+                                  <div class="form-group col-md-12">
+                                    <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;File Persyaratan Outline</label>
+                                    <br/>
+                                    <a href="<?=base_url('uploads/outline/file_persyaratan/'.$log_outline['ufps'])?>" class="btn btn-danger disabled" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan File Persyaratan Outline</a>
+                                  </div>
+                                <?php }else{ ?>
+                                  <div class="form-group col-md-12">
+                                    <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;File Persyaratan Outline</label>
+                                    <br/>
+                                    <a href="<?=base_url('uploads/outline/file_persyaratan/'.$log_outline['ufps'])?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan File Persyaratan Outline</a>
+                                  </div>
+                                <?php  } ?>
+
                                 <?php if (empty($log_outline['upro1'])) {?>
                                   <div class="form-group col-md-12">
                                     <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 1 :</label>
@@ -400,25 +389,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </td>
                         <td align="center">
                           <?php 
-                            if (empty($log_outline['accdsnpa'])) {
-                              echo '<a type="button" class="btn btn-primary disabled" > Approve</a>';
-                            }else{
-                              echo '<a type="button" class="btn btn-success disabled" > Approved</a>';
-                            }
+                            //if (empty($log_outline['accdsnpa'])) {
+                            //  echo '<a type="button" class="btn btn-primary disabled" > Approve</a>';
+                            //}else{
+                            //  echo '<a type="button" class="btn btn-success disabled" > Approved</a>';
+                            //}
+                            if (!empty($log_outline['acckaprodi'])&&empty($log_outline['revisi'])) { 
+                              if ($log_outline['status_outline']=='Ditolak') {
+                                  echo '<button type="button" class="btn btn-danger disabled" data-toggle="modal" > Ditolak</button>';
+                                }else{
+                                  echo '<button type="button" class="btn btn-success disabled" data-toggle="modal" > Diterima</button>';
+                                }
+                              }elseif (!empty($log_outline['acckaprodi'])&&!empty($log_outline['revisi'])) {
+                                  echo '<button type="button" class="btn btn-warning disabled" data-toggle="modal"> Revisi</button>';
+                              }
                             ?>
                         </td>
                         <td align="center">
-                          <?php 
-                              if (!empty($log_outline['acckaprodi'])&&empty($log_outline['revisi'])) { 
-                                if ($log_outline['status_outline']=='Ditolak') {
-                                   echo '<button type="button" class="btn btn-danger disabled" data-toggle="modal" > Ditolak</button>';
-                                }else{
-                                    echo '<button type="button" class="btn btn-success disabled" data-toggle="modal" > Diterima</button>';
-                                }?>
-                          <?php }elseif (!empty($log_outline['acckaprodi'])&&!empty($log_outline['revisi'])) {
-                                 echo '<button type="button" class="btn btn-warning disabled" data-toggle="modal"> Revisi</button>';
-                              }
-                            ?>
+                          <?php ?>
                         </td>
                       </tr>
                       <?php
@@ -432,8 +420,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th style="text-align: center;">Tanggal</th>
                         <th style="text-align: center;">Data Outline</th>
                         <th style="text-align: center;">Subag LAA</th>
-                        <th style="text-align: center;">Dosen PA</th>
                         <th style="text-align: center;">Kaprodi</th>
+                        <th style="text-align: center;">Komentar</th>
                       </tr>
                       </tfoot>
                     </table>

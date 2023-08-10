@@ -12,10 +12,16 @@ class Staff extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->view('staff/layout/header', [
+			'notification' => $this->session->flashdata('notification'),
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
+		]);
 		$this->load->view('staff/halaman_staff', [
 			'notification' => $this->session->flashdata('notification')
 		]);
-
+		$this->load->view('staff/layout/footer', [
+			'notification' => $this->session->flashdata('notification')
+		]);
 	}
 
 	public function about()

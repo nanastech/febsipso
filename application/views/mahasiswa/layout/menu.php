@@ -66,9 +66,8 @@
             <li id="helpdesk"><a href="<?= base_url('Mahasiswa/help_desk/')?>"><i class="fa fa-commenting-o"></i> <span>Help Desk</span></a></li>
 
             <li class="header">INFORMATION</li>
-            <li id="about"><a href="<?= base_url('Mahasiswa/about/')?>"><i class="fa fa-info"></i> <span>Tentang Kami</span></a></li>
             <li id="userguide"><a href="<?= base_url('uploads/doc/userguide.pdf')?>" target="_blank"><i class="fa fa-support"></i> <span>User Guide PERBANAS SIPSO</span></a></li>
-            <li id="blueprint"><a href="<?= base_url('uploads/doc/pedomanskripsi.pdf')?>" target="_blank"><i class="fa fa-book"></i> <span>Buku Biru Skripsi</span></a></li>
+
       </ul>
     </section>
     <!-- /.sidebar -->

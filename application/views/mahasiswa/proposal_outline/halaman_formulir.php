@@ -158,22 +158,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-group col-md-6">
                           <i class="fa fa-fw fa-graduation-cap"></i><label>&nbsp;&nbsp;Program Jurusan</label>
                           <select class="form-control" name="projurus" required="" readonly="">
-                          <?php if ($form->jurusan=='TI') {
-                            echo '<option value="TI">S1 Teknik Informatika</option>';
-                          }elseif ($form->jurusan=='SI') {
-                             echo '<option value="SI">S1 Sistem Informasi</option>';
-                          }elseif ($form->jurusan=='SK') {
-                             echo '<option value="SK">S1 Sistem Komputer</option>';
-                            }elseif ($form->jurusan=='ADB') {
-                              echo '<option value="ADB">S1 Analitika Data Bisnis</option>';
-                            }elseif ($form->jurusan=='MAKSI') {
-                              echo '<option value="MAKSI">S2 Magister Akuntansi</option>';
-                            }elseif ($form->jurusan=='MM') {
-                              echo '<option value="MM">S2 Magister Manajemen</option>';
-                            }elseif ($form->jurusan=='PPAK') {
-                              echo '<option value="PPAK">Pendidikan Profesi Akuntansi</option>';
-                            }elseif ($form->jurusan=='DAK') {
-                              echo '<option value="DAK">D3 Akuntasi</option>';
+                          <?php 
+                            if ($form->jurusan=='DAK') {
+                              echo '<option value="DAK">D3 Akuntansi</option>';
                             }elseif ($form->jurusan=='DKP') {
                               echo '<option value="DKP">D3 Keuangan & Perbankan</option>';
                             }elseif ($form->jurusan=='AK') {
@@ -321,8 +308,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                          
                         </div>
                         <!-- dospem -->
-                        <div class="form-group col-md-12">
-                          <span class="glyphicon glyphicon-pawn"></span><label>&nbsp;&nbsp;Dosen Pembimbing</label>
+                        <div class="form-group col-md-6">
+                          <span class="glyphicon glyphicon-pawn"></span><label>&nbsp;&nbsp;Dosen Pembimbing 1</label>
                           <select required="" class="form-control" name="dospem">
                             <?php 
                             $dosens=$this->Model->read('dosen');
@@ -332,7 +319,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             }
                             ?>
                           </select>
-                          
+                        </div>
+                        <div class="form-group col-md-6">
+                          <span class="glyphicon glyphicon-pawn"></span><label>&nbsp;&nbsp;Dosen Pembimbing 2</label>
+                          <select required="" class="form-control" name="dospem">
+                            <?php 
+                            $dosens=$this->Model->read('dosen');
+                            foreach ($dosens as $dosen) { ?>
+                              <option <?php if($form->dospem==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
+                            <?php
+                            }
+                            ?>
+                          </select>
                         </div>
                         <!-- yajukan -->
                         <div class="form-group col-md-12">
@@ -419,9 +417,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </option>
                           </select>
                            <p>Keterangan : <br>
-                              D3 : 80 SKS <br>
-                              S1 : 128 SKS <br>
-                              S2 : 30 SKS <br>
+                              D3 : 90 SKS <br>
+                              S1 : 125 SKS <br>
                            </p> 
                         </div>
                        
