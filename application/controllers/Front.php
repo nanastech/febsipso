@@ -26,7 +26,8 @@ class Front extends CI_Controller {
     public function index()
 	{
 		$this->load->view('pages/layout/header.php',[
-			'notification' => $this->session->flashdata('notification')
+			'notification' => $this->session->flashdata('notification'),
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online'
 			]);
 		$this->load->view('pages/index',[
 			'notification' => $this->session->flashdata('notification')
