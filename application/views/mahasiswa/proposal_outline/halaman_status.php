@@ -143,7 +143,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <th style="width: 10px">#</th>
                   <th style="width: 300px; text-align: center;">Data Pendaftaran</th>
                   <th style="width: 120px; text-align: center;">Subag LAA</th>
-                  <th style="width: 120px; text-align: center;">Dosen PA</th>
                   <th style="width: 120px; text-align: center;">Kaprodi</th>
                   <th style="text-align: center;">Progress</th>
                 </tr>
@@ -372,9 +371,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <a href="<?=base_url('uploads/'.$form->upro2)?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
                               </div>
                             <?php  } ?>
-
-
-                            
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -389,15 +385,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       echo '<a type="button" class="btn btn-primary disabled" > Validate</a>';
                     }else{
                       echo '<a type="button" class="btn btn-success disabled" > Validated</a>';
-                    }
-                    ?>
-                  </td>
-                  <td style="vertical-align: middle; text-align: center;">
-                    <?php 
-                    if (empty($form->accdsnpa)) {
-                      echo '<a type="button" class="btn btn-primary disabled" > Approve</a>';
-                    }else{
-                      echo '<a type="button" class="btn btn-success disabled" > Approved</a>';
                     }
                     ?>
                   </td>
