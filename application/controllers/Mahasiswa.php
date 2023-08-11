@@ -83,8 +83,8 @@ class Mahasiswa extends CI_Controller {
 		$this->form_validation->set_rules('nmp','Nilai Metode Penelitian','required');
 		$this->form_validation->set_rules('topik1','Topik 1','required');
 		$this->form_validation->set_rules('topik2','Topik 2','required');
-		$this->form_validation->set_rules('dospem','Nama Dosen Pembimbing Pertama','required');
-		$this->form_validation->set_rules('dospems','Nama Dosen Pembimbing Kedua','required');
+		$this->form_validation->set_rules('dospem','Nama Dosen Pembimbing','required');
+		$this->form_validation->set_rules('dospems','','required');
 		$this->form_validation->set_rules('yajukan','Yang Mengajukan','required');
 		$this->form_validation->set_rules('konsen','Konsentrasi','required');
 		$this->form_validation->set_rules('lmedpel','Lulus Metode Penelitian','required');
@@ -200,7 +200,7 @@ class Mahasiswa extends CI_Controller {
 	    		// }
 
 				//cek config
-	    		$config['file_name'] = $_POST['nim'].'_File-Persyaratan-Outline_'.time();
+	    		$config['file_name'] = $_POST['nim'].'_file-persyaratan-outline_'.time();
 	    		$config['allowed_types']        = 'pdf';
 		    	$config['max_size']             = '5120'; //5MB, 1024kilobytes = 1MB
     			$this->load->library('upload', $config);
@@ -260,7 +260,7 @@ class Mahasiswa extends CI_Controller {
 			$this->load->view('mahasiswa/proposal_outline/halaman_formulir', [
 			'notification' => $this->session->flashdata('notification')
 			]);
-			$this->load->view('mahasiswa/layout/footer');
+			// $this->load->view('mahasiswa/layout/footer');
 		}else{
 			
 			$this->load->model('Model');
@@ -463,7 +463,7 @@ class Mahasiswa extends CI_Controller {
 			
 			if (!empty($_FILES['ufpo']['tmp_name'])) {
 				//cek config
-	    		$config['file_name'] = $_POST['nim'].'_File-Persyaratan-Outline_'.time();
+	    		$config['file_name'] = $_POST['nim'].'_file-persyaratan-outline_'.time();
 	    		$config['allowed_types']        = 'pdf';
 		    	$config['max_size']             = '5120'; //5MB, 1024kilobytes = 1MB
     			$this->load->library('upload', $config);
@@ -476,8 +476,8 @@ class Mahasiswa extends CI_Controller {
 					File Persyaratan Outline gagal di upload. Mohon cek kembali format dan size file sebelum melakukan upload!</div>'; 
 	    		}else{
 	    			$file = $this->upload->data();
-                	$upro1 = $file['file_name'];
-                	if (!empty($outline->upro1)) {
+                	$ufpo = $file['file_name'];
+                	if (!empty($outline->ufpo)) {
                 		unlink("uploads/outline/".$outline->ufpo);
                 	}
 	    			
@@ -560,7 +560,7 @@ class Mahasiswa extends CI_Controller {
 				'upro2' => $upro2,
 				'tgl_daftar' => date('Y-m-d H:i:s')
 				);
-			
+
 			if ($this->Model->update_data($data_update,'nim',$_POST['nim'],'outline'))
 			{
 				$notification = $notification.'<div class="alert alert-success alert-dismissible">
