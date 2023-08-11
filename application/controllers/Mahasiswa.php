@@ -14,25 +14,37 @@ class Mahasiswa extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->view('mahasiswa/layout/header', [
+			'notification' => $this->session->flashdata('notification'),
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
+		]);
 		$this->load->view('mahasiswa/halaman_mahasiswa', [
+			'notification' => $this->session->flashdata('notification')
+		]);
+		$this->load->view('mahasiswa/layout/footer', [
 			'notification' => $this->session->flashdata('notification')
 		]);
 
 	}
 	public function log_outline()
 	{
+		$this->load->view('mahasiswa/layout/header', [
+			'notification' => $this->session->flashdata('notification'),
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log Outline'
+		]);
 		$this->load->view('mahasiswa/proposal_outline/halaman_log', [
 			'notification' => $this->session->flashdata('notification')
 		]);
 
 	}
-	public function about()
-	{
-		$this->load->view('mahasiswa/halaman_about', [
-			'notification' => $this->session->flashdata('notification')
-		]);
 
-	}
+	// public function about()
+	// {
+	// 	$this->load->view('mahasiswa/halaman_about', [
+	// 		'notification' => $this->session->flashdata('notification')
+	// 	]);
+
+	// }
 
 	public function daftar_dosenpa()
 	{

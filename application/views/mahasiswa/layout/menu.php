@@ -5,11 +5,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url('uploads/img/logo.png'); ?>" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url('asset/img/logo.png'); ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p  style="width: 150px; white-space: nowrap;
-    overflow: hidden;text-overflow: ellipsis;"><?=$this->session->userdata('name');?></p>
+          <p  style="width: 150px; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;"><?=$this->session->userdata('name');?></p>
           <small class="label bg-yellow">Mahasiswa</small>
           
         </div>
@@ -66,8 +65,7 @@
             <li id="helpdesk"><a href="<?= base_url('Mahasiswa/help_desk/')?>"><i class="fa fa-commenting-o"></i> <span>Help Desk</span></a></li>
 
             <li class="header">INFORMATION</li>
-            <li id="userguide"><a href="<?= base_url('uploads/doc/userguide.pdf')?>" target="_blank"><i class="fa fa-support"></i> <span>User Guide PERBANAS SIPSO</span></a></li>
-
+            <li id="userguide"><a href="<?= base_url('asset/doc/userguide.pdf')?>" target="_blank"><i class="fa fa-support"></i> <span>User Guide PERBANAS SIPSO</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

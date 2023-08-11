@@ -32,7 +32,6 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="lihatnotif()">
@@ -47,24 +46,22 @@
                 <?php 
                   $notification = $this->Model->read_orderby('username',$this->session->userdata('username'),'info','tanggal','desc');
                   if (empty($notification)) {
-                    
-                  }else{
-                    foreach ($notification as $row) { ?>
-                      <li><!-- start message -->
-                        <a href="<?= base_url($row['link'])?>">
-                          <div class="pull-left">
-                            <img src="<?php echo base_url('uploads/img/logo.png'); ?>" class="img-circle" alt="User Image">
-                          </div>
-                          <h4>
-                            <?= $row['dari']?>
-                            <small><i class="fa fa-clock-o"></i>&nbsp;<?= $row['tanggal']?></small>
-                          </h4>
-                          <p><?= $row['info']?></p>
-                        </a>
-                      </li>
-                <?php }
-                } ?>
-                  
+                    }else{
+                      foreach ($notification as $row) { ?>
+                        <li><!-- start message -->
+                          <a href="<?= base_url($row['link'])?>">
+                            <div class="pull-left">
+                              <img src="<?php echo base_url('asset/img/logo.png'); ?>" class="img-circle" alt="User Image">
+                            </div>
+                            <h4>
+                              <?= $row['dari']?>
+                              <small><i class="fa fa-clock-o"></i>&nbsp;<?= $row['tanggal']?></small>
+                            </h4>
+                            <p><?= $row['info']?></p>
+                          </a>
+                        </li>
+                  <?php }
+                  } ?>
                 </ul>
               </li>
             </ul>
@@ -72,14 +69,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url('uploads/img/logo.png'); ?>" class="user-image" alt="User Image">
+              <img src="<?php echo base_url('asset/img/logo.png'); ?>" class="user-image" alt="User Image">
               <span class="hidden-xs"><?=$this->session->userdata('name');?></span>
             </a>
             <ul class="dropdown-menu">
-
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url('uploads/img/logo2.png'); ?>" class="img-circle" alt="User Image">
+                <img src="<?php echo base_url('asset/img/logo.png'); ?>" class="img-circle" alt="User Image">
 
                 <p>
                   <?=$this->session->userdata('name');?><br/>
