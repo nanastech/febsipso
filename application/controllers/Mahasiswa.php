@@ -96,22 +96,18 @@ class Mahasiswa extends CI_Controller {
 
 		//load uploading file library
 		$config=array();
-		$config['upload_path']          = './uploads/';
+		$config['upload_path']          = './uploads/outline/';
     	$config['allowed_types']        = 'png|jpg|jpeg';
     	$config['max_size']             = '2048'; //2MB, 1024kilobytes = 1MB
 		$config['max_width']  = '0';
 		$config['max_height']  = '0';
 		$ufmhs='';
-		$usbs='';
-		$uspu='';
-		$ukst='';
-		$utn='';
-		$ukhs='';
+		$ufpo='';
 		$upro1='';
 		$upro2='';
 	
 
-		if (!empty($_FILES['ufmhs']['tmp_name']) && !empty($_FILES['usbs']['tmp_name']) && !empty($_FILES['uspu']['tmp_name']) && !empty($_FILES['ukst']['tmp_name']) && !empty($_FILES['utn']['tmp_name']) && !empty($_FILES['ukhs']['tmp_name']) && !empty($_FILES['upro1']['tmp_name']) && !empty($_FILES['upro2']['tmp_name'])) {
+		if (!empty($_FILES['ufmhs']['tmp_name']) && !empty($_FILES['ufpo']['tmp_name']) && !empty($_FILES['upro1']['tmp_name']) && !empty($_FILES['upro2']['tmp_name'])) {
 
 				//cek config
 	    		$config['file_name'] = $_POST['nim'].'_foto-mahasiswa_'.time();
@@ -128,79 +124,96 @@ class Mahasiswa extends CI_Controller {
                 	$ufmhs = $gambar['file_name'];
 	    		}
 
-	    		//cek config
-	    		$config['file_name'] = $_POST['nim'].'_slipbs'.time();
-    			$this->load->library('upload', $config);
-    			$this->upload->initialize($config);
-    			//cek bisa upload
-	    		if (!$this->upload->do_upload('usbs')) {
-	               $notification = $notification.'<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i> Upload Slip Bimbingan Skripsi Gagal!</h4>
-                Slip Bimbingan Skripsi gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
-	    		}else{
-	    			$gambar = $this->upload->data();
-                	$usbs = $gambar['file_name'];
-	    		}
+	    		// //cek config
+	    		// $config['file_name'] = $_POST['nim'].'_slipbs'.time();
+    			// $this->load->library('upload', $config);
+    			// $this->upload->initialize($config);
+    			// //cek bisa upload
+	    		// if (!$this->upload->do_upload('usbs')) {
+	            //    $notification = $notification.'<div class="alert alert-danger alert-dismissible">
+                // <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                // <h4><i class="icon fa fa-check"></i> Upload Slip Bimbingan Skripsi Gagal!</h4>
+                // Slip Bimbingan Skripsi gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    		// }else{
+	    		// 	$gambar = $this->upload->data();
+                // 	$usbs = $gambar['file_name'];
+	    		// }
 
-	    		//cek config
-	    		$config['file_name'] = $_POST['nim'].'_slippu'.time();
-    			$this->load->library('upload', $config);
-    			$this->upload->initialize($config);
-    			//cek bisa upload
-	    		if (!$this->upload->do_upload('uspu')) {
-	               $notification = $notification.'<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i> Upload Slip Pendaftaran Ulang Gagal!</h4>
-                Slip Pendaftaran Ulang gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
-	    		}else{
-	    			$gambar = $this->upload->data();
-                	$uspu = $gambar['file_name'];
-	    		}
+	    		// //cek config
+	    		// $config['file_name'] = $_POST['nim'].'_slippu'.time();
+    			// $this->load->library('upload', $config);
+    			// $this->upload->initialize($config);
+    			// //cek bisa upload
+	    		// if (!$this->upload->do_upload('uspu')) {
+	            //    $notification = $notification.'<div class="alert alert-danger alert-dismissible">
+                // <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                // <h4><i class="icon fa fa-check"></i> Upload Slip Pendaftaran Ulang Gagal!</h4>
+                // Slip Pendaftaran Ulang gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    		// }else{
+	    		// 	$gambar = $this->upload->data();
+                // 	$uspu = $gambar['file_name'];
+	    		// }
 
-	    		//cek config
-	    		$config['file_name'] = $_POST['nim'].'_kst'.time();
-    			$this->load->library('upload', $config);
-    			$this->upload->initialize($config);
-    			//cek bisa upload
-	    		if (!$this->upload->do_upload('ukst')) {
-	               $notification = $notification.'<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i>  Upload Kartu Studi Tetap (KST) Gagal!</h4>
-                Kartu Studi Tetap (KST) gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
-	    		}else{
-	    			$gambar = $this->upload->data();
-                	$ukst = $gambar['file_name'];
-	    		}
+	    		// //cek config
+	    		// $config['file_name'] = $_POST['nim'].'_kst'.time();
+    			// $this->load->library('upload', $config);
+    			// $this->upload->initialize($config);
+    			// //cek bisa upload
+	    		// if (!$this->upload->do_upload('ukst')) {
+	            //    $notification = $notification.'<div class="alert alert-danger alert-dismissible">
+                // <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                // <h4><i class="icon fa fa-check"></i>  Upload Kartu Studi Tetap (KST) Gagal!</h4>
+                // Kartu Studi Tetap (KST) gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    		// }else{
+	    		// 	$gambar = $this->upload->data();
+                // 	$ukst = $gambar['file_name'];
+	    		// }
 
-	    		//cek config
-	    		$config['file_name'] = $_POST['nim'].'_transkrip-nilai'.time();
-    			$this->load->library('upload', $config);
-    			$this->upload->initialize($config);
-    			//cek bisa upload
-	    		if (!$this->upload->do_upload('utn')) {
-	               $notification = $notification.'<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i> Upload Transkrip Nilai Gagal!</h4>
-                Transkrip Nilai gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
-	    		}else{
-	    			$gambar = $this->upload->data();
-                	$utn = $gambar['file_name'];
-	    		}
+	    		// //cek config
+	    		// $config['file_name'] = $_POST['nim'].'_transkrip-nilai'.time();
+    			// $this->load->library('upload', $config);
+    			// $this->upload->initialize($config);
+    			// //cek bisa upload
+	    		// if (!$this->upload->do_upload('utn')) {
+	            //    $notification = $notification.'<div class="alert alert-danger alert-dismissible">
+                // <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                // <h4><i class="icon fa fa-check"></i> Upload Transkrip Nilai Gagal!</h4>
+                // Transkrip Nilai gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    		// }else{
+	    		// 	$gambar = $this->upload->data();
+                // 	$utn = $gambar['file_name'];
+	    		// }
 
-	    		//cek config
-	    		$config['file_name'] = $_POST['nim'].'_KHS'.time();
+	    		// //cek config
+	    		// $config['file_name'] = $_POST['nim'].'_KHS'.time();
+    			// $this->load->library('upload', $config);
+    			// $this->upload->initialize($config);
+    			// //cek bisa upload
+	    		// if (!$this->upload->do_upload('ukhs')) {
+	            //    $notification = $notification.'<div class="alert alert-danger alert-dismissible">
+                // <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                // <h4><i class="icon fa fa-check"></i> Upload KHS Semester Gagal!</h4>
+                // KHS Semester gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    		// }else{
+	    		// 	$gambar = $this->upload->data();
+                // 	$ukhs = $gambar['file_name'];
+	    		// }
+
+				//cek config
+	    		$config['file_name'] = $_POST['nim'].'_File-Persyaratan-Outline_'.time();
+	    		$config['allowed_types']        = 'pdf';
+		    	$config['max_size']             = '5120'; //5MB, 1024kilobytes = 1MB
     			$this->load->library('upload', $config);
     			$this->upload->initialize($config);
     			//cek bisa upload
-	    		if (!$this->upload->do_upload('ukhs')) {
-	               $notification = $notification.'<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i> Upload KHS Semester Gagal!</h4>
-                KHS Semester gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    		if (!$this->upload->do_upload('ufpo')) {
+	            	$notification = $notification.'<div class="alert alert-danger alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<h4><i class="icon fa fa-check"></i> Upload File Persyaratan Outline Gagal!</h4>
+					File Persyaratan Outline gagal di upload. Mohon cek kembali format dan size file sebelum melakukan upload!</div>'; 
 	    		}else{
-	    			$gambar = $this->upload->data();
-                	$ukhs = $gambar['file_name'];
+	    			$file = $this->upload->data();
+                	$ufpo = $file['file_name'];
 	    		}
 
 	    		//cek config
@@ -258,14 +271,14 @@ class Mahasiswa extends CI_Controller {
 				'tempat' => $_POST['tempat'], 
 				'tgllahir' => date('Y-m-d',strtotime($_POST['tanggallahir'])),
 				'alamat' => $_POST['alamat'], 
-				'tlpr' => $_POST['tlpr'], 
 				'nohp' => $_POST['nohp'], 
 				'email' => $_POST['email'],
 				'nmp' => $_POST['nmp'], 
 				'ns' => $_POST['ns'], 
 				'topik1' => $_POST['topik1'], 
 				'topik2' => $_POST['topik2'], 
-				'dospem' => $_POST['dospem'], 
+				'dospem' => $_POST['dospem'],
+				'dospems' => $_POST['dospems'], 
 				'yajukan' => $_POST['yajukan'], 
 				'konsen' => $_POST['konsen'], 
 				'lmedpel' => $_POST['lmedpel'], 
@@ -273,11 +286,11 @@ class Mahasiswa extends CI_Controller {
 				'lkkp' => $_POST['lkkp'], 
 				'l128' => $_POST['l128'],
 				'ufmhs' => $ufmhs,
-				'usbs' => $usbs,
-				'uspu' => $uspu,
-				'ukst'=> $ukst,
-				'utn' => $utn,
-				'ukhs' => $ukhs,
+				'ufpo' => $ufpo,
+				// 'uspu' => $uspu,
+				// 'ukst'=> $ukst,
+				// 'utn' => $utn,
+				// 'ukhs' => $ukhs,
 				'upro1' => $upro1,
 				'upro2' => $upro2,
 				'tgl_daftar' => date('Y-m-d H:i:s')
@@ -308,17 +321,18 @@ class Mahasiswa extends CI_Controller {
 			$notification='';
 			//load uploading file library
 			$config=array();
-			$config['upload_path']          = './uploads/';
-	    	$config['allowed_types']        = 'gif|png|jpg|jpeg|JPG';
+			$config['upload_path']          = './uploads/outline/';
+	    	$config['allowed_types']        = 'png|jpg|jpeg';
 	    	$config['max_size']             = '2048'; //2MB, 1024kilobytes = 1MB
 			$config['max_width']  = '0';
 			$config['max_height']  = '0';
 			$ufmhs=$outline->ufmhs;
-			$usbs=$outline->usbs;
-			$uspu=$outline->uspu;
-			$ukst=$outline->ukst;
-			$utn=$outline->utn;
-			$ukhs=$outline->ukhs;
+			$ufpo=$outline->ufpo;
+			// $usbs=$outline->usbs;
+			// $uspu=$outline->uspu;
+			// $ukst=$outline->ukst;
+			// $utn=$outline->utn;
+			// $ukhs=$outline->ukhs;
 			$upro1=$outline->upro1;
 			$upro2=$outline->upro2;
 			if (!empty($_FILES['ufmhs']['tmp_name'])) {
@@ -336,112 +350,135 @@ class Mahasiswa extends CI_Controller {
 	    			$gambar = $this->upload->data();
                 	$ufmhs = $gambar['file_name'];
                 	if (!empty($outline->ufmhs)) {
-                		unlink("uploads/".$outline->ufmhs);
+                		unlink("uploads/outline/".$outline->ufmhs);
                 	}
 	    			
 	    		}
 			}
 
-			if (!empty($_FILES['usbs']['tmp_name'])) {
-				//cek config
-	    		$config['file_name'] = $_POST['nim'].'_slipbs'.time();
-    			$this->load->library('upload', $config);
-    			$this->upload->initialize($config);
-    			//cek bisa upload
-	    		if (!$this->upload->do_upload('usbs')) {
-	               $notification = $notification.'<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i> Upload Slip Bimbingan Skripsi Gagal!</h4>
-                Slip Bimbingan Skripsi gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
-	    		}else{
-	    			$gambar = $this->upload->data();
-                	$usbs = $gambar['file_name'];
-                	if (!empty($outline->usbs)) {
-                		unlink("uploads/".$outline->usbs);
-                	}
+			// if (!empty($_FILES['usbs']['tmp_name'])) {
+			// 	//cek config
+	    	// 	$config['file_name'] = $_POST['nim'].'_slipbs'.time();
+    		// 	$this->load->library('upload', $config);
+    		// 	$this->upload->initialize($config);
+    		// 	//cek bisa upload
+	    	// 	if (!$this->upload->do_upload('usbs')) {
+	        //        $notification = $notification.'<div class="alert alert-danger alert-dismissible">
+            //     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            //     <h4><i class="icon fa fa-check"></i> Upload Slip Bimbingan Skripsi Gagal!</h4>
+            //     Slip Bimbingan Skripsi gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    	// 	}else{
+	    	// 		$gambar = $this->upload->data();
+            //     	$usbs = $gambar['file_name'];
+            //     	if (!empty($outline->usbs)) {
+            //     		unlink("uploads/".$outline->usbs);
+            //     	}
 	    			
-	    		}
-			}
+	    	// 	}
+			// }
 
-			if (!empty($_FILES['uspu']['tmp_name'])) {
-				//cek config
-	    		$config['file_name'] = $_POST['nim'].'_slippu'.time();
-    			$this->load->library('upload', $config);
-    			$this->upload->initialize($config);
-    			//cek bisa upload
-	    		if (!$this->upload->do_upload('uspu')) {
-	               $notification = $notification.'<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i> Upload Slip Pendaftaran Ulang Gagal!</h4>
-                Slip Pendaftaran Ulang gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
-	    		}else{
-	    			$gambar = $this->upload->data();
-                	$uspu = $gambar['file_name'];
-                	if (!empty($outline->uspu)) {
-                		unlink("uploads/".$outline->uspu);
-                	}
+			// if (!empty($_FILES['uspu']['tmp_name'])) {
+			// 	//cek config
+	    	// 	$config['file_name'] = $_POST['nim'].'_slippu'.time();
+    		// 	$this->load->library('upload', $config);
+    		// 	$this->upload->initialize($config);
+    		// 	//cek bisa upload
+	    	// 	if (!$this->upload->do_upload('uspu')) {
+	        //        $notification = $notification.'<div class="alert alert-danger alert-dismissible">
+            //     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            //     <h4><i class="icon fa fa-check"></i> Upload Slip Pendaftaran Ulang Gagal!</h4>
+            //     Slip Pendaftaran Ulang gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    	// 	}else{
+	    	// 		$gambar = $this->upload->data();
+            //     	$uspu = $gambar['file_name'];
+            //     	if (!empty($outline->uspu)) {
+            //     		unlink("uploads/".$outline->uspu);
+            //     	}
 	    			
-	    		}
-			}
+	    	// 	}
+			// }
 
-			if (!empty($_FILES['ukst']['tmp_name'])) {
-				//cek config
-	    		$config['file_name'] = $_POST['nim'].'_kst'.time();
-    			$this->load->library('upload', $config);
-    			$this->upload->initialize($config);
-    			//cek bisa upload
-	    		if (!$this->upload->do_upload('ukst')) {
-	               $notification = $notification.'<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i>  Upload Kartu Studi Tetap (KST) Gagal!</h4>
-                Kartu Studi Tetap (KST) gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
-	    		}else{
-	    			$gambar = $this->upload->data();
-                	$ukst = $gambar['file_name'];
-                	if (!empty($outline->ukst)) {
-                		unlink("uploads/".$outline->ukst);
-                	}
+			// if (!empty($_FILES['ukst']['tmp_name'])) {
+			// 	//cek config
+	    	// 	$config['file_name'] = $_POST['nim'].'_kst'.time();
+    		// 	$this->load->library('upload', $config);
+    		// 	$this->upload->initialize($config);
+    		// 	//cek bisa upload
+	    	// 	if (!$this->upload->do_upload('ukst')) {
+	        //        $notification = $notification.'<div class="alert alert-danger alert-dismissible">
+            //     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            //     <h4><i class="icon fa fa-check"></i>  Upload Kartu Studi Tetap (KST) Gagal!</h4>
+            //     Kartu Studi Tetap (KST) gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    	// 	}else{
+	    	// 		$gambar = $this->upload->data();
+            //     	$ukst = $gambar['file_name'];
+            //     	if (!empty($outline->ukst)) {
+            //     		unlink("uploads/".$outline->ukst);
+            //     	}
 	    			
-	    		}
-			}
+	    	// 	}
+			// }
 
-			if (!empty($_FILES['utn']['tmp_name'])) {
-				//cek config
-	    		$config['file_name'] = $_POST['nim'].'_transkrip-nilai'.time();
-    			$this->load->library('upload', $config);
-    			$this->upload->initialize($config);
-    			//cek bisa upload
-	    		if (!$this->upload->do_upload('utn')) {
-	               $notification = $notification.'<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i> Upload Transkrip Nilai Gagal!</h4>
-                Transkrip Nilai gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
-	    		}else{
-	    			$gambar = $this->upload->data();
-                	$utn = $gambar['file_name'];
-                	if ($outline->utn) {
-                		unlink("uploads/".$outline->utn);
-                	}
+			// if (!empty($_FILES['utn']['tmp_name'])) {
+			// 	//cek config
+	    	// 	$config['file_name'] = $_POST['nim'].'_transkrip-nilai'.time();
+    		// 	$this->load->library('upload', $config);
+    		// 	$this->upload->initialize($config);
+    		// 	//cek bisa upload
+	    	// 	if (!$this->upload->do_upload('utn')) {
+	        //        $notification = $notification.'<div class="alert alert-danger alert-dismissible">
+            //     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            //     <h4><i class="icon fa fa-check"></i> Upload Transkrip Nilai Gagal!</h4>
+            //     Transkrip Nilai gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    	// 	}else{
+	    	// 		$gambar = $this->upload->data();
+            //     	$utn = $gambar['file_name'];
+            //     	if ($outline->utn) {
+            //     		unlink("uploads/".$outline->utn);
+            //     	}
 	    			
-	    		}
-			}
+	    	// 	}
+			// }
 
-			if (!empty($_FILES['ukhs']['tmp_name'])) {
+			// if (!empty($_FILES['ukhs']['tmp_name'])) {
+			// 	//cek config
+	    	// 	$config['file_name'] = $_POST['nim'].'_KHS'.time();
+    		// 	$this->load->library('upload', $config);
+    		// 	$this->upload->initialize($config);
+    		// 	//cek bisa upload
+	    	// 	if (!$this->upload->do_upload('ukhs')) {
+	        //        $notification = $notification.'<div class="alert alert-danger alert-dismissible">
+            //     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            //     <h4><i class="icon fa fa-check"></i> Upload KHS Semester Gagal!</h4>
+            //     KHS Semester gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    	// 	}else{
+	    	// 		$gambar = $this->upload->data();
+            //     	$ukhs = $gambar['file_name'];
+            //     	if (!empty($outline->ukhs)) {
+            //     		unlink("uploads/".$outline->ukhs);
+            //     	}
+	    			
+	    	// 	}
+			// }
+			
+			if (!empty($_FILES['ufpo']['tmp_name'])) {
 				//cek config
-	    		$config['file_name'] = $_POST['nim'].'_KHS'.time();
+	    		$config['file_name'] = $_POST['nim'].'_File-Persyaratan-Outline_'.time();
+	    		$config['allowed_types']        = 'pdf';
+		    	$config['max_size']             = '5120'; //5MB, 1024kilobytes = 1MB
     			$this->load->library('upload', $config);
     			$this->upload->initialize($config);
     			//cek bisa upload
-	    		if (!$this->upload->do_upload('ukhs')) {
-	               $notification = $notification.'<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="icon fa fa-check"></i> Upload KHS Semester Gagal!</h4>
-                KHS Semester gagal di upload. Mohon cek kembali format dan size gambar sebelum melakukan upload!</div>';
+	    		if (!$this->upload->do_upload('ufpo')) {
+	            	$notification = $notification.'<div class="alert alert-danger alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<h4><i class="icon fa fa-check"></i> Upload File Persyaratan Outline Gagal!</h4>
+					File Persyaratan Outline gagal di upload. Mohon cek kembali format dan size file sebelum melakukan upload!</div>'; 
 	    		}else{
-	    			$gambar = $this->upload->data();
-                	$ukhs = $gambar['file_name'];
-                	if (!empty($outline->ukhs)) {
-                		unlink("uploads/".$outline->ukhs);
+	    			$file = $this->upload->data();
+                	$upro1 = $file['file_name'];
+                	if (!empty($outline->upro1)) {
+                		unlink("uploads/outline/".$outline->ufpo);
                 	}
 	    			
 	    		}
@@ -464,7 +501,7 @@ class Mahasiswa extends CI_Controller {
 	    			$file = $this->upload->data();
                 	$upro1 = $file['file_name'];
                 	if (!empty($outline->upro1)) {
-                		unlink("uploads/".$outline->upro1);
+                		unlink("uploads/outline/".$outline->upro1);
                 	}
 	    			
 	    		}
@@ -487,7 +524,7 @@ class Mahasiswa extends CI_Controller {
 	    			$file = $this->upload->data();
                 	$upro2 = $file['file_name'];
                 	if (!empty($outline->upro2)) {
-                		unlink("uploads/".$outline->upro2);
+                		unlink("uploads/outline/".$outline->upro2);
                 	}
 	    			
 	    		}
@@ -497,14 +534,15 @@ class Mahasiswa extends CI_Controller {
 				'tempat' => $_POST['tempat'], 
 				'tgllahir' => date('Y-m-d',strtotime($_POST['tanggallahir'])),
 				'alamat' => $_POST['alamat'], 
-				'tlpr' => $_POST['tlpr'], 
+				// 'tlpr' => $_POST['tlpr'], 
 				'nohp' => $_POST['nohp'], 
 				'email' => $_POST['email'], 
 				'nmp' => $_POST['nmp'], 
 				'ns' => $_POST['ns'], 
 				'topik1' => $_POST['topik1'], 
 				'topik2' => $_POST['topik2'], 
-				'dospem' => $_POST['dospem'], 
+				'dospem' => $_POST['dospem'],
+				'dospems' => $_POST['dospems'], 
 				'yajukan' => $_POST['yajukan'], 
 				'konsen' => $_POST['konsen'], 
 				'lmedpel' => $_POST['lmedpel'], 
@@ -512,11 +550,12 @@ class Mahasiswa extends CI_Controller {
 				'lkkp' => $_POST['lkkp'], 
 				'l128' => $_POST['l128'],
 				'ufmhs' => $ufmhs,
-				'usbs' => $usbs,
-				'uspu' => $uspu,
-				'ukst'=> $ukst,
-				'utn' => $utn,
-				'ukhs' => $ukhs,
+				// 'usbs' => $usbs,
+				// 'uspu' => $uspu,
+				// 'ukst'=> $ukst,
+				// 'utn' => $utn,
+				// 'ukhs' => $ukhs,
+				'ufpo' => $ufpo,
 				'upro1' => $upro1,
 				'upro2' => $upro2,
 				'tgl_daftar' => date('Y-m-d H:i:s')

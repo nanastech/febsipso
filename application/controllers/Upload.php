@@ -19,7 +19,7 @@ class Upload extends CI_Controller {
  	$this->load->library('upload');
   	//Configure upload.
   	$this->upload->initialize(array(
-  		"allowed_types" => "gif|jpg|png|jpeg",
+  		"allowed_types" => "jpg|png|jpeg",
   		"upload_path" => "./uploads/"
         //"upload_path" => "/home/web/sipso/uploads/"
   		));
