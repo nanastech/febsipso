@@ -15,26 +15,23 @@ class Mahasiswa extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('mahasiswa/layout/header', [
-			'notification' => $this->session->flashdata('notification'),
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
 		]);
 		$this->load->view('mahasiswa/halaman_mahasiswa', [
 			'notification' => $this->session->flashdata('notification')
 		]);
-		$this->load->view('mahasiswa/layout/footer', [
-			'notification' => $this->session->flashdata('notification')
-		]);
+		$this->load->view('mahasiswa/layout/footer');
 
 	}
 	public function log_outline()
 	{
 		$this->load->view('mahasiswa/layout/header', [
-			'notification' => $this->session->flashdata('notification'),
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log Outline'
 		]);
 		$this->load->view('mahasiswa/proposal_outline/halaman_log', [
 			'notification' => $this->session->flashdata('notification')
 		]);
+		// $this->load->view('mahasiswa/layout/footer');
 
 	}
 
@@ -81,13 +78,13 @@ class Mahasiswa extends CI_Controller {
 		$this->form_validation->set_rules('tempat','Tempat Lahir','required');
 		$this->form_validation->set_rules('tanggallahir','Tanggal Lahir','required');
 		$this->form_validation->set_rules('alamat','Alamat','required');
-	
 		$this->form_validation->set_rules('nohp','Nomor Handphone','required');
 		$this->form_validation->set_rules('email','E-mail','required');
 		$this->form_validation->set_rules('nmp','Nilai Metode Penelitian','required');
 		$this->form_validation->set_rules('topik1','Topik 1','required');
 		$this->form_validation->set_rules('topik2','Topik 2','required');
-		$this->form_validation->set_rules('dospem','Nama Dosen Pembimbing','required');
+		$this->form_validation->set_rules('dospem','Nama Dosen Pembimbing Pertama','required');
+		$this->form_validation->set_rules('dospems','Nama Dosen Pembimbing Kedua','required');
 		$this->form_validation->set_rules('yajukan','Yang Mengajukan','required');
 		$this->form_validation->set_rules('konsen','Konsentrasi','required');
 		$this->form_validation->set_rules('lmedpel','Lulus Metode Penelitian','required');
@@ -95,13 +92,12 @@ class Mahasiswa extends CI_Controller {
 		$this->form_validation->set_rules('l128','Lulus 128 SKS','required');
 
 		$this->form_validation->set_message('required','%s masih kosong, silahkan diisi!');
-
 		$this->form_validation->set_error_delimiters('<p class="text-red"><code><strong>','</strong></code></p>');
 
 		//load uploading file library
 		$config=array();
 		$config['upload_path']          = './uploads/';
-    	$config['allowed_types']        = 'gif|png|jpg|Jpeg';
+    	$config['allowed_types']        = 'png|jpg|jpeg';
     	$config['max_size']             = '2048'; //2MB, 1024kilobytes = 1MB
 		$config['max_width']  = '0';
 		$config['max_height']  = '0';
@@ -245,12 +241,15 @@ class Mahasiswa extends CI_Controller {
 		}
 
 		if ($this->form_validation->run()==FALSE) {
+			$this->load->view('mahasiswa/layout/header', [
+				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Pendaftaran Outline'
+			]);
 			$this->load->view('mahasiswa/proposal_outline/halaman_formulir', [
 			'notification' => $this->session->flashdata('notification')
 			]);
+			$this->load->view('mahasiswa/layout/footer');
 		}else{
 			
-
 			$this->load->model('Model');
 			$data = array(
 				'nama' => $_POST['nama'], 			
@@ -1481,21 +1480,6 @@ class Mahasiswa extends CI_Controller {
 		redirect(base_url('Mahasiswa/help_desk/'));	
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	public function ganti_password()
 	{
 		$this->load->library('form_validation');
@@ -1510,7 +1494,11 @@ class Mahasiswa extends CI_Controller {
 
 
 		if($this->form_validation->run() == FALSE){
+			$this->load->view('mahasiswa/layout/header',[
+				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Password'
+			]);
 			$this->load->view('mahasiswa/halaman_gantipass');
+			$this->load->view('mahasiswa/layout/footer');
 
 		}
 		else{

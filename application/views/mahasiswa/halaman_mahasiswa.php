@@ -163,7 +163,7 @@
                 <h2>Contoh Outline</h2>
                 <!-- Standard button -->
                 <a type="button" class="btn3d btn btn-default btn-lg" href="<?=base_url('uploads/doc/outline2.docx')?>"><span class="glyphicon glyphicon-download-alt"></span> Download</a><br><br>
-                <iframe src="http://docs.google.com/gview?url=<?=base_url('uploads/doc/')?>outline2.docx&embedded=true" style="width:600px; height:400px;max-width:100%; max-height:100%;" frameborder="0"></iframe>
+                <!-- <iframe src="http://docs.google.com/gview?url=<?=base_url('uploads/doc/')?>outline2.docx&embedded=true" style="width:600px; height:400px;max-width:100%; max-height:100%;" frameborder="0"></iframe> -->
                 <br>
             </div>
           </div>
@@ -211,6 +211,3 @@
     });
   });
 </script>
-
-</body>
-</html>
