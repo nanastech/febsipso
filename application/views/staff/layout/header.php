@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?= $title;?></title>
-  <link rel="icon" href="https://portal.perbanas.id/images/favicon.ico" type="image/ico">
+  <link rel="icon" href="<?= base_url(); ?>/asset/img/perbanas.ico" type="image/ico">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -52,6 +52,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	    document.getElementById("clock").innerHTML = (sh.length==1?"0"+sh:sh) + ":" + (sm.length==1?"0"+sm:sm) + ":" + (ss.length==1?"0"+ss:ss);
 	}
 	</script>
-</head>
-<!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
-<!-- the fixed layout is not compatible with sidebar-mini -->
+

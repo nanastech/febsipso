@@ -1,5 +1,4 @@
-  
-  <header class="main-header">
+    <header class="main-header">
     <!-- Logo -->
     <a href="<?=base_url('Staff')?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -24,13 +23,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url('uploads/img/logo.png'); ?>" class="user-image" alt="User Image">
+              <img src="<?= base_url(''); ?>/asset/img/logo.png" class="user-image" alt="User Image">
               <span class="hidden-xs"><?=$this->session->userdata('name');?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo base_url('uploads/img/logo2.png'); ?>" class="img-circle" alt="User Image">
+                <img src="<?= base_url(''); ?>/asset/img/logo.png" class="img-circle" alt="User Image">
 
                 <p>
                   <?=$this->session->userdata('name');?>

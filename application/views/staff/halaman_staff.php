@@ -1,3 +1,7 @@
+
+</head>
+<!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
+<!-- the fixed layout is not compatible with sidebar-mini -->
 <body class="hold-transition skin-blue fixed sidebar-mini" onload="setInterval('displayServerTime()', 1000);">
 <?php 
 	date_default_timezone_set('Asia/Jakarta');
@@ -44,7 +48,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Selamat Datang Subag LAA!</h3>
+          <h3 class="box-title">Selamat Datang Subag LAP!</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -53,17 +57,9 @@
               <i class="fa fa-times"></i></button>
           </div>
         </div>
-        <div class="box-body">
-          <p>Lorem ipsum dolor sit amet, mea no errem verear. Quo et erant electram, usu cu debet cotidieque deterruisset. Modus oblique vim ad, liber tamquam duo ei. Ex sea tollit commodo recusabo.
-		  </p>
-		  <p>Et his vidit prompta, mea dico invidunt an. Aliquip reprehendunt mel te. Cu alienum philosophia quo, nobis tantas eum ea. Usu ubique mucius tractatos cu, modo alterum volumus cum ad. Timeam ponderum sea no. Mutat inciderint ut has.
-		  </p>
-		 
-        </div>
+        <div class="box-body"></div>
         <!-- /.box-body -->
-        <div class="box-footer">
-          Footer
-        </div>
+        <div class="box-footer"></div>
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
@@ -78,9 +74,8 @@
 <!--======================================================================================-->
  </div>
 <!-- ./wrapper -->
-
+<?php $this->load->view('staff/layout/footer'); ?>
 <!-- Menu -->
-<!-- script baru dimatikan tgl 19/04/23 -->
 <!-- <script>
   var dashboard = document.getElementById("dashboard");
   var treedaftar = document.getElementById("treedaftar");
@@ -98,20 +93,6 @@
   dashboard.className = "active";
 
 </script> -->
-
-<!-- jQuery 2.2.3 -->
-<script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="<?php echo base_url(); ?>assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="<?php echo base_url(); ?>assets/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url(); ?>assets/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {

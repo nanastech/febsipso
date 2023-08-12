@@ -13,24 +13,21 @@ class Staff extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('staff/layout/header', [
-			'notification' => $this->session->flashdata('notification'),
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
 		]);
 		$this->load->view('staff/halaman_staff', [
 			'notification' => $this->session->flashdata('notification')
 		]);
-		$this->load->view('staff/layout/footer', [
-			'notification' => $this->session->flashdata('notification')
-		]);
+		// $this->load->view('staff/layout/footer');
 	}
 
-	public function about()
-	{
-		$this->load->view('staff/halaman_about', [
-			'notification' => $this->session->flashdata('notification')
-		]);
+	// public function about()
+	// {
+	// 	$this->load->view('staff/halaman_about', [
+	// 		'notification' => $this->session->flashdata('notification')
+	// 	]);
 
-	}
+	// }
 	
 
 
@@ -1412,6 +1409,9 @@ class Staff extends CI_Controller {
 
 
 		if($this->form_validation->run() == FALSE){
+			$this->load->view('staff/layout/header', [
+				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Password'
+			]);
 			$this->load->view('staff/halaman_gantipass');
 
 		}
