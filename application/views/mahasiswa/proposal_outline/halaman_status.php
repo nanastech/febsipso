@@ -163,7 +163,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           </div>
                           <div class="modal-body col-md-12">
                             <!-- nama -->
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                               <span class="glyphicon glyphicon-pencil"></span><label>&nbsp;&nbsp;Nama Lengkap</label>
                               <input readonly="" required="" class="form-control" name="nama" type="text" placeholder="Masukan Nama" value="<?= $form->nama; ?>">
                             </div>
@@ -176,31 +176,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="form-group col-md-6">
                               <i class="fa fa-fw fa-graduation-cap"></i><label>&nbsp;&nbsp;Program Jurusan</label>
                               <input readonly="" required="" class="form-control" name="projurus" type="text" placeholder="Masukan Nim" value="<?php 
-                   			  if ($form->jurusan=='TI'){
-                                      echo 'S1 Teknik Informatika';
-                                    }elseif ($form->jurusan=='SK') {
-                                      echo 'S1 Sistem Komputer';
-                                    }elseif ($form->jurusan=='SI') {
-                                      echo 'S1 Sistem Informasi';
-                                    }elseif ($form->jurusan=='ADB') {
-                                      echo 'S1 Analitika Data Bisnis';
-                                    }elseif ($form->jurusan=='MAKSI') {
-                                      echo 'S2 Magister Akuntansi';
-                                    }elseif ($form->jurusan=='MM') {
-                                      echo 'S2 Magister Manajemen';
-                                    }elseif ($form->jurusan=='PPAK') {
-                                      echo 'Pendidikan Profesi Akuntansi';
-                                    }elseif ($form->jurusan=='DAK') {
-                                      echo 'D3 Akuntansi';
-                                    }elseif ($form->jurusan=='DKP') {
-                                      echo 'D3 Keuangan & Perbankan';
-                                    }elseif ($form->jurusan=='AK') {
-                                      echo 'S1 Akuntasi';
-                                    }elseif ($form->jurusan=='M') {
-                                      echo 'S1 Manajemen';
-                                    }elseif ($form->jurusan=='ES') {
-                                      echo 'S1 Ekonomi Syariah';
-                                    }?>">
+                   			        if ($form->jurusan=='DAK'){
+                                  echo 'D3 Akuntansi';
+                                }elseif ($form->jurusan=='DKP') {
+                                  echo 'D3 Keuangan & Perbankan';
+                                }elseif ($form->jurusan=='AK') {
+                                  echo 'S1 Akuntasi';
+                                }elseif ($form->jurusan=='M') {
+                                  echo 'S1 Manajemen';
+                                }elseif ($form->jurusan=='ES') {
+                                  echo 'S1 Ekonomi Syariah';
+                                }?>">
+                            </div>
+                            <!-- nohp -->
+                            <div class="form-group col-md-6">
+                              <span class="fa fa-fw fa-mobile-phone"></span><label>&nbsp;&nbsp;Nomor Handphone</label>
+                                <div class="input-group">
+                                  <div class="input-group-addon">
+                                    <i class="glyphicon glyphicon-earphone"></i>
+                                  </div>
+                                  <input required=""  readonly="" type="text" id="nohp" class="form-control" name="nohp" data-inputmask='"mask": "9999-9999-9999"' data-mask value="<?= $form->nohp; ?>">
+                                </div>
                             </div>
                             <!-- tempat -->
                             <div class="form-group col-md-6">
@@ -217,54 +213,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <span class="glyphicon glyphicon-home"></span><label>&nbsp;&nbsp;Alamat</label>
                               <textarea required="" readonly="" class="form-control" name="alamat" id="alamat" type="text" rows="2" placeholder="Masukan Alamat"><?= $form->alamat; ?></textarea>
                             </div>
-                            <!-- tlpr -->
-                            <div class="form-group col-md-6">
-                              <span class="glyphicon glyphicon-phone-alt"></span><label>&nbsp;&nbsp;Nomor Telepon Rumah</label>
-                              <div class="input-group">
-                                <div class="input-group-addon">
-                                  <i class="fa fa-phone"></i>
-                                </div>
-                                <input required=""  readonly="" id="tlpr"  type="text" class="form-control" name="tlpr" data-inputmask='"mask": "(999) 999-999-9"' data-mask value="<?= $form->tlpr; ?>">
-                              </div>
-                            </div>
-                            <!-- nohp -->
-                            <div class="form-group col-md-6">
-                              <span class="fa fa-fw fa-mobile-phone"></span><label>&nbsp;&nbsp;Nomor Handphone</label>
-                                <div class="input-group">
-                                  <div class="input-group-addon">
-                                    <i class="glyphicon glyphicon-earphone"></i>
-                                  </div>
-                                  <input required=""  readonly="" type="text" id="nohp" class="form-control" name="nohp" data-inputmask='"mask": "9999-9999-9999"' data-mask value="<?= $form->nohp; ?>">
-                                </div>
-                            </div>
-                            <!-- nmp -->
-                            <div class="form-group col-md-6">
-                              <span class="glyphicon glyphicon-equalizer"></span><label>&nbsp;&nbsp;Nilai Metode Penelitian</label>
-                              <input required="" readonly="" class="form-control" name="nmp" type="text" placeholder="" value="<?= $form->nmp; ?>">
-                            </div>
-                            <!-- ns -->
-                            <div class="form-group col-md-6">
-                              <span class="glyphicon glyphicon-equalizer"></span><label>&nbsp;&nbsp;Nilai Statistik</label>
-                              <input required="" readonly="" class="form-control" name="nmp" type="text" placeholder="" value="<?= $form->ns; ?>">
-                            </div>
-                            <!-- topik1 -->
+                            <!-- email -->
                             <div class="form-group col-md-12">
+                              <label>&nbsp;&nbsp;Email</label>
+                              <input required="" readonly="" class="form-control" name="konsen" type="text" placeholder="Masukan Konsentrasi" value="<?= $form->email; ?>">
+                            </div>
+                            
+                            <!-- topik1 -->
+                            <div class="form-group col-md-6">
                               <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 1</label>
                               <textarea required="" readonly="" class="form-control" name="topik1" rows="2" placeholder="Masukan Topik 1"><?= $form->topik1; ?></textarea>
                             </div>
                             <!-- topik2 -->
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                               <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 2</label>
                               <textarea required="" readonly="" class="form-control" name="topik2" rows="2" type="text" placeholder="Masukan Topik 2"><?= $form->topik2; ?></textarea>
                             </div>
                             <!-- dospem -->
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                               <span class="glyphicon glyphicon-pawn"></span><label>&nbsp;&nbsp;Dosen Pembimbing</label>
-                              <?php 
-                                $dosens=$this->Model->read_detail('noreg',$form->dospem,'dosen');
-                              ?>
-                              <input required="" readonly="" class="form-control" name="dospem" type="text" placeholder="" value="<?= '['.$dosens->noreg.'] '.$dosens->nama; ?>">
-                              
+                              <?php $dosen=$this->Model->read_detail('noreg',$form->dospem,'dosen');?>
+                              <input required="" readonly="" class="form-control" name="dospem" type="text" placeholder="" value="<?= '['.$dosen->noreg.'] '.$dosen->nama; ?>">
+                            </div>
+                            <!-- dospem -->
+                            <div class="form-group col-md-6">
+                              <label>&nbsp;&nbsp;</label>
+                              <?php $dosens=$this->Model->read_detail('noreg',$form->dospems,'dosen');?>
+                              <input required="" readonly="" class="form-control" name="dospems" type="text" placeholder="" value="<?= '['.$dosens->noreg.'] '.$dosens->nama; ?>">
                             </div>
                             <!-- yajukan -->
                             <div class="form-group col-md-12">
@@ -275,6 +250,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="form-group col-md-12">
                               <span class="glyphicon glyphicon-book"></span><label>&nbsp;&nbsp;Konsentrasi</label>
                               <input required="" readonly="" class="form-control" name="konsen" type="text" placeholder="Masukan Konsentrasi" value="<?= $form->konsen; ?>">
+                            </div>
+                            <!-- nmp -->
+                            <div class="form-group col-md-6">
+                              <span class="glyphicon glyphicon-equalizer"></span><label>&nbsp;&nbsp;Nilai Metode Penelitian</label>
+                              <input required="" readonly="" class="form-control" name="nmp" type="text" placeholder="" value="<?= $form->nmp; ?>">
+                            </div>
+                            <!-- ns -->
+                            <div class="form-group col-md-6">
+                              <span class="glyphicon glyphicon-equalizer"></span><label>&nbsp;&nbsp;Nilai Statistik</label>
+                              <input required="" readonly="" class="form-control" name="nmp" type="text" placeholder="" value="<?= $form->ns; ?>">
                             </div>
                             <!-- lmedpel -->
                             <div class="form-group col-md-6">
@@ -317,58 +302,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="form-group col-md-12">
                               <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Foto Mahasiswa :</label>
                               <br/>
-                              <img src="<?=base_url('uploads/'.$form->ufmhs)?>" onerror="this.src='<?= $notfound; ?>'" height="320px">
+                              <img src="<?=base_url('uploads/outline/'.$form->ufmhs)?>" onerror="this.src='<?= $notfound; ?>'" height="320px">
                             </div>
-                            <div class="form-group col-md-12">
-                              <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Slip Bimbingan Skripsi :</label>
-                              <br/>
-                              <img src="<?=base_url('uploads/'.$form->usbs)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
-                            </div>
-                            <div class="form-group col-md-12">
-                              <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Slip Pendaftaran Ulang :</label>
-                              <br/>
-                              <img src="<?=base_url('uploads/'.$form->uspu)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
-                            </div>
-                            <div class="form-group col-md-12">
-                              <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;KST :</label>
-                              <br/>
-                              <img src="<?=base_url('uploads/'.$form->ukst)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
-                            </div>
-                            <div class="form-group col-md-12">
-                              <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Transkrip Nilai :</label>
-                              <br/>
-                              <img src="<?=base_url('uploads/'.$form->utn)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
-                            </div>
-                            <div class="form-group col-md-12">
-                              <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;KHS :</label>
-                              <br/>
-                              <img src="<?=base_url('uploads/'.$form->ukhs)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
-                            </div>
-                            <?php if (empty($form->upro1)) {?>
+                            <?php if (empty($form->ufpo)) {?>
                               <div class="form-group col-md-12">
-                                <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 1 :</label>
+                                <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;File Persyaratan Outline :</label>
                                 <br/>
-                                <a href="<?=base_url('uploads/'.$form->upro1)?>" class="btn btn-danger disabled" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
+                                <a href="<?=base_url('uploads/outline/'.$form->ufpo)?>" class="btn btn-danger disabled" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
                               </div>
                             <?php }else{ ?>
                               <div class="form-group col-md-12">
+                                <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;File Persyaratan Outline :</label>
+                                <br/>
+                                <a href="<?=base_url('uploads/outline/'.$form->ufpo)?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
+                              </div>
+                            <?php  } ?>
+                            <?php if (empty($form->upro1)) {?>
+                              <div class="form-group col-md-6">
                                 <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 1 :</label>
                                 <br/>
-                                <a href="<?=base_url('uploads/'.$form->upro1)?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
+                                <a href="<?=base_url('uploads/outline/'.$form->upro1)?>" class="btn btn-danger disabled" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
+                              </div>
+                            <?php }else{ ?>
+                              <div class="form-group col-md-6">
+                                <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 1 :</label>
+                                <br/>
+                                <a href="<?=base_url('uploads/outline/'.$form->upro1)?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
                               </div>
                             <?php  } ?>
 
                             <?php if (empty($form->upro2)) {?>
-                              <div class="form-group col-md-12">
+                              <div class="form-group col-md-6">
                               <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 2 :</label>
                               <br/>
-                              <a href="<?=base_url('uploads/'.$form->upro2)?>" class="btn btn-danger disabled" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
+                              <a href="<?=base_url('uploads/outline/'.$form->upro2)?>" class="btn btn-danger disabled" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
                             </div>
                             <?php }else{ ?>
-                              <div class="form-group col-md-12">
+                              <div class="form-group col-md-6">
                                 <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 2 :</label>
                                 <br/>
-                                <a href="<?=base_url('uploads/'.$form->upro2)?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
+                                <a href="<?=base_url('uploads/outline/'.$form->upro2)?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
                               </div>
                             <?php  } ?>
                           </div>
@@ -441,7 +414,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <?php if (!empty($form->outline_revisi)) { ?>
                                   <div class="form-group">
-                                    <a href="<?=base_url('uploads/'.$form->outline_revisi)?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Proposal Revisi</a>
+                                    <a href="<?=base_url('uploads/outline/'.$form->outline_revisi)?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Proposal Revisi</a>
                                   </div>
                                 <?php }else{ ?>
                                   <div class="form-group">
@@ -490,10 +463,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <div class="progress progress-xs">
                         <div class="progress-bar progress-bar-warning" style="width: 40%"></div>
                       </div><span class="badge bg-yellow">40%</span>
-                  <?php }elseif (empty($form->accstaff)&&empty($form->accdsnpa)&&empty($form->acckaprodi)) { ?>
+                  <?php }elseif (empty($form->accstaff)&&empty($form->acckaprodi)) { ?>
                       <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-danger" style="width: 20%"></div>
-                      </div><span class="badge bg-red">20%</span>
+                        <div class="progress-bar progress-bar-danger" style="width: 25%"></div>
+                      </div><span class="badge bg-red">25%</span>
                   <?php }
                   ?>
                   </td>

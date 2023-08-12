@@ -149,7 +149,43 @@
                           <label for="inputemail">E-Mail  <font color="red">*</font></label>
                           <input type="email" class="form-control" id="inputemail" name="email" required="" placeholder="Masukan E-Mail" value="<?=$form->email;?>">
                         </div>
-
+                        <!-- topik1 -->
+                        <div class="form-group col-md-6">
+                          <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 1</label>
+                          <textarea required="" class="form-control" name="topik1" rows="3" placeholder="Masukan Topik 1"><?=$form->topik1;?></textarea>
+                          
+                        </div>
+                        <!-- topik2 -->
+                        <div class="form-group col-md-6">
+                          <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 2</label>
+                          <textarea required="" class="form-control" name="topik2" rows="3" type="text" placeholder="Masukan Topik 2"><?=$form->topik2;?></textarea>
+                         
+                        </div>
+                        <!-- dospem -->
+                        <div class="form-group col-md-6">
+                          <span class="glyphicon glyphicon-pawn"></span><label>&nbsp;&nbsp;Dosen Pembimbing</label>
+                          <select required="" class="form-control" name="dospem">
+                            <?php 
+                            $dosens=$this->Model->read('dosen');
+                            foreach ($dosens as $dosen) { ?>
+                              <option <?php if($form->dospem==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
+                            <?php
+                            }
+                            ?>
+                          </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label>&nbsp;&nbsp;</label>
+                          <select required="" class="form-control" name="dospems">
+                            <?php 
+                            $dosens=$this->Model->read('dosen');
+                            foreach ($dosens as $dosen) { ?>
+                              <option <?php if($form->dospem==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
+                            <?php
+                            }
+                            ?>
+                          </select>
+                        </div>
                         <!-- nmp -->
                         <div class="form-group col-md-6">
                           <span class="glyphicon glyphicon-equalizer"></span><label>&nbsp;&nbsp;Nilai Metode Penelitian</label>
@@ -222,43 +258,6 @@
                             <option <?php if($form->ns=='E') echo 'selected="selected"';?> value="E">
                             E
                             </option>
-                          </select>
-                        </div>
-                        <!-- topik1 -->
-                        <div class="form-group col-md-6">
-                          <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 1</label>
-                          <textarea required="" class="form-control" name="topik1" rows="3" placeholder="Masukan Topik 1"><?=$form->topik1;?></textarea>
-                          
-                        </div>
-                        <!-- topik2 -->
-                        <div class="form-group col-md-6">
-                          <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 2</label>
-                          <textarea required="" class="form-control" name="topik2" rows="3" type="text" placeholder="Masukan Topik 2"><?=$form->topik2;?></textarea>
-                         
-                        </div>
-                        <!-- dospem -->
-                        <div class="form-group col-md-6">
-                          <span class="glyphicon glyphicon-pawn"></span><label>&nbsp;&nbsp;Dosen Pembimbing</label>
-                          <select required="" class="form-control" name="dospem">
-                            <?php 
-                            $dosens=$this->Model->read('dosen');
-                            foreach ($dosens as $dosen) { ?>
-                              <option <?php if($form->dospem==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
-                            <?php
-                            }
-                            ?>
-                          </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label>&nbsp;&nbsp;</label>
-                          <select required="" class="form-control" name="dospems">
-                            <?php 
-                            $dosens=$this->Model->read('dosen');
-                            foreach ($dosens as $dosen) { ?>
-                              <option <?php if($form->dospem==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
-                            <?php
-                            }
-                            ?>
                           </select>
                         </div>
                         <!-- lmedpel -->
