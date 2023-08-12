@@ -181,7 +181,7 @@
 <!--======================================================================================-->
  </div>
 <!-- ./wrapper -->
-
+<?php $this->load->view('mahasiswa/layout/footer'); ?>
 <!-- Menu -->
 <script>
   var dashboard = document.getElementById("dashboard");
@@ -211,3 +211,5 @@
     });
   });
 </script>
+</body>
+</html>

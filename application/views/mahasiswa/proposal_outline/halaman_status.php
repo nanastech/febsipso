@@ -241,16 +241,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <?php $dosens=$this->Model->read_detail('noreg',$form->dospems,'dosen');?>
                               <input required="" readonly="" class="form-control" name="dospems" type="text" placeholder="" value="<?= '['.$dosens->noreg.'] '.$dosens->nama; ?>">
                             </div>
-                            <!-- yajukan -->
-                            <div class="form-group col-md-12">
-                              <span class="glyphicon glyphicon-ok-circle"></span><label>&nbsp;&nbsp;Yang Mengajukan</label>
-                              <input readonly="" required="" class="form-control" name="yajukan" type="text" placeholder=" Otomatis" value="<?=$form->nama;?>">
-                            </div>
-                            <!-- konsen -->
-                            <div class="form-group col-md-12">
-                              <span class="glyphicon glyphicon-book"></span><label>&nbsp;&nbsp;Konsentrasi</label>
-                              <input required="" readonly="" class="form-control" name="konsen" type="text" placeholder="Masukan Konsentrasi" value="<?= $form->konsen; ?>">
-                            </div>
+                            
                             <!-- nmp -->
                             <div class="form-group col-md-6">
                               <span class="glyphicon glyphicon-equalizer"></span><label>&nbsp;&nbsp;Nilai Metode Penelitian</label>
@@ -279,8 +270,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <!-- l128 -->
                             <div class="form-group col-md-6">
-                              <span class="glyphicon glyphicon-ok-sign"></span><label>&nbsp;&nbsp;Lulus 128 SKS</label>
+                              <span class="glyphicon glyphicon-ok-sign"></span><label>&nbsp;&nbsp;Lulus SKS</label>
                               <input required="" readonly="" class="form-control" name="l128" type="text" value="<?php if ($form->l128=='1') {echo 'LULUS';}elseif ($form->l128=='0'){echo 'TIDAK LULUS';} ?>">
+                              </div>
+                            <!-- konsen -->
+                            <div class="form-group col-md-12">
+                              <span class="glyphicon glyphicon-book"></span><label>&nbsp;&nbsp;Konsentrasi</label>
+                              <input required="" readonly="" class="form-control" name="konsen" type="text" placeholder="Masukan Konsentrasi" value="<?= $form->konsen; ?>">
+                            </div>
+                            <!-- yajukan -->
+                            <div class="form-group col-md-12">
+                              <span class="glyphicon glyphicon-ok-circle"></span><label>&nbsp;&nbsp;Yang Mengajukan</label>
+                              <input readonly="" required="" class="form-control" name="yajukan" type="text" placeholder=" Otomatis" value="<?=$form->nama;?>">
                             </div>
                           </div>
                           <div class="modal-footer">
@@ -443,26 +444,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                   <td align="center" style="vertical-align: middle; text-align: center;">
                   <?php 
-                    if (!empty($form->accdsnpa)&&!empty($form->acckaprodi)&&empty($form->revisi)) {?>
+                    if (!empty($form->accstaff)&&!empty($form->acckaprodi)) {?>
                       <div class="progress progress-xs">
                         <div class="progress-bar progress-bar-success" style="width: 100%"></div>
                       </div><span class="badge bg-green">100%</span>
-                  <?php }elseif (!empty($form->accdsnpa)&&!empty($form->acckaprodi)&&!empty($form->revisi)) {?>
+                  <?php }elseif (!empty($form->accstaff)&&empty($form->acckaprodi)) { ?>
                       <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-warning" style="width: 90%"></div>
-                      </div><span class="badge bg-yellow">90%</span>
-                  <?php }elseif (!empty($form->accdsnpa)&&empty($form->acckaprodi)) {?>
-                      <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-warning" style="width: 70%"></div>
-                      </div><span class="badge bg-yellow">70%</span>
-                  <?php }elseif (empty($form->accdsnpa)&&!empty($form->acckaprodi)) {?>
-                      <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-warning" style="width: 70%"></div>
-                      </div><span class="badge bg-yellow">70%</span>
-                  <?php }elseif (!empty($form->accstaff)&&empty($form->accdsnpa)&&empty($form->acckaprodi)) { ?>
-                      <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-warning" style="width: 40%"></div>
-                      </div><span class="badge bg-yellow">40%</span>
+                        <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                      </div><span class="badge bg-yellow">50%</span>
                   <?php }elseif (empty($form->accstaff)&&empty($form->acckaprodi)) { ?>
                       <div class="progress progress-xs">
                         <div class="progress-bar progress-bar-danger" style="width: 25%"></div>
