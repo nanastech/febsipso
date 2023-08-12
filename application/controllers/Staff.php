@@ -12,22 +12,19 @@ class Staff extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('staff/layout/header', [
-			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
-		]);
 		$this->load->view('staff/halaman_staff', [
 			'notification' => $this->session->flashdata('notification')
 		]);
-		// $this->load->view('staff/layout/footer');
+
 	}
 
-	// public function about()
-	// {
-	// 	$this->load->view('staff/halaman_about', [
-	// 		'notification' => $this->session->flashdata('notification')
-	// 	]);
+	public function about()
+	{
+		$this->load->view('staff/halaman_about', [
+			'notification' => $this->session->flashdata('notification')
+		]);
 
-	// }
+	}
 	
 
 
@@ -510,9 +507,6 @@ class Staff extends CI_Controller {
 	// ====================Akhir Daftar Kaprodi====================
 ///////////////////////////////////Menu Outline//////////////////////////////////////////////////
 	public function status_outline(){
-		$this->load->view('staff/layout/header', [
-			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Status Outline'
-		]);
 		$this->load->view('staff/proposal_outline/halaman_status', [
 			'notification' => $this->session->flashdata('notification')
 			]);
@@ -1412,9 +1406,6 @@ class Staff extends CI_Controller {
 
 
 		if($this->form_validation->run() == FALSE){
-			$this->load->view('staff/layout/header', [
-				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Password'
-			]);
 			$this->load->view('staff/halaman_gantipass');
 
 		}

@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SIPSO | Daftar Akun</title>
-  <link rel="icon" href="<?=base_url('');?>/asset/img/perbanas.ico" type="image/ico">
+  <link rel="icon" href="https://portal.perbanas.id/images/favicon.ico" type="image/ico">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -169,7 +169,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- /.box-header -->
             <!-- form start -->
 
-            <form role="form" action="<?= base_url('Staff/create_akun/'); ?>" method="POST">
+            <form role="form" action="<?php echo base_url('Staff/create_akun/'); ?>" method="POST">
               <div class="box-body">
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
@@ -201,9 +201,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <option value="">-- Pilih Program Studi --</option>
                       <option value="DAK">D3 Akuntansi</option>
                       <option value="DKP">D3 Keuangan & Perbankan</option>
-                      <option value="AK">S1 Akuntansi</option>
+                      <option value="AK">S1 Akuntasi</option>
                       <option value="M">S1 Manajemen</option>
                       <option value="ES">S1 Ekonomi Syariah</option>
+                      <option value="TI">S1 Teknik Informatika</option>
+                      <option value="SI">S1 Sistem Informasi</option>
+                      <option value="SK">S1 Sistem Komputer</option>
+                      <option value="ADB">S1 Analitika Data Bisnis</option>
+                      <option value="MAKSI">S2 Magister Akuntansi</option>
+                      <option value="MM">S2 Magister Manajemen</option>
+                      <option value="PPAK">Pendidikan Profesi Akuntansi</option>
                       <option value="UM">Umum</option>
                     </select>
                   </div>
@@ -295,7 +302,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <h4 class="modal-title" id="myModalLabel">Edit Data User <?=$user['username']?></h4>
                           </div>
                           <div class="modal-body">
-                            <form action="<?= base_url('Staff/update_akun/'.$user['username']); ?>" method="POST">
+                            <form action="<?php echo base_url('Staff/update_akun/'.$user['username']); ?>" method="POST">
                               <div class="form-grup">
                                 <label for="inputnama">Username :</label>
                                 <input type="text" class="form-control" id="inputnama" name="username" placeholder="Masukan NIM / No.Reg" required=""<?php if ($user['role']=='kaprodi') {
@@ -314,7 +321,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <label for="inputnama">Program Studi :</label>
                                 <select name="prodi" class="form-control" required="">
                                   <?php if ($user['role']=='kaprodi') {
-                                    if ($user['prodi']=='DAK') {
+                                    if ($user['prodi']=='TI') {
+                                      echo '<option value="TI" selected="selected">S1 Teknik Informatika</option>';
+                                    }elseif ($user['prodi']=='SK') {
+                                      echo '<option value="SK" selected="selected">S1 Sistem Komputer</option>';
+                                    }elseif ($user['prodi']=='SI') {
+                                      echo '<option value="SI" selected="selected">S1 Sistem Informasi</option>';
+                                    }elseif ($user['prodi']=='ADB') {
+                                      echo '<option value="ADB" selected="selected">S1 Analitika Data Bisnis</option>';
+                                    }elseif ($user['prodi']=='MAKSI') {
+                                      echo '<option value="MAKSI" selected="selected">S2 Magister Akuntansi</option>';
+                                    }elseif ($user['prodi']=='MM') {
+                                      echo '<option value="MM" selected="selected">S2 Magister Manajemen</option>';
+                                    }elseif ($user['prodi']=='PPAK') {
+                                      echo '<option value="PPAK" selected="selected">Pendidikan Profesi Akuntansi</option>';
+                                    }elseif ($user['prodi']=='DAK') {
                                       echo '<option value="DAK" selected="selected">D3 Akuntansi</option>';
                                     }elseif ($user['prodi']=='DKP') {
                                       echo '<option value="DKP" selected="selected">D3 Keuangan & Perbankan</option>';
@@ -335,6 +356,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <option value="AK"<?php if($user['prodi']=='AK') echo 'selected="selected"';?>>S1 Akuntasi</option>
                                     <option value="M"<?php if($user['prodi']=='M') echo 'selected="selected"';?>>S1 Manajemen</option>
                                     <option value="ES"<?php if($user['prodi']=='ES') echo 'selected="selected"';?>>S1 Ekonomi Syariah</option>
+                                    <option value="TI" <?php if($user['prodi']=='TI') echo 'selected="selected"';?> >S1 Teknik Informatika</option>
+                                    <option value="SI" <?php if($user['prodi']=='SI') echo 'selected="selected"';?>>S1 Sistem Informasi</option>
+                                    <option value="SK"<?php if($user['prodi']=='SK') echo 'selected="selected"';?>>S1 Sistem Komputer</option>
+                                    <option value="ADB"<?php if($user['prodi']=='ADB') echo 'selected="selected"';?>>S1 Analitika Data Bisnis</option>
+                                    <option value="MAKSI"<?php if($user['prodi']=='MAKSI') echo 'selected="selected"';?>>S2 Magister Akuntansi</option>
+                                    <option value="MM"<?php if($user['prodi']=='MM') echo 'selected="selected"';?>>S2 Magister Manajemen</option>
+                                    <option value="PPAK"<?php if($user['prodi']=='PPAK') echo 'selected="selected"';?>>Pendidikan Profesi Akuntansi</option>
                                     <option value="UM" <?php if($user['prodi']=='UM') echo 'selected="selected"';?>>Umum</option>
                                   <?php }
                                   ?>

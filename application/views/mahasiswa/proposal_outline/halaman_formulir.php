@@ -1,3 +1,20 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SIPSO | Formulir Pendaftaran Outline</title>
+  <link rel="icon" href="https://portal.perbanas.id/images/favicon.ico" type="image/ico">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- daterange picker -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/daterangepicker/daterangepicker.css">
   <!-- bootstrap datepicker -->
@@ -10,6 +27,43 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/select2/select2.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+	<script type="text/javascript">
+	    //set timezone
+	    <?php date_default_timezone_set('Asia/Jakarta'); ?>
+	    //buat object date berdasarkan waktu di server
+	    var serverTime = new Date(<?php print date('Y, m, d, H, i, s, 0'); ?>);
+	    //buat object date berdasarkan waktu di client
+	    var clientTime = new Date();
+	    //hitung selisih
+	    var Diff = serverTime.getTime() - clientTime.getTime();    
+	    //fungsi displayTime yang dipanggil di bodyOnLoad dieksekusi tiap 1000ms = 1detik
+	    function displayServerTime(){
+	    //buat object date berdasarkan waktu di client
+	    var clientTime = new Date();
+	    //buat object date dengan menghitung selisih waktu client dan server
+	    var time = new Date(clientTime.getTime() + Diff);
+	    //ambil nilai jam
+	    var sh = time.getHours().toString();
+	    //ambil nilai menit
+	    var sm = time.getMinutes().toString();
+	    //ambil nilai detik
+	    var ss = time.getSeconds().toString();
+	    //tampilkan jam:menit:detik dengan menambahkan angka 0 jika angkanya cuma satu digit (0-9)
+	    document.getElementById("clock").innerHTML = (sh.length==1?"0"+sh:sh) + ":" + (sm.length==1?"0"+sm:sm) + ":" + (ss.length==1?"0"+ss:ss);
+	}
+	</script>
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
@@ -73,7 +127,7 @@
             <!-- Jika belum divalidasi staff -->
             <div class="row">
               <!-- left column -->
-              <div class="col-md-7">
+              <div class="col-md-6">
                 <!-- Form Input Outline -->
                 <div class="box box-default">
                   <div class="box-header with-border">
@@ -89,22 +143,37 @@
                     <div class="row">
                       <div class="col-md-12">
                         <!-- nama -->
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                           <span class="glyphicon glyphicon-pencil"></span><label>&nbsp;&nbsp;Nama Lengkap</label>
                           <input readonly="" required="" class="form-control" name="nama" type="text" placeholder="Masukan Nama" value="<?=$form->nama;?>">
+                         
                         </div>
                         <!--  nim -->
                         <div class="form-group col-md-6">
                           <span class="glyphicon glyphicon-user"></span><label>&nbsp;&nbsp;Nim</label>
                           <input readonly="" required="" class="form-control" name="nim" type="text" placeholder="Masukan Nim" value="<?=$form->nim;?>">
+                         
                         </div>
                         <!-- projurus -->
                         <div class="form-group col-md-6">
                           <i class="fa fa-fw fa-graduation-cap"></i><label>&nbsp;&nbsp;Program Jurusan</label>
                           <select class="form-control" name="projurus" required="" readonly="">
-                          <?php 
-                            if ($form->jurusan=='DAK') {
-                              echo '<option value="DAK">D3 Akuntansi</option>';
+                          <?php if ($form->jurusan=='TI') {
+                            echo '<option value="TI">S1 Teknik Informatika</option>';
+                          }elseif ($form->jurusan=='SI') {
+                             echo '<option value="SI">S1 Sistem Informasi</option>';
+                          }elseif ($form->jurusan=='SK') {
+                             echo '<option value="SK">S1 Sistem Komputer</option>';
+                            }elseif ($form->jurusan=='ADB') {
+                              echo '<option value="ADB">S1 Analitika Data Bisnis</option>';
+                            }elseif ($form->jurusan=='MAKSI') {
+                              echo '<option value="MAKSI">S2 Magister Akuntansi</option>';
+                            }elseif ($form->jurusan=='MM') {
+                              echo '<option value="MM">S2 Magister Manajemen</option>';
+                            }elseif ($form->jurusan=='PPAK') {
+                              echo '<option value="PPAK">Pendidikan Profesi Akuntansi</option>';
+                            }elseif ($form->jurusan=='DAK') {
+                              echo '<option value="DAK">D3 Akuntasi</option>';
                             }elseif ($form->jurusan=='DKP') {
                               echo '<option value="DKP">D3 Keuangan & Perbankan</option>';
                             }elseif ($form->jurusan=='AK') {
@@ -114,17 +183,9 @@
                             }elseif ($form->jurusan=='ES') {
                               echo '<option value="ES">S1 Ekonomi Syariah</option>';
                           } ?>
+                            
                           </select>
-                        </div>
-                        <!-- nohp -->
-                        <div class="form-group col-md-6">
-                          <span class="fa fa-fw fa-mobile-phone"></span><label>&nbsp;&nbsp;Nomor Handphone</label>
-                            <div class="input-group">
-                              <div class="input-group-addon">
-                                <i class="glyphicon glyphicon-earphone"></i>
-                              </div>
-                              <input required="" type="text" class="form-control" name="nohp" data-inputmask='"mask": "9999-9999-9999"' data-mask value="<?=$form->nohp;?>">
-                            </div>
+                         
                         </div>
                         <!-- tempat -->
                         <div class="form-group col-md-6">
@@ -144,48 +205,33 @@
                           <textarea required="" class="form-control" name="alamat" type="text" rows="2" placeholder="Masukan Alamat"><?=$form->alamat;?></textarea>
                           
                         </div>
-
+                        <!-- tlpr -->
+                        <div class="form-group col-md-6">
+                          <span class="glyphicon glyphicon-phone-alt"></span><label>&nbsp;&nbsp;Nomor Telepon Rumah</label>
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class="fa fa-phone"></i>
+                            </div>
+                            <input type="text" class="form-control" name="tlpr" data-inputmask='"mask": "(999) 999-999-9"' data-mask value="<?=$form->tlpr;?>">
+                          </div>
+                          
+                        </div>
+                        <!-- nohp -->
+                        <div class="form-group col-md-6">
+                          <span class="fa fa-fw fa-mobile-phone"></span><label>&nbsp;&nbsp;Nomor Handphone</label>
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="glyphicon glyphicon-earphone"></i>
+                              </div>
+                              <input required="" type="text" class="form-control" name="nohp" data-inputmask='"mask": "9999-9999-9999"' data-mask value="<?=$form->nohp;?>">
+                            </div>
+                            
+                        </div>
                         <div class="form-group col-md-12">
                           <label for="inputemail">E-Mail  <font color="red">*</font></label>
                           <input type="email" class="form-control" id="inputemail" name="email" required="" placeholder="Masukan E-Mail" value="<?=$form->email;?>">
                         </div>
-                        <!-- topik1 -->
-                        <div class="form-group col-md-6">
-                          <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 1</label>
-                          <textarea required="" class="form-control" name="topik1" rows="3" placeholder="Masukan Topik 1"><?=$form->topik1;?></textarea>
-                          
-                        </div>
-                        <!-- topik2 -->
-                        <div class="form-group col-md-6">
-                          <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 2</label>
-                          <textarea required="" class="form-control" name="topik2" rows="3" type="text" placeholder="Masukan Topik 2"><?=$form->topik2;?></textarea>
-                         
-                        </div>
-                        <!-- dospem -->
-                        <div class="form-group col-md-6">
-                          <span class="glyphicon glyphicon-pawn"></span><label>&nbsp;&nbsp;Dosen Pembimbing</label>
-                          <select required="" class="form-control" name="dospem">
-                            <?php 
-                            $dosens=$this->Model->read('dosen');
-                            foreach ($dosens as $dosen) { ?>
-                              <option <?php if($form->dospem==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
-                            <?php
-                            }
-                            ?>
-                          </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                          <label>&nbsp;&nbsp;</label>
-                          <select required="" class="form-control" name="dospems">
-                            <?php 
-                            $dosens=$this->Model->read('dosen');
-                            foreach ($dosens as $dosen) { ?>
-                              <option <?php if($form->dospem==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
-                            <?php
-                            }
-                            ?>
-                          </select>
-                        </div>
+
                         <!-- nmp -->
                         <div class="form-group col-md-6">
                           <span class="glyphicon glyphicon-equalizer"></span><label>&nbsp;&nbsp;Nilai Metode Penelitian</label>
@@ -225,9 +271,9 @@
                         </div>
                         <!-- ns -->
                         
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" <?php if ($this->session->userdata('prodi')!='SI') { echo 'style="visibility:hidden;"' ; } ?>>
                           <span class="glyphicon glyphicon-equalizer"></span><label>&nbsp;&nbsp;Nilai Statistik</label>
-                          <select required="" class="form-control" name="ns">
+                          <select <?php if ($this->session->userdata('prodi')=='SI') { echo 'required=""' ; } ?> class="form-control" name="ns">
                             <option value="">
                             Pilih Nilai
                             </option>
@@ -260,6 +306,46 @@
                             </option>
                           </select>
                         </div>
+                        
+                        
+                        <!-- topik1 -->
+                        <div class="form-group col-md-12">
+                          <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 1</label>
+                          <textarea required="" class="form-control" name="topik1" rows="2" placeholder="Masukan Topik 1"><?=$form->topik1;?></textarea>
+                          
+                        </div>
+                        <!-- topik2 -->
+                        <div class="form-group col-md-12">
+                          <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 2</label>
+                          <textarea required="" class="form-control" name="topik2" rows="2" type="text" placeholder="Masukan Topik 2"><?=$form->topik2;?></textarea>
+                         
+                        </div>
+                        <!-- dospem -->
+                        <div class="form-group col-md-12">
+                          <span class="glyphicon glyphicon-pawn"></span><label>&nbsp;&nbsp;Dosen Pembimbing</label>
+                          <select required="" class="form-control" name="dospem">
+                            <?php 
+                            $dosens=$this->Model->read('dosen');
+                            foreach ($dosens as $dosen) { ?>
+                              <option <?php if($form->dospem==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
+                            <?php
+                            }
+                            ?>
+                          </select>
+                          
+                        </div>
+                        <!-- yajukan -->
+                        <div class="form-group col-md-12">
+                          <span class="glyphicon glyphicon-ok-circle"></span><label>&nbsp;&nbsp;Yang Mengajukan</label>
+                          <input readonly="" required="" class="form-control" name="yajukan" type="text" placeholder=" Otomatis" value="<?=$form->nama;?>">
+                          
+                        </div>
+                        <!-- konsen -->
+                        <div class="form-group col-md-12">
+                          <span class="glyphicon glyphicon-book"></span><label>&nbsp;&nbsp;Konsentrasi</label>
+                          <input required="" class="form-control" name="konsen" type="text" placeholder="Masukan Konsentrasi" value="<?=$form->konsen;?>">
+                         
+                        </div>
                         <!-- lmedpel -->
                         <div class="form-group col-md-6">
                           <span class="glyphicon glyphicon-ok-sign"></span><label>&nbsp;&nbsp;Lulus Metode Penelitian</label>
@@ -276,11 +362,13 @@
                             Tidak Lulus
                             </option>
                           </select>
+                          
                         </div>
                         <!-- lstatis -->
-                        <div class="form-group col-md-6">
+                        
+                        <div class="form-group col-md-6" <?php if ($this->session->userdata('prodi')!='SI') { echo 'style="visibility:hidden;"' ; } ?>>
                           <span class="glyphicon glyphicon-ok-sign"></span><label>&nbsp;&nbsp;Lulus Statistik</label>
-                          <select required="" class="form-control" name="lstatis">
+                          <select <?php if ($this->session->userdata('prodi')=='SI') { echo 'required=""' ; } ?>  class="form-control" name="lstatis">
                             <option value="">
                             Pilih  
                             </option>
@@ -294,6 +382,8 @@
                             </option>
                           </select>
                         </div>
+                    
+                        
                         <!-- lkkp -->
                         <div class="form-group col-md-6">
                           <span class="glyphicon glyphicon-ok-sign"></span><label>&nbsp;&nbsp;Lulus KKP</label>
@@ -310,6 +400,7 @@
                             Tidak Lulus
                             </option>
                           </select>
+                      
                         </div>
                         <!-- l128 -->
                         <div class="form-group col-md-6">
@@ -318,43 +409,25 @@
                             <option value="">
                             Pilih  
                             </option>
+
                             <option <?php if($form->l128=='1') echo 'selected="selected"';?> value="1">
                             Lulus 
                             </option>
+                            
                             <option <?php if($form->l128=='0') echo 'selected="selected"';?> value="0">
                             Tidak Lulus
                             </option>
                           </select>
+                           <p>Keterangan : <br>
+                              D3 : 80 SKS <br>
+                              S1 : 128 SKS <br>
+                              S2 : 30 SKS <br>
+                           </p> 
                         </div>
-                        <!-- konsen -->
-                        <div class="form-group col-md-12">
-                          <span class="glyphicon glyphicon-book"></span><label>&nbsp;&nbsp;Konsentrasi</label>
-                          <input required="" class="form-control" name="konsen" type="text" placeholder="Masukan Konsentrasi" value="<?=$form->konsen;?>">
-                        </div>
-                         <!-- yajukan -->
-                         <div class="form-group col-md-12">
-                          <span class="glyphicon glyphicon-ok-circle"></span><label>&nbsp;&nbsp;Yang Mengajukan</label>
-                          <input readonly="" required="" class="form-control" name="yajukan" type="text" placeholder=" Otomatis" value="<?=$form->nama;?>">
-                        </div>
+                       
                       </div>
                     <!-- Row End -->
                     </div>
-                    <div class="row col-md-12">
-                  	<hr>
-                    <div class="form-group col-md-6">
-                      <p>
-                        Keterangan : <br>
-                        &nbsp;&nbsp;D3 : 90 SKS <br>
-                        &nbsp;&nbsp;S1 : 125 SKS <br>
-                        &nbsp;&nbsp;<font color="red">*&nbsp;</font>Required
-                      </p>
-                    </div>
-                    <div class="form-group col-md-6">
-                    <p class="pull-right"> <br>
-                            
-                        </p> 
-                    </div>
-                  </div>
                   </div>
                   <!-- Box End -->
                   <!-- Form Input Outline End -->
@@ -362,12 +435,12 @@
                 <!-- /.box -->
               </div>
               <!--/.col (left) -->
-              <div class="col-md-5">
+              <div class="col-md-6">
                 <!-- Form Upload Persyartan -->
                 <div class="box box-default">
                   <div class="box-header with-border">
                     <span class="glyphicon glyphicon-tasks"></span><h3 class="box-title">&nbsp;&nbsp;Form Upload Persyaratan</h3>
-                    <?php $notfound=base_url('asset/img/no.gif')?>
+                    <?php $notfound=base_url('uploads/img/no.gif')?>
                     <input type="hidden" name="upload_gambar">
                     
                     <div class="box-tools pull-right">
@@ -380,6 +453,7 @@
                         <div class="box box-success">
                           <div class="box-header with-border">
                             <i class="fa fa-fw fa-camera"></i><label>&nbsp;&nbsp;Foto Mahasiswa</label>
+
                             <div class="box-tools pull-right">
                               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                               </button>
@@ -389,7 +463,7 @@
                           <!-- /.box-header -->
                           <div class="box-body">
                             <div class="form-group">
-                              <img src="<?=base_url('uploads/outline/'.$form->ufmhs)?>" onerror="this.src='<?= $notfound; ?>'" height="150px">
+                              <img src="<?=base_url('uploads/'.$form->ufmhs)?>" onerror="this.src='<?= $notfound; ?>'" height="150px">
                              
                             </div>
                             <div class="input-group">
@@ -408,7 +482,8 @@
                       <div class="col-md-12">
                         <div class="box box-success">
                           <div class="box-header with-border">
-                            <span class="glyphicon glyphicon-open-file"></span><label>&nbsp;&nbsp;File Persyaratan Outline</label>
+                            <i class="glyphicon glyphicon-picture"></i><label>&nbsp;&nbsp;Slip Bimbingan Skripsi</label>
+
                             <div class="box-tools pull-right">
                               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                               </button>
@@ -418,19 +493,136 @@
                           <!-- /.box-header -->
                           <div class="box-body">
                             <div class="form-group">
-                              <a href="<?=base_url('uploads/outline/'.$form->ufpo)?>" class="btn btn-default" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan File Persyaratan Outline</a>
-                              <p class="text-red"><code><strong>
-                                File Persyaratan berisikan Slip Bimbingan Skripsi, Slip Daftar Ulang, Kartu Studi Tetap (KST), 
-                                Transkrip Nilai, KHS Semester Dan Lain - lainnya Dalam Satu File PDF 
-                              </strong></code></p>
+                              <img src="<?=base_url('uploads/'.$form->usbs)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
+                             
                             </div>
                             <div class="input-group">
                               <div class="input-group-addon">
-                                <i class="fa fa-fw fa-file-pdf-o"></i>
+                                <i class="fa fa-fw fa-file-picture-o"></i>
                               </div>
-                              <input type="file" class="form-control" name="ufpo" accept=".pdf">
+                              <input type="file" class="form-control" name="usbs" accept="image/*">
                             </div>
-                            <p class="text-red"><code><strong>Format file : pdf, Max file size : 5MB</strong></code></p>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                          </div>
+                          <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-12">
+                        <div class="box box-success">
+                          <div class="box-header with-border">
+                           <i class="glyphicon glyphicon-picture"></i><label>&nbsp;&nbsp;Slip Pendaftaran Ulang</label>
+
+                            <div class="box-tools pull-right">
+                              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                              </button>
+                            </div>
+                            <!-- /.box-tools -->
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body">
+                            <div class="form-group">
+                              <img src="<?=base_url('uploads/'.$form->uspu)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
+                             
+                            </div>
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-fw fa-file-picture-o"></i>
+                              </div>
+                              <input type="file" class="form-control" name="uspu" accept="image/*">
+                            </div>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                          </div>
+                          <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-12">
+                        <div class="box box-success">
+                          <div class="box-header with-border">
+                           <i class="glyphicon glyphicon-picture"></i><label>&nbsp;&nbsp;Upload Kartu Studi Tetap (KST)</label>
+
+                            <div class="box-tools pull-right">
+                              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                              </button>
+                            </div>
+                            <!-- /.box-tools -->
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body">
+                            <div class="form-group">
+                              <img src="<?=base_url('uploads/'.$form->ukst)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
+                             
+                            </div>
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-fw fa-file-picture-o"></i>
+                              </div>
+                              <input type="file" class="form-control" name="ukst" accept="image/*">
+                            </div>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                          </div>
+                          <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-12">
+                        <div class="box box-success">
+                          <div class="box-header with-border">
+                           <i class="glyphicon glyphicon-picture"></i><label>&nbsp;&nbsp;Transkrip Nilai</label>
+                           
+                            <div class="box-tools pull-right">
+                              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                              </button>
+                            </div>
+                            <!-- /.box-tools -->
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body">
+                            <div class="form-group">
+                              <img src="<?=base_url('uploads/'.$form->utn)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
+                             
+                            </div>
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-fw fa-file-picture-o"></i>
+                              </div>
+                              <input type="file" class="form-control" name="utn" accept="image/*">
+                            </div>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                          </div>
+                          <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                      </div>
+                      <!-- /.col -->
+                      <div class="col-md-12">
+                        <div class="box box-success">
+                          <div class="box-header with-border">
+                           <i class="glyphicon glyphicon-picture"></i><label>&nbsp;&nbsp;KHS Semester</label>
+                           
+                            <div class="box-tools pull-right">
+                              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                              </button>
+                            </div>
+                            <!-- /.box-tools -->
+                          </div>
+                          <!-- /.box-header -->
+                          <div class="box-body">
+                            <div class="form-group">
+                              <img src="<?=base_url('uploads/'.$form->ukhs)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
+                             
+                            </div>
+                            <div class="input-group">
+                              <div class="input-group-addon">
+                                <i class="fa fa-fw fa-file-picture-o"></i>
+                              </div>
+                              <input type="file" class="form-control" name="ukhs" accept="image/*">
+                            </div>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
                           </div>
                           <!-- /.box-body -->
                         </div>
@@ -441,6 +633,7 @@
                         <div class="box box-success">
                           <div class="box-header with-border">
                             <span class="glyphicon glyphicon-open-file"></span><label>&nbsp;&nbsp;Proposal Topik 1</label>
+                           
                             <div class="box-tools pull-right">
                               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                               </button>
@@ -450,7 +643,8 @@
                           <!-- /.box-header -->
                           <div class="box-body">
                             <div class="form-group">
-                                <a href="<?=base_url('uploads/outline/'.$form->upro1)?>" class="btn btn-default" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline Topik 1</a>
+                                <a href="<?=base_url('uploads/'.$form->upro1)?>" class="btn btn-default" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline Topik 1</a>
+                             
                             </div>
                             <div class="input-group">
                               <div class="input-group-addon">
@@ -479,7 +673,7 @@
                           <!-- /.box-header -->
                           <div class="box-body">
                             <div class="form-group">
-                                <a href="<?=base_url('uploads/outline/'.$form->upro2)?>" class="btn btn-default" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline Topik 2</a>
+                                <a href="<?=base_url('uploads/'.$form->upro2)?>" class="btn btn-default" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline Topik 2</a>
                              
                             </div>
                             <div class="input-group">
@@ -557,7 +751,7 @@
                 </div>
                 <!-- /.box-body -->
                 <!-- <div class="box-footer" align="center">
-                </div> -->
+                </div>
                 <!-- /.box-footer-->
               </div>
 
@@ -566,10 +760,10 @@
           <?php }else{ ?>
           	<!-- Jika belum mengisi formulir -->
 
-            <!-- sudah diperbaiki -->
+
         <div class="row">
             <!-- left column -->
-            <div class="col-md-7">
+            <div class="col-md-6">
               <!-- Form Input Outline -->
               <div class="box box-default">
                 <div class="box-header with-border">
@@ -585,7 +779,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <!-- nama -->
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-12">
                         <span class="glyphicon glyphicon-pencil"></span><label>&nbsp;&nbsp;Nama Lengkap<font color="red">*</font></label>
                         <input readonly="" required="" class="form-control" name="nama" type="text" placeholder="Masukan Nama" value="<?=$this->session->userdata('name');?>">
                         <?php echo form_error('nama');?>
@@ -600,7 +794,21 @@
                       <div class="form-group col-md-6">
                         <i class="fa fa-fw fa-graduation-cap"></i><label>&nbsp;&nbsp;Program Jurusan<font color="red">*</font></label>
                         <select class="form-control" name="projurus" required="" readonly="">
-                        <?php if ($this->session->userdata('prodi')=='DAK') {
+                        <?php if ($this->session->userdata('prodi')=='TI') {
+                          echo '<option value="TI">S1 Teknik Informatika</option>';
+                        }elseif ($this->session->userdata('prodi')=='SI') {
+                           echo '<option value="SI">S1 Sistem Informasi</option>';
+                        }elseif ($this->session->userdata('prodi')=='SK') {
+                           echo '<option value="SK">S1 Sistem Komputer</option>';
+                          }elseif ($this->session->userdata('prodi')=='ADB') {
+                            echo '<option value="ADB">S1 Analitika Data Bisnis</option>';
+                          }elseif ($this->session->userdata('prodi')=='MAKSI') {
+                            echo '<option value="MAKSI">S2 Magister Akuntansi</option>';
+                          }elseif ($this->session->userdata('prodi')=='MM') {
+                            echo '<option value="MM">S2 Magister Manajemen</option>';
+                          }elseif ($this->session->userdata('prodi')=='PPAK') {
+                            echo '<option value="PPAK">Pendidikan Profesi Akuntansi</option>';
+                          }elseif ($this->session->userdata('prodi')=='DAK') {
                             echo '<option value="DAK">D3 Akuntasi</option>';
                           }elseif ($this->session->userdata('prodi')=='DKP') {
                             echo '<option value="DKP">D3 Keuangan & Perbankan</option>';
@@ -610,20 +818,10 @@
                             echo '<option value="M">S1 Manajemen</option>';
                           }elseif ($this->session->userdata('prodi')=='ES') {
                             echo '<option value="ES">S1 Ekonomi Syariah</option>';
-                          }?>
+                        } ?>
+                          
                         </select>
                         <?php echo form_error('projurus');?>
-                      </div>
-                      <!-- nohp -->
-                      <div class="form-group col-md-6">
-                        <span class="fa fa-fw fa-mobile-phone"></span><label>&nbsp;&nbsp;Nomor Handphone<font color="red">*</font></label>
-                          <div class="input-group">
-                            <div class="input-group-addon">
-                              <i class="glyphicon glyphicon-earphone"></i>
-                            </div>
-                            <input required="" type="text" class="form-control" name="nohp" data-inputmask='"mask": "9999-9999-9999"' data-mask value="<?= set_value('nohp'); ?>">
-                          </div>
-                          <?php echo form_error('nohp');?>
                       </div>
                       <!-- tempat -->
                       <div class="form-group col-md-6">
@@ -643,55 +841,32 @@
                         <textarea required="" class="form-control" name="alamat" type="text" rows="2" placeholder="Masukan Alamat"><?= set_value('alamat'); ?></textarea>
                         <?php echo form_error('alamat');?>
                       </div>
+                      <!-- tlpr -->
+                      <div class="form-group col-md-6">
+                        <span class="glyphicon glyphicon-phone-alt"></span><label>&nbsp;&nbsp;Nomor Telepon Rumah</label>
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-phone"></i>
+                          </div>
+                          <input  type="text" class="form-control" name="tlpr" data-inputmask='"mask": "(999) 999-999-9"' data-mask value="<?= set_value('tlpr'); ?>">
+                        </div>
+                       
+                      </div>
+                      <!-- nohp -->
+                      <div class="form-group col-md-6">
+                        <span class="fa fa-fw fa-mobile-phone"></span><label>&nbsp;&nbsp;Nomor Handphone<font color="red">*</font></label>
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class="glyphicon glyphicon-earphone"></i>
+                            </div>
+                            <input required="" type="text" class="form-control" name="nohp" data-inputmask='"mask": "9999-9999-9999"' data-mask value="<?= set_value('nohp'); ?>">
+                          </div>
+                          <?php echo form_error('nohp');?>
+                      </div>
                       <div class="form-group col-md-12">
                         <label for="inputemail">E-Mail  <font color="red">*</font></label>
                         <input type="email" class="form-control" id="inputemail" name="email" required="" placeholder="Masukan E-Mail" value="<?= set_value('email'); ?>">
                         <?php echo form_error('email');?>
-                      </div>
-                      <!-- topik1 -->
-                      <div class="form-group col-md-6">
-                        <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 1<font color="red">*</font></label>
-                        <textarea required="" class="form-control" name="topik1" rows="3" placeholder="Masukan Topik 1"><?= set_value('topik1'); ?></textarea>
-                        <?php echo form_error('topik1');?>
-                      </div>
-                      <!-- topik2 -->
-                      <div class="form-group col-md-6">
-                        <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 2<font color="red">*</font></label>
-                        <textarea required="" class="form-control" name="topik2" rows="3" type="text" placeholder="Masukan Topik 2"><?= set_value('topik2'); ?></textarea>
-                        <?php echo form_error('topik2');?>
-                      </div>
-                      <!-- dospem -->
-                      <div class="form-group col-md-6">
-                        <span class="glyphicon glyphicon-pawn"></span><label>&nbsp;&nbsp;Dosen Pembimbing<font color="red">*</font></label>
-                        <select required="" class="form-control" name="dospem">
-                        <option value="">
-                            Pilih Pembimbing
-                            </option>
-                          <?php 
-                          $dosens=$this->Model->read('dosen');
-                          foreach ($dosens as $dosen) { ?>
-                            <option <?php if(set_value('dospem')==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
-                          <?php
-                          }
-                          ?>
-                        </select>
-                        <?php echo form_error('dospem');?>
-                      </div>
-                      <div class="form-group col-md-6">
-                        <label>&nbsp;&nbsp;</label>
-                        <select required="" class="form-control" name="dospems">
-                        <option value="">
-                            Pilih Pembimbing
-                            </option>
-                          <?php 
-                          $dosens=$this->Model->read('dosen');
-                          foreach ($dosens as $dosen) { ?>
-                            <option <?php if(set_value('dospem')==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
-                          <?php
-                          }
-                          ?>
-                        </select>
-                        <?php echo form_error('dospem');?>
                       </div>
                       <!-- nmp -->
                       <div class="form-group col-md-6">
@@ -731,9 +906,10 @@
                         <?php echo form_error('nmp');?>
                       </div>
                       <!-- ns -->
-                        <div class="form-group col-md-6">
+                      
+                        <div class="form-group col-md-6" <?php if ($this->session->userdata('prodi')!='SI') { echo 'style="visibility:hidden;"' ; } ?>>
 	                        <span class="glyphicon glyphicon-equalizer"></span><label>&nbsp;&nbsp;Nilai Statistik<font color="red">*</font></label>
-	                        <select required="" class="form-control" name="ns" >
+	                        <select <?php if ($this->session->userdata('prodi')=='SI') { echo 'required=""' ; } ?> class="form-control" name="ns" >
 	                          <option value="">
 	                          Pilih Nilai
 	                          </option>
@@ -767,6 +943,49 @@
 	                        </select>
 	                        <?php echo form_error('ns');?>
                       	</div>
+                  
+                      
+                      <!-- topik1 -->
+                      <div class="form-group col-md-12">
+                        <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 1<font color="red">*</font></label>
+                        <textarea required="" class="form-control" name="topik1" rows="2" placeholder="Masukan Topik 1"><?= set_value('topik1'); ?></textarea>
+                        <?php echo form_error('topik1');?>
+                      </div>
+                      <!-- topik2 -->
+                      <div class="form-group col-md-12">
+                        <span class="glyphicon glyphicon-flag"></span><label>&nbsp;&nbsp;Topik 2<font color="red">*</font></label>
+                        <textarea required="" class="form-control" name="topik2" rows="2" type="text" placeholder="Masukan Topik 2"><?= set_value('topik2'); ?></textarea>
+                        <?php echo form_error('topik2');?>
+                      </div>
+                      <!-- dospem -->
+                      <div class="form-group col-md-12">
+                        <span class="glyphicon glyphicon-pawn"></span><label>&nbsp;&nbsp;Dosen Pembimbing<font color="red">*</font></label>
+                        <select required="" class="form-control" name="dospem">
+                        <option value="">
+                            Pilih Pembimbing
+                            </option>
+                          <?php 
+                          $dosens=$this->Model->read('dosen');
+                          foreach ($dosens as $dosen) { ?>
+                            <option <?php if(set_value('dospem')==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
+                          <?php
+                          }
+                          ?>
+                        </select>
+                        <?php echo form_error('dospem');?>
+                      </div>
+                      <!-- yajukan -->
+                      <div class="form-group col-md-12">
+                        <span class="glyphicon glyphicon-ok-circle"></span><label>&nbsp;&nbsp;Yang Mengajukan<font color="red">*</font></label>
+                        <input readonly="" required="" class="form-control" name="yajukan" type="text" placeholder=" Otomatis" value="<?=$this->session->userdata('name');?>">
+                        <?php echo form_error('yajukan');?>
+                      </div>
+                      <!-- konsen -->
+                      <div class="form-group col-md-12">
+                        <span class="glyphicon glyphicon-book"></span><label>&nbsp;&nbsp;Konsentrasi<font color="red">*</font></label>
+                        <input required="" class="form-control" name="konsen" type="text" placeholder="Masukan Konsentrasi" value="<?= set_value('konsen'); ?>">
+                        <?php echo form_error('konsen');?>
+                      </div>
                       <!-- lmedpel -->
                       <div class="form-group col-md-6">
                         <span class="glyphicon glyphicon-ok-sign"></span><label>&nbsp;&nbsp;Lulus Metode Penelitian<font color="red">*</font></label>
@@ -786,9 +1005,10 @@
                         <?php echo form_error('lmedpel');?>
                       </div>
                       <!-- lstatis -->
-                        <div class="form-group col-md-6">
+                     
+                        <div class="form-group col-md-6" <?php if ($this->session->userdata('prodi')!='SI') { echo 'style="visibility:hidden;"' ; } ?>>
 	                        <span class="glyphicon glyphicon-ok-sign"></span><label>&nbsp;&nbsp;Lulus Statistik<font color="red">*</font></label>
-	                        <select required="" class="form-control" name="lstatis">
+	                        <select <?php if ($this->session->userdata('prodi')=='SI') { echo 'required=""' ; } ?> class="form-control" name="lstatis">
 	                          <option value="">
 	                          Pilih  
 	                          </option>
@@ -803,6 +1023,8 @@
 	                        </select>
 	                        <?php echo form_error('lstatis');?>
                       </div> 
+                 
+                      
                       <!-- lkkp -->
                       <div class="form-group col-md-6">
                         <span class="glyphicon glyphicon-ok-sign"></span><label>&nbsp;&nbsp;Lulus KKP<font color="red">*</font></label>
@@ -838,38 +1060,18 @@
                           </option>
                         </select>
                         <?php echo form_error('l128');?>
+                        <p>Keterangan : <br>
+                              D3 : 80 SKS <br>
+                              S1 : 128 SKS <br>
+                              S2 : 30 SKS <br>
+                           </p> 
                       </div>
-                      <!-- konsen -->
-                      <div class="form-group col-md-6">
-                        <span class="glyphicon glyphicon-book"></span><label>&nbsp;&nbsp;Konsentrasi<font color="red">*</font></label>
-                        <input required="" class="form-control" name="konsen" type="text" placeholder="Masukan Konsentrasi" value="<?= set_value('konsen'); ?>">
-                        <?php echo form_error('konsen');?>
-                      </div>
-                      <!-- yajukan -->
-                      <div class="form-group col-md-6">
-                        <span class="glyphicon glyphicon-ok-circle"></span><label>&nbsp;&nbsp;Yang Mengajukan<font color="red">*</font></label>
-                        <input readonly="" required="" class="form-control" name="yajukan" type="text" placeholder=" Otomatis" value="<?=$this->session->userdata('name');?>">
-                        <?php echo form_error('yajukan');?>
-                      </div>
-                      
                     </div>
                   	<!-- Row End -->
                   </div>
                   <div class="row col-md-12">
                   	<hr>
-                    <div class="form-group col-md-6">
-                      <p>
-                        Keterangan : <br>
-                        &nbsp;&nbsp;D3 : 90 SKS <br>
-                        &nbsp;&nbsp;S1 : 125 SKS <br>
-                        &nbsp;&nbsp;<font color="red">*&nbsp;</font>Required
-                      </p>
-                    </div>
-                    <div class="form-group col-md-6">
-                    <p class="pull-right"> <br>
-                            
-                        </p> 
-                    </div>
+                  	<p><font color="red">*</font>Required</p>
                   </div>
                 </div>
                 <!-- Box End -->
@@ -878,7 +1080,7 @@
               <!-- /.box -->
             </div>
             <!--/.col (left) -->
-            <div class="col-md-5">
+            <div class="col-md-6">
               <!-- Form Upload Persyartan -->
               <div class="box box-default">
                 <div class="box-header with-border">
@@ -906,24 +1108,74 @@
                         <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
                         <?php echo form_error('ufmhs');?>
                       </div>
-                      <!-- upro1 -->
+                      <!-- usbs -->
                       <div class="form-group">
                         <div class="form-group">
-                          <span class="glyphicon glyphicon-open-file"></span><label>&nbsp;&nbsp;File Persyaratan Outline<font color="red">*</font></label>
-                          <p class="text-red"><code><strong>
-                            File Persyaratan berisikan Slip Bimbingan Skripsi, Slip Daftar Ulang, Kartu Studi Tetap (KST), 
-                            Transkrip Nilai, KHS Semester Dan Lain - lainnya Dalam Satu File PDF 
-                          </strong></code></p>
+                          <i class="glyphicon glyphicon-picture"></i><label>&nbsp;&nbsp;Slip Bimbingan Skripsi<font color="red">*</font></label></div>
+                          <div class="input-group">
+                            <div class="input-group-addon">
+                              <i class="fa fa-fw fa-file-picture-o"></i>
+                            </div>
+                            <input type="file" class="form-control" name="usbs" accept="image/*" required="">
+                          </div>
+                          <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                          <?php echo form_error('usbs');?>
+                      </div>
+                      <!-- uspu -->
+                      <div class="form-group">
+                        <div class="form-group">
+                          <i class="glyphicon glyphicon-picture"></i><label>&nbsp;&nbsp;Slip Pendaftaran Ulang<font color="red">*</font></label>
                         </div>
                         <div class="input-group">
                           <div class="input-group-addon">
-                            <i class="fa fa-fw fa-file-pdf-o"></i>
+                            <i class="fa fa-fw fa-file-picture-o"></i>
                           </div>
-                          <input type="file" class="form-control" name="ufpo" accept=".pdf" required="">
+                          <input type="file" class="form-control" name="uspu" accept="image/*" required="">
                         </div>
-                        <p class="text-red"><code><strong>Format file : pdf, Max file size : 5MB</strong></code></p>
-                        
-                        <?php echo form_error('ufpo');?>
+                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                        <?php echo form_error('uspu');?>
+                      </div>
+                      <!-- ukst -->
+                      <div class="form-group">
+                        <div class="form-group">
+                          <i class="glyphicon glyphicon-picture"></i><label>&nbsp;&nbsp;Upload Kartu Studi Tetap (KST)<font color="red">*</font></label>
+                        </div>
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-fw fa-file-picture-o"></i>
+                          </div>
+                          <input type="file" class="form-control" name="ukst" accept="image/*" required="">
+                        </div>
+                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                        <?php echo form_error('ukst');?>
+                      </div>
+                      <!-- utn -->
+                      <div class="form-group">
+                        <div class="form-group">
+                          <i class="glyphicon glyphicon-picture"></i><label>&nbsp;&nbsp;Transkrip Nilai<font color="red">*</font></label>
+                        </div>
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-fw fa-file-picture-o"></i>
+                          </div>
+                          <input type="file" class="form-control" name="utn" accept="image/*" required="">
+                        </div>
+                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                        <?php echo form_error('utn');?>
+                      </div>
+                      <!-- ukhs -->
+                      <div class="form-group">
+                        <div class="form-group">
+                          <i class="glyphicon glyphicon-picture"></i><label>&nbsp;&nbsp;KHS Semester<font color="red">*</font></label>
+                        </div>
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-fw fa-file-picture-o"></i>
+                          </div>
+                          <input type="file" class="form-control" name="ukhs" accept="image/*" required="">
+                        </div>
+                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                        <?php echo form_error('ukhs');?>
                       </div>
                       <!-- upro1 -->
                       <div class="form-group">
@@ -939,7 +1191,7 @@
                         <p class="text-red"><code><strong>Format file : pdf, Max file size : 5MB</strong></code></p>
                         <?php echo form_error('upro1');?>
                       </div>
-                      <!-- upro2 -->
+                      <!-- upro1 -->
                       <div class="form-group">
                         <div class="form-group">
                           <span class="glyphicon glyphicon-open-file"></span><label>&nbsp;&nbsp;Proposal Topik 2<font color="red">*</font></label>
@@ -967,7 +1219,6 @@
                   &nbsp;
                   <button type="button" class="btn btn-default btn-lg">Cancel</button>
                 </div>
-                
                 </form> 
               </div>
               <!-- Form Upload Persyartan end -->
@@ -988,24 +1239,6 @@
 <!-- ./wrapper -->
 
 <!-- Menu -->
-<?php $this->load->view('mahasiswa/layout/footer'); ?>
-<!-- Select2 -->
-<script src="<?php echo base_url(); ?>assets/plugins/select2/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="<?php echo base_url(); ?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- bootstrap color picker -->
-<script src="<?php echo base_url(); ?>assets/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-<!-- bootstrap time picker -->
-<script src="<?php echo base_url(); ?>assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-<!-- iCheck 1.0.1 -->
-<script src="<?php echo base_url(); ?>assets/plugins/iCheck/icheck.min.js"></script>
 <script>
   var dashboard = document.getElementById("dashboard");
   var treeoutline = document.getElementById("treeoutline");
@@ -1030,6 +1263,37 @@
   daftar_outline.className = "treeview active";
   treeoutline.className = "active";
 </script>
+<!-- jQuery 2.2.3 -->
+<script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="<?php echo base_url(); ?>assets/plugins/select2/select2.full.min.js"></script>
+<!-- InputMask -->
+<script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!-- date-range-picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap datepicker -->
+<script src="<?php echo base_url(); ?>assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="<?php echo base_url(); ?>assets/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+<!-- bootstrap time picker -->
+<script src="<?php echo base_url(); ?>assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- SlimScroll 1.3.0 -->
+<script src="<?php echo base_url(); ?>assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="<?php echo base_url(); ?>assets/plugins/iCheck/icheck.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url(); ?>assets/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url(); ?>assets/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
   $('html').niceScroll({
@@ -1116,5 +1380,6 @@ $(document).ready(function() {
     });
   });
 </script>
+
 </body>
 </html>

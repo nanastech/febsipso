@@ -48,16 +48,15 @@ class Auth extends CI_Controller {
 	              break;
 				}
 			}
-          	$this->load->view('pages/layout/header_login',[
-			'notification' => $this->session->flashdata('notification'),
-			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log In'
-			]);
+          	// $this->load->view('login/layout/header.php',[
+			// 'notification' => $this->session->flashdata('notification')
+			// ]);
 			$this->load->view('pages/login',[
 			'notification' => $this->session->flashdata('notification')
 			]);
-          	$this->load->view('pages/layout/footer_login',[
-			'notification' => $this->session->flashdata('notification')
-			]);
+          	// $this->load->view('login/layout/footer.php',[
+			// 'notification' => $this->session->flashdata('notification')
+			// ]);
 		}
 		else{
 			$user_detail = $this->Model->read_detail('username',$this->username_temp,'users');

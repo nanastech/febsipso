@@ -24,8 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://fti.perbanasinstitute.ac.id/SISTEMFTI/SIPSO/';
-// $config['base_url'] = 'https://feb.palugadatech.my.id/';
-$config['base_url'] = 'http://localhost/perbanas/febsipso/';
+$config['base_url'] = 'https://sipso.palugadatech.my.id/';
 
 /*
 |--------------------------------------------------------------------------
