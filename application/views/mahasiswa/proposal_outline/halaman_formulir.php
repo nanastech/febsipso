@@ -73,7 +73,7 @@
             <!-- Jika belum divalidasi staff -->
             <div class="row">
               <!-- left column -->
-              <div class="col-md-6">
+              <div class="col-md-7">
                 <!-- Form Input Outline -->
                 <div class="box box-default">
                   <div class="box-header with-border">
@@ -362,7 +362,7 @@
                 <!-- /.box -->
               </div>
               <!--/.col (left) -->
-              <div class="col-md-6">
+              <div class="col-md-5">
                 <!-- Form Upload Persyartan -->
                 <div class="box box-default">
                   <div class="box-header with-border">
@@ -421,7 +421,7 @@
                               <a href="<?=base_url('uploads/outline/'.$form->ufpo)?>" class="btn btn-default" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan File Persyaratan Outline</a>
                               <p class="text-red"><code><strong>
                                 File Persyaratan berisikan Slip Bimbingan Skripsi, Slip Daftar Ulang, Kartu Studi Tetap (KST), 
-                                <br>Transkrip Nilai, KHS Semester Dan Lain - lainnya Dalam Satu File PDF 
+                                Transkrip Nilai, KHS Semester Dan Lain - lainnya Dalam Satu File PDF 
                               </strong></code></p>
                             </div>
                             <div class="input-group">
@@ -569,7 +569,7 @@
             <!-- sudah diperbaiki -->
         <div class="row">
             <!-- left column -->
-            <div class="col-md-6">
+            <div class="col-md-7">
               <!-- Form Input Outline -->
               <div class="box box-default">
                 <div class="box-header with-border">
@@ -878,7 +878,7 @@
               <!-- /.box -->
             </div>
             <!--/.col (left) -->
-            <div class="col-md-6">
+            <div class="col-md-5">
               <!-- Form Upload Persyartan -->
               <div class="box box-default">
                 <div class="box-header with-border">
@@ -912,7 +912,7 @@
                           <span class="glyphicon glyphicon-open-file"></span><label>&nbsp;&nbsp;File Persyaratan Outline<font color="red">*</font></label>
                           <p class="text-red"><code><strong>
                             File Persyaratan berisikan Slip Bimbingan Skripsi, Slip Daftar Ulang, Kartu Studi Tetap (KST), 
-                            <br>Transkrip Nilai, KHS Semester Dan Lain - lainnya Dalam Satu File PDF 
+                            Transkrip Nilai, KHS Semester Dan Lain - lainnya Dalam Satu File PDF 
                           </strong></code></p>
                         </div>
                         <div class="input-group">

@@ -628,6 +628,9 @@ class Mahasiswa extends CI_Controller {
 	}
 
 	public function status_outline(){
+		$this->load->view('mahasiswa/layout/header', [
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Status Outline'
+		]);
 		$this->load->view('mahasiswa/proposal_outline/halaman_status', [
 			'notification' => $this->session->flashdata('notification')
 			]);

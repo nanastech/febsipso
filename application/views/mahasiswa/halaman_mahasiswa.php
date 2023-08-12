@@ -50,20 +50,15 @@
       $dospem=$this->Model->dospem_where_detail('nim',$this->session->userdata('username'));
       $poutline=0;
         if (!empty($outline)) {
-          $poutline=$poutline+20;
+          $poutline=$poutline+25;
         }
         if (!empty($outline->accstaff)) {
-          $poutline=$poutline+20;
-        }
-        if (!empty($outline->accdsnpa)) {
-          $poutline=$poutline+30;
+          $poutline=$poutline+25;
         }
         if (!empty($outline->acckaprodi)) {
-          $poutline=$poutline+30;
+          $poutline=$poutline+50;
         }
-        if (!empty($outline->revisi)) {
-          $poutline=$poutline-10;
-        }
+
       ?>
       <!-- Default box -->
       <div class="row">

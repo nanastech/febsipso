@@ -510,6 +510,9 @@ class Staff extends CI_Controller {
 	// ====================Akhir Daftar Kaprodi====================
 ///////////////////////////////////Menu Outline//////////////////////////////////////////////////
 	public function status_outline(){
+		$this->load->view('staff/layout/header', [
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Status Outline'
+		]);
 		$this->load->view('staff/proposal_outline/halaman_status', [
 			'notification' => $this->session->flashdata('notification')
 			]);
