@@ -47,9 +47,11 @@ class Kaprodi extends CI_Controller {
 			$data= array(
 				'record' => $this->Model->read_detail('nim',$valid,'outline')
 				);
-
-			$this->load->view('kaprodi/proposal_outline/edit_status',$data, [
-			'notification' => $this->session->flashdata('notification')
+				$this->load->view('kaprodi/layout/header',[
+					'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Edit Status Outline'
+				]);
+				$this->load->view('kaprodi/proposal_outline/edit_status',$data, [
+				'notification' => $this->session->flashdata('notification')
 			]);
 		}else
 		{

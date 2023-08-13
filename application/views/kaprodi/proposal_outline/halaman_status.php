@@ -268,27 +268,27 @@
                                 <div class="form-group col-md-12">
                                   <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Slip Bimbingan Skripsi :</label>
                                   <br/>
-                                  <img src="<?=base_url('uploads/outline/'.$form->usbs)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
+                                  <img src="<?=base_url('uploads/outline/'.$form->usbs)?>" onerror="this.src='<?= $notfound; ?>'" height="400px" width="500px">
                                 </div>
                                 <div class="form-group col-md-12">
                                   <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Slip Pendaftaran Ulang :</label>
                                   <br/>
-                                  <img src="<?=base_url('uploads/outline/'.$form->uspu)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
+                                  <img src="<?=base_url('uploads/outline/'.$form->uspu)?>" onerror="this.src='<?= $notfound; ?>'" height="400px" width="500px">
                                 </div>
                                 <div class="form-group col-md-12">
                                   <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;KST :</label>
                                   <br/>
-                                  <img src="<?=base_url('uploads/outline/'.$form->ukst)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
+                                  <img src="<?=base_url('uploads/outline/'.$form->ukst)?>" onerror="this.src='<?= $notfound; ?>'" height="400px" width="500px">
                                 </div>
                                 <div class="form-group col-md-12">
                                   <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Transkrip Nilai :</label>
                                   <br/>
-                                  <img src="<?=base_url('uploads/outline/'.$form->utn)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
+                                  <img src="<?=base_url('uploads/outline/'.$form->utn)?>" onerror="this.src='<?= $notfound; ?>'" height="400px" width="500px">
                                 </div>
                                 <div class="form-group col-md-12">
                                   <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;KHS :</label>
                                   <br/>
-                                  <img src="<?=base_url('uploads/outline/'.$form->ukhs)?>" onerror="this.src='<?= $notfound; ?>'" style="width:100%;max-width:560px;">
+                                  <img src="<?=base_url('uploads/outline/'.$form->ukhs)?>" onerror="this.src='<?= $notfound; ?>'" height="400px" width="500px">
                                 </div>
                                 <?php if (empty($form->upro1)) {?>
                                   <div class="form-group col-md-12">
@@ -349,11 +349,11 @@
                       <td style="vertical-align: middle; text-align: center;">
                         <?php 
                         if (empty($form->acckaprodi)) {?>
-                          <a type="button" class="btn btn-primary" href="<?= base_url('Kaprodi/edit_status/'.base64_encode($form->nim))?>" target="_blank"> Approve</a>
+                          <a type="button" class="btn btn-primary" href="<?= base_url('Kaprodi/edit_status/'.base64_encode($form->nim))?>"> Approve</a>
                         <?php }elseif (!empty($form->acckaprodi)&&empty($form->revisi)) { ?>
-                          <a type="button" class="btn btn-success" href="<?= base_url('Kaprodi/edit_status/'.base64_encode($form->nim))?>" target="_blank"> Approved</a>
+                          <a type="button" class="btn btn-success" href="<?= base_url('Kaprodi/edit_status/'.base64_encode($form->nim))?>"> Approved</a>
                         <?php }elseif (!empty($form->acckaprodi)&&!empty($form->revisi)) { ?>
-                          <a type="button" class="btn btn-warning" href="<?= base_url('Kaprodi/edit_status/'.base64_encode($form->nim))?>" target="_blank"> Revisi</a>
+                          <a type="button" class="btn btn-warning" href="<?= base_url('Kaprodi/edit_status/'.base64_encode($form->nim))?>"> Revisi</a>
                            
                         <?php }
                         ?>
