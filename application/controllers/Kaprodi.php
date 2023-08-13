@@ -13,6 +13,10 @@ class Kaprodi extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->view('kaprodi/layout/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
+		]);
+		
 		$this->load->view('kaprodi/halaman_kaprodi', [
 			'notification' => $this->session->flashdata('notification')
 		]);
@@ -30,6 +34,9 @@ class Kaprodi extends CI_Controller {
 //////////////////////////////////////////Menu Outline /////////////////////////////////////
 
 	public function status_outline(){
+		$this->load->view('kaprodi/layout/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Status Outline'
+		]);
 		$this->load->view('kaprodi/proposal_outline/halaman_status');
 	}
 	
@@ -562,6 +569,9 @@ public function ganti_judul()
 
 
 		if($this->form_validation->run() == FALSE){
+			$this->load->view('kaprodi/layout/header',[
+				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Password'
+			]);
 			$this->load->view('kaprodi/halaman_gantipass');
 
 		}

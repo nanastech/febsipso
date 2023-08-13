@@ -5,7 +5,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo base_url('uploads/img/logo.png'); ?>" class="img-circle" alt="User Image">
+          <img src="<?= base_url('uploads/img/logo.png'); ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p  style="width: 150px; white-space: nowrap;
@@ -19,7 +19,7 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <li id="dashboard">
-          <a href="<?php echo base_url(); ?>Mahasiswa/">
+          <a href="<?= base_url(); ?>Mahasiswa/">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
@@ -31,17 +31,18 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="daftar_outline"><a href="<?php echo base_url(); ?>Mahasiswa/daftar_outline/"><i class="fa fa-circle-o"></i> Formulir Pendaftaran</a></li>
-            <li id="status_outline" class=""><a href="<?php echo base_url(); ?>Mahasiswa/status_outline/"><i class="fa fa-circle-o"></i> Status Outline</a></li>
-            <li id="log_outline" class=""><a href="<?php echo base_url(); ?>Mahasiswa/log_outline/"><i class="fa fa-circle-o"></i> Log Outline</a></li>
+            <li id="daftar_outline"><a href="<?= base_url(); ?>Mahasiswa/daftar_outline/"><i class="fa fa-circle-o"></i> Formulir Pendaftaran</a></li>
+            <li id="status_outline" class=""><a href="<?= base_url(); ?>Mahasiswa/status_outline/"><i class="fa fa-circle-o"></i> Status Outline</a></li>
+            <li id="log_outline" class=""><a href="<?= base_url(); ?>Mahasiswa/log_outline/"><i class="fa fa-circle-o"></i> Log Outline</a></li>
           </ul>
         </li>
-        <li id="log_book">
-          <a href="<?php echo base_url(); ?>Mahasiswa/log_book">
-            <i class="fa fa-book"></i> <span>Log Book</span>
+        <li id="logbook">
+          <a href="<?= base_url(); ?>Mahasiswa/log_book">
+            <i class="fa fa-book"></i><span>Log Book</span>
           </a>
         </li>
-        <li class="treeview" id="treedaftar">
+        <?php //$cek_logbook = $this->Model->read_detail('nim',$this->session->userdata('username'), '')?>
+        <!-- <li class="treeview" id="treedaftar">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Sidang Skripsi</span>
             <span class="pull-right-container">
@@ -49,11 +50,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="formulir"><a href="<?php echo base_url(); ?>Mahasiswa/forms_daftar/"><i class="fa fa-circle-o"></i> Formulir Pendaftaran</a></li>
-            <li id="statusform" class=""><a href="<?php echo base_url(); ?>Mahasiswa/status_sidang/"><i class="fa fa-circle-o"></i> Status Pendaftaran</a></li>
-            <li id="revisisidang" class=""><a href="<?php echo base_url(); ?>Mahasiswa/list_revisi/"><i class="fa fa-circle-o"></i> Revisi Sidang</a></li>
+            <li id="formulir"><a href="<?= base_url(); ?>Mahasiswa/forms_daftar/"><i class="fa fa-circle-o"></i> Formulir Pendaftaran</a></li>
+            <li id="statusform" class=""><a href="<?= base_url(); ?>Mahasiswa/status_sidang/"><i class="fa fa-circle-o"></i> Status Pendaftaran</a></li>
+            <li id="revisisidang" class=""><a href="<?= base_url(); ?>Mahasiswa/list_revisi/"><i class="fa fa-circle-o"></i> Revisi Sidang</a></li>
           </ul>
-        </li>
+        </li> -->
+        <?php ?>
             <li class="header">SUB NAVIGATION</li>
             <?php $cek_skripsi=$this->Model->read_detail('nim',$this->session->userdata('username'),'judul_skripsi');
                $cek_dospem=$this->Model->read_detail('nim',$this->session->userdata('username'),'dospem');
@@ -66,9 +68,9 @@
             <li id="helpdesk"><a href="<?= base_url('Mahasiswa/help_desk/')?>"><i class="fa fa-commenting-o"></i> <span>Help Desk</span></a></li>
 
             <li class="header">INFORMATION</li>
-            <li id="about"><a href="<?= base_url('Mahasiswa/about/')?>"><i class="fa fa-info"></i> <span>Tentang Kami</span></a></li>
+            <!-- <li id="about"><a href="<?= base_url('Mahasiswa/about/')?>"><i class="fa fa-info"></i> <span>Tentang Kami</span></a></li> -->
             <li id="userguide"><a href="<?= base_url('uploads/doc/userguide.pdf')?>" target="_blank"><i class="fa fa-support"></i> <span>User Guide PERBANAS SIPSO</span></a></li>
-            <li id="blueprint"><a href="<?= base_url('uploads/doc/pedomanskripsi.pdf')?>" target="_blank"><i class="fa fa-book"></i> <span>Buku Biru Skripsi</span></a></li>
+            <!-- <li id="blueprint"><a href="<?= base_url('uploads/doc/pedomanskripsi.pdf')?>" target="_blank"><i class="fa fa-book"></i> <span>Buku Biru Skripsi</span></a></li> -->
       </ul>
     </section>
     <!-- /.sidebar -->

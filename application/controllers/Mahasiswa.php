@@ -14,6 +14,9 @@ class Mahasiswa extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->view('mahasiswa/layout/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
+		]);
 		$this->load->view('mahasiswa/halaman_mahasiswa', [
 			'notification' => $this->session->flashdata('notification')
 		]);
@@ -21,6 +24,9 @@ class Mahasiswa extends CI_Controller {
 	}
 	public function log_outline()
 	{
+		$this->load->view('mahasiswa/layout/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log Outline'
+		]);
 		$this->load->view('mahasiswa/proposal_outline/halaman_log', [
 			'notification' => $this->session->flashdata('notification')
 		]);
@@ -69,13 +75,13 @@ class Mahasiswa extends CI_Controller {
 		$this->form_validation->set_rules('tempat','Tempat Lahir','required');
 		$this->form_validation->set_rules('tanggallahir','Tanggal Lahir','required');
 		$this->form_validation->set_rules('alamat','Alamat','required');
-	
 		$this->form_validation->set_rules('nohp','Nomor Handphone','required');
 		$this->form_validation->set_rules('email','E-mail','required');
 		$this->form_validation->set_rules('nmp','Nilai Metode Penelitian','required');
 		$this->form_validation->set_rules('topik1','Topik 1','required');
 		$this->form_validation->set_rules('topik2','Topik 2','required');
 		$this->form_validation->set_rules('dospem','Nama Dosen Pembimbing','required');
+		$this->form_validation->set_rules('dospems','Nama Dosen Pembimbings','required');
 		$this->form_validation->set_rules('yajukan','Yang Mengajukan','required');
 		$this->form_validation->set_rules('konsen','Konsentrasi','required');
 		$this->form_validation->set_rules('lmedpel','Lulus Metode Penelitian','required');
@@ -83,13 +89,12 @@ class Mahasiswa extends CI_Controller {
 		$this->form_validation->set_rules('l128','Lulus 128 SKS','required');
 
 		$this->form_validation->set_message('required','%s masih kosong, silahkan diisi!');
-
 		$this->form_validation->set_error_delimiters('<p class="text-red"><code><strong>','</strong></code></p>');
 
 		//load uploading file library
 		$config=array();
-		$config['upload_path']          = './uploads/';
-    	$config['allowed_types']        = 'gif|png|jpg|Jpeg';
+		$config['upload_path']          = './uploads/outline/';
+    	$config['allowed_types']        = 'gif|jpg|jpeg';
     	$config['max_size']             = '2048'; //2MB, 1024kilobytes = 1MB
 		$config['max_width']  = '0';
 		$config['max_height']  = '0';
@@ -196,7 +201,8 @@ class Mahasiswa extends CI_Controller {
 	    		}
 
 	    		//cek config
-	    		$config['file_name'] = $_POST['nim'].'_outline1_'.time();
+	    		$config['file_name'] 			= $_POST['nim'].'_outline1_'.time();
+				$config['upload_path']          = './uploads/outline/topik';
 	    		$config['allowed_types']        = 'pdf';
 		    	$config['max_size']             = '5120'; //5MB, 1024kilobytes = 1MB
     			$this->load->library('upload', $config);
@@ -214,6 +220,7 @@ class Mahasiswa extends CI_Controller {
 
 		    	//cek config
 	    		$config['file_name'] = $_POST['nim'].'_outline2_'.time();
+				$config['upload_path']          = './uploads/outline/topik';
 	    		$config['allowed_types']        = 'pdf';
 		    	$config['max_size']             = '5120'; //5MB, 1024kilobytes = 1MB
     			$this->load->library('upload', $config);
@@ -233,12 +240,13 @@ class Mahasiswa extends CI_Controller {
 		}
 
 		if ($this->form_validation->run()==FALSE) {
+			$this->load->view('mahasiswa/layout/header',[
+				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Pendaftaran Outline'
+			]);
 			$this->load->view('mahasiswa/proposal_outline/halaman_formulir', [
 			'notification' => $this->session->flashdata('notification')
 			]);
 		}else{
-			
-
 			$this->load->model('Model');
 			$data = array(
 				'nama' => $_POST['nama'], 			
@@ -246,15 +254,15 @@ class Mahasiswa extends CI_Controller {
 				'jurusan' => $_POST['projurus'], 
 				'tempat' => $_POST['tempat'], 
 				'tgllahir' => date('Y-m-d',strtotime($_POST['tanggallahir'])),
-				'alamat' => $_POST['alamat'], 
-				'tlpr' => $_POST['tlpr'], 
-				'nohp' => $_POST['nohp'], 
+				'alamat' => $_POST['alamat'],
+				'nohp' => $_POST['nohp'],  
 				'email' => $_POST['email'],
 				'nmp' => $_POST['nmp'], 
 				'ns' => $_POST['ns'], 
 				'topik1' => $_POST['topik1'], 
-				'topik2' => $_POST['topik2'], 
-				'dospem' => $_POST['dospem'], 
+				'topik2' => $_POST['topik2'],
+				'dospem' => $_POST['dospem'],  
+				'dospems' => $_POST['dospems'], 
 				'yajukan' => $_POST['yajukan'], 
 				'konsen' => $_POST['konsen'], 
 				'lmedpel' => $_POST['lmedpel'], 
@@ -297,8 +305,8 @@ class Mahasiswa extends CI_Controller {
 			$notification='';
 			//load uploading file library
 			$config=array();
-			$config['upload_path']          = './uploads/';
-	    	$config['allowed_types']        = 'gif|png|jpg|jpeg|JPG';
+			$config['upload_path']          = './uploads/outline/';
+	    	$config['allowed_types']        = 'gif|png|jpg|jpeg';
 	    	$config['max_size']             = '2048'; //2MB, 1024kilobytes = 1MB
 			$config['max_width']  = '0';
 			$config['max_height']  = '0';
@@ -325,7 +333,7 @@ class Mahasiswa extends CI_Controller {
 	    			$gambar = $this->upload->data();
                 	$ufmhs = $gambar['file_name'];
                 	if (!empty($outline->ufmhs)) {
-                		unlink("uploads/".$outline->ufmhs);
+                		unlink("uploads/outline/".$outline->ufmhs);
                 	}
 	    			
 	    		}
@@ -346,7 +354,7 @@ class Mahasiswa extends CI_Controller {
 	    			$gambar = $this->upload->data();
                 	$usbs = $gambar['file_name'];
                 	if (!empty($outline->usbs)) {
-                		unlink("uploads/".$outline->usbs);
+                		unlink("uploads/outline/".$outline->usbs);
                 	}
 	    			
 	    		}
@@ -367,7 +375,7 @@ class Mahasiswa extends CI_Controller {
 	    			$gambar = $this->upload->data();
                 	$uspu = $gambar['file_name'];
                 	if (!empty($outline->uspu)) {
-                		unlink("uploads/".$outline->uspu);
+                		unlink("uploads/outline/".$outline->uspu);
                 	}
 	    			
 	    		}
@@ -388,7 +396,7 @@ class Mahasiswa extends CI_Controller {
 	    			$gambar = $this->upload->data();
                 	$ukst = $gambar['file_name'];
                 	if (!empty($outline->ukst)) {
-                		unlink("uploads/".$outline->ukst);
+                		unlink("uploads/outline/".$outline->ukst);
                 	}
 	    			
 	    		}
@@ -409,7 +417,7 @@ class Mahasiswa extends CI_Controller {
 	    			$gambar = $this->upload->data();
                 	$utn = $gambar['file_name'];
                 	if ($outline->utn) {
-                		unlink("uploads/".$outline->utn);
+                		unlink("uploads/outline/".$outline->utn);
                 	}
 	    			
 	    		}
@@ -430,7 +438,7 @@ class Mahasiswa extends CI_Controller {
 	    			$gambar = $this->upload->data();
                 	$ukhs = $gambar['file_name'];
                 	if (!empty($outline->ukhs)) {
-                		unlink("uploads/".$outline->ukhs);
+                		unlink("uploads/outline/".$outline->ukhs);
                 	}
 	    			
 	    		}
@@ -439,6 +447,7 @@ class Mahasiswa extends CI_Controller {
 			if (!empty($_FILES['upro1']['tmp_name'])) {
 				//cek config
 	    		$config['file_name'] = $_POST['nim'].'_outline1_'.time();
+				$config['upload_path']          = './uploads/outline/topik';
 	    		$config['allowed_types']        = 'pdf';
 		    	$config['max_size']             = '5120'; //5MB, 1024kilobytes = 1MB
     			$this->load->library('upload', $config);
@@ -453,7 +462,7 @@ class Mahasiswa extends CI_Controller {
 	    			$file = $this->upload->data();
                 	$upro1 = $file['file_name'];
                 	if (!empty($outline->upro1)) {
-                		unlink("uploads/".$outline->upro1);
+                		unlink("uploads/outline/topik/".$outline->upro1);
                 	}
 	    			
 	    		}
@@ -462,6 +471,7 @@ class Mahasiswa extends CI_Controller {
 			if (!empty($_FILES['upro2']['tmp_name'])) {
 				//cek config
 	    		$config['file_name'] = $_POST['nim'].'_outline2_'.time();
+				$config['upload_path']          = './uploads/outline/topik';
 	    		$config['allowed_types']        = 'pdf';
 		    	$config['max_size']             = '5120'; //5MB, 1024kilobytes = 1MB
     			$this->load->library('upload', $config);
@@ -476,7 +486,7 @@ class Mahasiswa extends CI_Controller {
 	    			$file = $this->upload->data();
                 	$upro2 = $file['file_name'];
                 	if (!empty($outline->upro2)) {
-                		unlink("uploads/".$outline->upro2);
+                		unlink("uploads/outline/topik/".$outline->upro2);
                 	}
 	    			
 	    		}
@@ -486,14 +496,14 @@ class Mahasiswa extends CI_Controller {
 				'tempat' => $_POST['tempat'], 
 				'tgllahir' => date('Y-m-d',strtotime($_POST['tanggallahir'])),
 				'alamat' => $_POST['alamat'], 
-				'tlpr' => $_POST['tlpr'], 
-				'nohp' => $_POST['nohp'], 
+				'nohp' => $_POST['nohp'],  
 				'email' => $_POST['email'], 
 				'nmp' => $_POST['nmp'], 
 				'ns' => $_POST['ns'], 
 				'topik1' => $_POST['topik1'], 
 				'topik2' => $_POST['topik2'], 
 				'dospem' => $_POST['dospem'], 
+				'dospems' => $_POST['dospems'], 
 				'yajukan' => $_POST['yajukan'], 
 				'konsen' => $_POST['konsen'], 
 				'lmedpel' => $_POST['lmedpel'], 
@@ -578,6 +588,9 @@ class Mahasiswa extends CI_Controller {
 	}
 
 	public function status_outline(){
+		$this->load->view('mahasiswa/layout/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Status Outline'
+		]);
 		$this->load->view('mahasiswa/proposal_outline/halaman_status', [
 			'notification' => $this->session->flashdata('notification')
 			]);
@@ -1498,6 +1511,9 @@ class Mahasiswa extends CI_Controller {
 
 
 		if($this->form_validation->run() == FALSE){
+			$this->load->view('mahasiswa/layout/header',[
+				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Passowrd'
+			]);
 			$this->load->view('mahasiswa/halaman_gantipass');
 
 		}
