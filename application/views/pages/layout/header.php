@@ -10,5 +10,5 @@
     <link rel="stylesheet" href="<?= base_url(); ?>asset/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url(); ?>asset/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="<?= base_url(); ?>asset/css/styles.css">
-    <title>Sistem Informasi Pelaksanaan Skripsi Online Perbanas Institute</title>
+    <title><?= $title?></title>
 </head>

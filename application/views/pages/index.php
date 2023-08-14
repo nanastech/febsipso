@@ -11,7 +11,12 @@
 				<!--<li><a class="nav-link scrollto" href="#jadwal">Jadwal</a></li> -->
 				<!-- <li><a class="nav-link scrollto" href="#about">About</a></li> -->
 				<li><a class="nav-link scrollto" href="#team">Team</a></li>
-				<li><a class="nav-link scrollto" href="<?=base_url('Auth/login'); ?>">Login</a></li>
+				<?php if ($this->session->userdata('username')) { ?>
+					<li><a class="nav-link scrollto" href="<?=base_url('Auth/login'); ?>">Dashboard</a></li>
+					<li><a class="nav-link scrollto" href="<?=base_url('Auth/logout'); ?>">Logout</a></li>
+				<?php }else{ ?>
+					<li><a class="nav-link scrollto" href="<?=base_url('Auth/login'); ?>">Login</a></li>
+				<?php } ?>
 			</ul>
 			<i class="bi bi-list mobile-nav-toggle"></i>
 		</nav><!-- .navbar -->

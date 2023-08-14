@@ -73,6 +73,7 @@
 
     <!-- Main content -->
     <section class="content">
+      <?= $notification; ?>
       <?php 
         if (!$this->Model->read('outline')) {?>
           <div class="alert alert-danger alert-dismissible">

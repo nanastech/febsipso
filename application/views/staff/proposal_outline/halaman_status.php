@@ -241,7 +241,7 @@
                                       echo 'S1 Akuntasi';
                                     }elseif ($form->jurusan=='SM') {
                                       echo 'S1 Manajemen';
-                                    }elseif ($form->jurusan=='SESyar') {
+                                    }elseif ($form->jurusan=='EKS') {
                                       echo 'S1 Ekonomi Syariah';
                                     }?>">
                                   </div>
@@ -326,8 +326,7 @@
                                     <span class="glyphicon glyphicon-ok-sign"></span><label>&nbsp;&nbsp;Lulus SKS</label>
                                     <input required="" readonly="" class="form-control" name="l128" type="text" value="<?php if ($form->l128=='1') {echo 'LULUS';}elseif ($form->l128=='0'){echo 'TIDAK LULUS';} ?>">
                                   </div>
-                                </div>
-                                <!-- konsen -->
+                                   <!-- konsen -->
                                 <div class="form-group col-md-12">
                                   <span class="glyphicon glyphicon-book"></span><label>&nbsp;&nbsp;Konsentrasi</label>
                                   <input required="" readonly="" class="form-control" name="konsen" type="text" placeholder="Masukan Konsentrasi" value="<?= $form->konsen; ?>">
@@ -336,6 +335,7 @@
                                 <div class="form-group col-md-12">
                                   <span class="glyphicon glyphicon-ok-circle"></span><label>&nbsp;&nbsp;Yang Mengajukan</label>
                                   <input readonly="" required="" class="form-control" name="yajukan" type="text" placeholder=" Otomatis" value="<?=$form->nama;?>">
+                                </div>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

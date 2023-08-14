@@ -48,9 +48,9 @@ class Auth extends CI_Controller {
 	              break;
 				}
 			}
-          	// $this->load->view('login/layout/header.php',[
-			// 'notification' => $this->session->flashdata('notification')
-			// ]);
+			$this->load->view('pages/layout/header',[
+				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Login'
+			]);
 			$this->load->view('pages/login',[
 			'notification' => $this->session->flashdata('notification')
 			]);

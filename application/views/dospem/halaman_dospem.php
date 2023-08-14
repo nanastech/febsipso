@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="wrapper">
 <!--======================================================================================-->
 <?php $this->load->view('dospem/layout/top'); ?>	
-<?php $this->load->view('dospem/layout/menu'); ?>	
+<?php //$this->load->view('dospem/layout/menu'); ?>	
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -110,15 +110,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="small-box bg-aqua">
 
             <div class="inner">
-              <h3 style="font-size: 43px;"><?= $this->Model->dosenpa_verify_outline($this->session->userdata('username'))?> <span class="fa fa-child"></span></h3>
-
-
-              <p>Approve Outline</p>
+              <h3 style="font-size: 43px;"> 0 <span class="fa fa-child"></span></h3>
+              <p>Outline</p>
             </div>
             <div class="icon">
               <i class="fa fa-check-square"></i>
             </div>
-            <a href="<?= base_url('Dospem/status_outline/')?>" class="small-box-footer">
+            <a href="#" class="small-box-footer">
               More info <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
@@ -157,11 +155,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-green">
-
             <div class="inner">
               <h3 style="font-size: 43px;"><?=$this->Model->dospem_verify_daftarsidang($this->session->userdata('username'))?></h3>
-
-
               <p style="width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">Validasi Sidang Skripsi</p>
             </div>
             <div class="icon">
@@ -207,13 +202,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <tr>
                     <td align="center"><?= $no1;?></td>
                     <td align="center"><?= '['.$mahasiswapa['nim'].']<br/>'.$mahasiswapa['nama_mhs']?></td>
-                    <td align="center"><?php if ($mahasiswapa['jurusan']=='TI') {
-                      echo 'Teknik Informatika';
-                    }elseif ($mahasiswapa['jurusan']=='SI') {
-                      echo 'Sistem Informasi';
-                    }elseif ($mahasiswapa['jurusan']=='SK') {
-                      echo 'Sistem Komputer';
-                    } $mahasiswapa['jurusan'];?></td>
+                    <td align="center">
+                    <?php if ($mahasiswapa['jurusan']=='DAK') {
+                            echo 'D3 Akuntansi';
+                          }elseif ($mahasiswapa['jurusan']=='DKP') {
+                            echo 'D3 Keuangan & Perbankan';
+                          }elseif ($mahasiswapa['jurusan']=='SA') {
+                            echo 'S1 Akuntasi';
+                          }elseif ($mahasiswapa['jurusan']=='SM') {
+                            echo 'S1 Manajemen';
+                          }elseif ($mahasiswapa['jurusan']=='EKS') {
+                            echo 'S1 Ekonomi Syariah';
+                          }?>
+                    </td>
                   </tr>
                   <?php
                   $no1++; }
@@ -230,7 +231,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </table>
               </div>
               <!-- /.box-body -->
-
           </div>
           <!-- /.box -->
         </div>
@@ -268,13 +268,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <tr>
                         <td align="center"><?= $no1;?></td>
                         <td align="center"><?= '['.$mahasiswask['nim'].']<br/>'.$mahasiswask['nama_mhs']?></td>
-                        <td align="center"><?php if ($mahasiswask['jurusan']=='TI') {
-                          echo 'Teknik Informatika';
-                        }elseif ($mahasiswask['jurusan']=='SI') {
-                          echo 'Sistem Informasi';
-                        }elseif ($mahasiswask['jurusan']=='SK') {
-                          echo 'Sistem Komputer';
-                        } $mahasiswask['jurusan'];?></td>
+                        <td align="center">
+                        <?php if ($mahasiswask['jurusan']=='DAK') {
+                            echo 'D3 Akuntansi';
+                          }elseif ($mahasiswask['jurusan']=='DKP') {
+                            echo 'D3 Keuangan & Perbankan';
+                          }elseif ($mahasiswask['jurusan']=='SA') {
+                            echo 'S1 Akuntasi';
+                          }elseif ($mahasiswask['jurusan']=='SM') {
+                            echo 'S1 Manajemen';
+                          }elseif ($mahasiswask['jurusan']=='EKS') {
+                            echo 'S1 Ekonomi Syariah';
+                          }?>
+                        </td>
                       </tr>
                     <?php   $no1++;}
                      }
@@ -301,7 +307,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="box">
         <div class="box-header with-border">
           <h3 class="box-title">Selamat Datang Dosen Pembimbing!</h3>
-
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fa fa-minus"></i></button>
@@ -310,15 +315,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
         </div>
         <div class="box-body">
-          <p>Lorem ipsum dolor sit amet, mea no errem verear. Quo et erant electram, usu cu debet cotidieque deterruisset. Modus oblique vim ad, liber tamquam duo ei. Ex sea tollit commodo recusabo.
-  		  </p>
-  		  <p>Et his vidit prompta, mea dico invidunt an. Aliquip reprehendunt mel te. Cu alienum philosophia quo, nobis tantas eum ea. Usu ubique mucius tractatos cu, modo alterum volumus cum ad. Timeam ponderum sea no. Mutat inciderint ut has.
-  		  </p>
-		 
+
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
         </div>
         <!-- /.box-footer-->
       </div>

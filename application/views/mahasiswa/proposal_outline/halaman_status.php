@@ -408,11 +408,11 @@
                     </div>
                   <td align="center" style="vertical-align: middle; text-align: center;">
                   <?php 
-                    if (!empty($form->accdsnpa)&&!empty($form->acckaprodi)&&empty($form->revisi)) {?>
+                    if (!empty($form->acckaprodi)&&empty($form->revisi)) {?>
                       <div class="progress progress-xs">
                         <div class="progress-bar progress-bar-success" style="width: 100%"></div>
                       </div><span class="badge bg-green">100%</span>
-                  <?php }elseif (!empty($form->accdsnpa)&&!empty($form->acckaprodi)&&!empty($form->revisi)) {?>
+                  <?php }elseif (!empty($form->acckaprodi)&&!empty($form->revisi)) {?>
                       <div class="progress progress-xs">
                         <div class="progress-bar progress-bar-warning" style="width: 90%"></div>
                       </div><span class="badge bg-yellow">90%</span>
@@ -420,7 +420,7 @@
                       <div class="progress progress-xs">
                         <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
                       </div><span class="badge bg-yellow">50%</span>
-                  <?php }elseif (empty($form->accstaff)&&empty($form->accdsnpa)&&empty($form->acckaprodi)) { ?>
+                  <?php }elseif (empty($form->accstaff)&&empty($form->acckaprodi)) { ?>
                       <div class="progress progress-xs">
                         <div class="progress-bar progress-bar-danger" style="width: 25%"></div>
                       </div><span class="badge bg-red">25%</span>

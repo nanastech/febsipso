@@ -124,7 +124,7 @@ class Kaprodi extends CI_Controller {
 			'username' => $data,
 			'dari' => 'Kaprodi',
 			'info' =>  $info,
-			'link' => 'Mahasiswa/daftar_outline/',
+			'link' => 'Mahasiswa/status_outline/',
 			'tanggal' => date('Y-m-d H:i:s')
 			);
 

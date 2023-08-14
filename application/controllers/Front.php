@@ -23,27 +23,25 @@ class Front extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{	
-      //$this->load->view('layout/header');
-      //$this->load->view('pages/index'); 
-		$this->load->view('halaman_home', [
-				'notification' => $this->session->flashdata('notification')
-			]);
-      //$this->load->view('layout/bot'); 
-      //$this->load->view('layout/footer');
-	}
-    public function home()
+	// public function index()
+	// {	
+    //   //$this->load->view('layout/header');
+    //   //$this->load->view('pages/index'); 
+	// 	// $this->load->view('halaman_home', [
+	// 	// 		'notification' => $this->session->flashdata('notification')
+	// 	// 	]);
+    //   //$this->load->view('layout/bot'); 
+    //   //$this->load->view('layout/footer');
+	// }
+    public function index()
 	{
-		$this->load->view('pages/layout/header.php',[
-			'notification' => $this->session->flashdata('notification')
-			]);
+		$this->load->view('pages/layout/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
+		]);
 		$this->load->view('pages/index',[
 			'notification' => $this->session->flashdata('notification')
 			]);
-        $this->load->view('pages/layout/footer.php',[
-			'notification' => $this->session->flashdata('notification')
-			]);		
+        $this->load->view('pages/layout/footer');		
 	}
     
 	public function daftar_mahasiswa()
