@@ -26,18 +26,26 @@
         var value = sel.value;  
         if (value=="Ditolak") {
            document.getElementById("dospemfix").style.display = "none";
-           document.getElementById("pro1").style.display = "none";
-           document.getElementById("pro2").style.display = "none";
+           document.getElementById("dospem").style.display = "none";
+           document.getElementById("dospems").style.display = "none";
+           document.getElementById("pro1").style.display = "initial";
+           document.getElementById("pro2").style.display = "initial";
            document.getElementById("topikfix").style.display = "none";
-           document.getElementById("komentar").style.display = "none";
+           document.getElementById("komentar").style.display = "initial";
            document.getElementById("catatan").style.display = "none";
         }else{
            document.getElementById("dospemfix").style.display = "initial";
+           document.getElementById("dospem").style.display = "initial";
+           document.getElementById("dospems").style.display = "initial";
            document.getElementById("pro1").style.display = "initial";
            document.getElementById("pro2").style.display = "initial";
            document.getElementById("topikfix").style.display = "initial";
            document.getElementById("komentar").style.display = "initial";
            document.getElementById("catatan").style.display = "initial";
+           document.getElementById("status").style.display = "initial";
+           document.getElementById("judulrevisi").style.display = "initial";
+           document.getElementById("prorevisi").style.display = "initial";
+           document.getElementById("btnapproved").style.display = "initial";
         }
       }
    
@@ -148,12 +156,12 @@
                         <?php }?>
                       </div>
                       <!-- Dospem Pilihan Mahasiswa-->
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-6" id="dospem">
                         <span class="glyphicon glyphicon-user"></span><label>&nbsp;&nbsp;Dosen Pembimbing Pilihan Mahasiswa</label>
                         <?php $dosen=$this->Model->read_detail('noreg',$record->dospem,'dosen');?>
                         <input readonly="" required="" class="form-control" name="dospem" type="text" value="<?= '['.$dosen->noreg.'] '.$dosen->nama; ?>">
                       </div>
-                      <div class="form-group col-md-6">
+                      <div class="form-group col-md-6" id="dospems">
                         <label>&nbsp;&nbsp;</label>
                         <?php $dosens=$this->Model->read_detail('noreg',$record->dospems,'dosen');?>
                         <input readonly="" required="" class="form-control" name="dospems" type="text" value="<?= '['.$dosens->noreg.'] '.$dosens->nama; ?>">
@@ -196,9 +204,9 @@
                         <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 1 :</label>
                         <br/>
                         <?php if (empty($record->upro1)) {?>
-                        <a href="<?=base_url('uploads/'.$record->upro1)?>" class="btn btn-danger disabled btn-block" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline 1</a>
+                        <a href="<?=base_url('uploads/outline/topik/'.$record->upro1)?>" class="btn btn-danger disabled btn-block" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline 1</a>
                         <?php }else{ ?>
-                        <a href="<?=base_url('uploads/'.$record->upro1)?>" class="btn btn-success btn-block" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline 1</a>
+                        <a href="<?=base_url('uploads/outline/topik/'.$record->upro1)?>" class="btn btn-success btn-block" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline 1</a>
                         <?php  } ?>
                       </div>
 
@@ -207,9 +215,9 @@
                         <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 2 :</label>
                         <br/>
                         <?php if (empty($record->upro1)) {?>
-                        <a href="<?=base_url('uploads/'.$record->upro2)?>" class="btn btn-danger disabled btn-block" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline 2</a>
+                        <a href="<?=base_url('uploads/outline/topik/'.$record->upro2)?>" class="btn btn-danger disabled btn-block" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline 2</a>
                         <?php }else{ ?>
-                        <a href="<?=base_url('uploads/'.$record->upro2)?>" class="btn btn-success btn-block" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline 2</a>
+                        <a href="<?=base_url('uploads/outline/topik/'.$record->upro2)?>" class="btn btn-success btn-block" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline 2</a>
                         <?php  } ?>
                       </div>
                       
@@ -259,7 +267,7 @@
                       <legend>Revisi Outline <font color="red" size="4">*outline revisi mahasiswa</font></legend>
                   <form action="<?php echo base_url('Kaprodi/revisi_outline/'.$record->nim); ?>" method="POST">
                     <!-- nama -->
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" id="status">
                       <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Status</label>
                       <input readonly="" required="" class="form-control" name="nama" type="text" placeholder="Masukan Nama" value="<?php if (empty($record->revisi)) {
                         echo 'Tidak terdapat revisi';
@@ -268,7 +276,7 @@
                         } ?>">
                     </div>
                     <!-- Judul Revisi -->
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-12" id="judulrevisi">
                       <span class="glyphicon glyphicon-pencil"></span><label>&nbsp;&nbsp;Judul Outline Revisi</label>
                       <textarea readonly="" rows="2" class="form-control" name="judul_revisi"><?php if (empty($record->judul_revisi)) {
                         echo "-";
@@ -278,17 +286,17 @@
                       </textarea>
                     </div>
                     <!-- Proposal Revisi -->
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6" id="prorevisi">
                       <span class="glyphicon glyphicon-open-file"></span><label>&nbsp;&nbsp;Proposal Revisi</label>
                       <br/>
                       <?php if (!empty($record->outline_revisi)) { ?>
-                        <a href="<?=base_url('uploads/'.$record->outline_revisi)?>" class="btn btn-success btn-block" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Proposal Revisi</a>
+                        <a href="<?=base_url('uploads/outline/topik/'.$record->outline_revisi)?>" class="btn btn-success btn-block" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Proposal Revisi</a>
                       <?php }else{ ?>
                         <a class="btn btn-warning disabled btn-block"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Proposal Revisi</a>
                       <?php } ?>
                     </div>
 
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6" id="btnapproved">
                       <label>&nbsp;&nbsp;</label>
                       <br/>
                       <?php if (!empty($record->revisi)) { ?>

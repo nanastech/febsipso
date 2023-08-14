@@ -770,7 +770,8 @@
                         <option value="">
                             Pilih Pembimbing
                             </option>
-                          <?php 
+                          <?php
+                          $dosens=$this->Model->read('dosen'); 
                           foreach ($dosens as $dosen) { ?>
                             <option <?php if(set_value('dospem')==$dosen['noreg']) echo 'selected="selected"';?> value="<?=$dosen['noreg']?>">[<?=$dosen['noreg']?>] <?=$dosen['nama']?></option>;
                           <?php

@@ -83,8 +83,6 @@ class Kaprodi extends CI_Controller {
 			'tglacckaprodi' => date('Y-m-d H:i:s')
 			);
 
-			
-
 			if (!empty($_POST['revisi'])) {
 				$data_update ['revisi']=$_POST['revisi'];
 				$data_update ['catatan']=$_POST['catatan'];
@@ -113,13 +111,15 @@ class Kaprodi extends CI_Controller {
 				'pembimbing'=>$_POST['dospemfix']
 				);
 
-			if ($this->Model->update_data($data_update,'nim',$data,'outline') && $this->Model->create('info',$data_info) && $this->Model->duplicate('nim',$data,'outline','log_outline') && $this->Model->create('dospem',$data_dospem) && $this->Model->create('judul_skripsi',$data_skripsi)) {
+			if ($this->Model->update_data($data_update,'nim',$data,'outline') && 
+				$this->Model->create('info',$data_info) && $this->Model->duplicate('nim',$data,'outline','log_outline') && 
+				$this->Model->create('dospem',$data_dospem) && $this->Model->create('judul_skripsi',$data_skripsi)) {
 					redirect(base_url('Kaprodi/status_outline/'));	
 				}else{
 					echo "GAGAL";
 				}
 		}elseif ($_POST['status']=='Ditolak') {
-			$info='Maaf Outline Anda <strong>DITOLAK</strong>.';
+			$info='Maaf Outline Anda <strong>DITOLAK</strong>, Dikarenakan '.$_POST['komentar'].'.';
 			$data_info = array(
 			'username' => $data,
 			'dari' => 'Kaprodi',
@@ -131,17 +131,19 @@ class Kaprodi extends CI_Controller {
 			$data_update = array(
 			'acckaprodi' => 'Approved',
 			'status_outline' => $_POST['status'],
+			'komentar' => $_POST['komentar'],
 			'tglacckaprodi' => date('Y-m-d H:i:s')
 			);
 
-			if ($this->Model->update_data($data_update,'nim',$data,'outline') && $this->Model->create('info',$data_info) && $this->Model->duplicate('nim',$data,'outline','log_outline') && $this->Model->delete('nim',$data,'outline')) {
-					$notification = '<div class="alert alert-success alert-dismissible">
+			if ($this->Model->update_data($data_update,'nim',$data,'outline') && $this->Model->create('info',$data_info) && 
+			$this->Model->duplicate('nim',$data,'outline','log_outline') && $this->Model->delete('nim',$data,'outline')) {
+				$notification = '<div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
                 	Data berhasil disimpan!
                 </div>';
 				$this->session->set_flashdata('notification', $notification);
-				redirect(base_url('Kaprodi/status_outline/'));	
+				redirect(base_url('Kaprodi/status_outline/'));
 				}else{
 					$notification = '<div class="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

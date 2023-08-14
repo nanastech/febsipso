@@ -81,7 +81,7 @@ class Mahasiswa extends CI_Controller {
 		$this->form_validation->set_rules('topik1','Topik 1','required');
 		$this->form_validation->set_rules('topik2','Topik 2','required');
 		$this->form_validation->set_rules('dospem','Nama Dosen Pembimbing','required');
-		$this->form_validation->set_rules('dospems','Nama Dosen Pembimbings','required');
+		$this->form_validation->set_rules('dospems','','required');
 		$this->form_validation->set_rules('yajukan','Yang Mengajukan','required');
 		$this->form_validation->set_rules('konsen','Konsentrasi','required');
 		$this->form_validation->set_rules('lmedpel','Lulus Metode Penelitian','required');
@@ -94,7 +94,7 @@ class Mahasiswa extends CI_Controller {
 		//load uploading file library
 		$config=array();
 		$config['upload_path']          = './uploads/outline/';
-    	$config['allowed_types']        = 'gif|jpg|jpeg';
+    	$config['allowed_types']        = 'gif|png|jpg|jpeg';
     	$config['max_size']             = '2048'; //2MB, 1024kilobytes = 1MB
 		$config['max_width']  = '0';
 		$config['max_height']  = '0';
