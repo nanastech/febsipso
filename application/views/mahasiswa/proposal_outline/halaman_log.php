@@ -344,7 +344,7 @@
                               }?>
                         </td>
                         <td align="center">
-                          
+                          <?= $log_outline['komentar']; ?>
                         </td>
                       </tr>
                       <?php

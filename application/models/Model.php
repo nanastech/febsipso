@@ -260,8 +260,17 @@ class Model extends CI_Model{
 
 	public function duplicate($where,$id,$asal,$tujuan){
 		return $this->db->query(
-	        "INSERT INTO $tujuan ($tujuan.nim,$tujuan.nama,$tujuan.jurusan,$tujuan.tempat,$tujuan.tgllahir,$tujuan.alamat,$tujuan.tlpr,$tujuan.nohp,$tujuan.nmp,$tujuan.ns,$tujuan.topik1,$tujuan.topik2,$tujuan.dospem,$tujuan.yajukan,$tujuan.konsen,$tujuan.lmedpel,$tujuan.lstatis,$tujuan.lkkp,$tujuan.l128,$tujuan.ufmhs,$tujuan.usbs,$tujuan.uspu,$tujuan.ukst,$tujuan.utn,$tujuan.ukhs,$tujuan.upro1,$tujuan.upro2,$tujuan.tgl_daftar,$tujuan.accstaff,$tujuan.tglaccstaff,$tujuan.accdsnpa,$tujuan.tglaccdsnpa,$tujuan.acckaprodi,$tujuan.status_outline,$tujuan.dospemfix,$tujuan.topikfix,$tujuan.outline_fix,$tujuan.komentar,$tujuan.revisi,$tujuan.catatan,$tujuan.judul_revisi,$tujuan.outline_revisi,$tujuan.tglacckaprodi)
-			SELECT $asal.nim,$asal.nama,$asal.jurusan,$asal.tempat,$asal.tgllahir,$asal.alamat,$asal.tlpr,$asal.nohp,$asal.nmp,$asal.ns,$asal.topik1,$asal.topik2,$asal.dospem,$asal.yajukan,$asal.konsen,$asal.lmedpel,$asal.lstatis,$asal.lkkp,$asal.l128,$asal.ufmhs,$asal.usbs,$asal.uspu,$asal.ukst,$asal.utn,$asal.ukhs,$asal.upro1,$asal.upro2,$asal.tgl_daftar,$asal.accstaff,$asal.tglaccstaff,$asal.accdsnpa,$asal.tglaccdsnpa,$asal.acckaprodi,$asal.status_outline,$asal.dospemfix,$asal.topikfix,$asal.outline_fix,$asal.komentar,$asal.revisi,$asal.catatan,$asal.judul_revisi,$asal.outline_revisi,$asal.tglacckaprodi FROM $asal
+	        "INSERT INTO $tujuan ($tujuan.nim,$tujuan.nama,$tujuan.jurusan,$tujuan.tempat,$tujuan.tgllahir,$tujuan.alamat,$tujuan.nohp,
+			$tujuan.nmp,$tujuan.ns,$tujuan.topik1,$tujuan.topik2,$tujuan.dospem,$tujuan.dospems,$tujuan.yajukan,$tujuan.konsen,
+			$tujuan.lmedpel,$tujuan.lstatis,$tujuan.lkkp,$tujuan.l128,$tujuan.ufmhs,$tujuan.usbs,$tujuan.uspu,$tujuan.ukst,$tujuan.utn,
+			$tujuan.ukhs,$tujuan.upro1,$tujuan.upro2,$tujuan.tgl_daftar,$tujuan.accstaff,$tujuan.tglaccstaff,$tujuan.acckaprodi,
+			$tujuan.status_outline,$tujuan.dospemfix,$tujuan.topikfix,$tujuan.outline_fix,$tujuan.komentar,$tujuan.revisi,$tujuan.catatan,
+			$tujuan.judul_revisi,$tujuan.outline_revisi,$tujuan.tglacckaprodi)
+			SELECT $asal.nim,$asal.nama,$asal.jurusan,$asal.tempat,$asal.tgllahir,$asal.alamat,$asal.nohp,$asal.nmp,$asal.ns,$asal.topik1,
+			$asal.topik2,$asal.dospem,$asal.dospems,$asal.yajukan,$asal.konsen,$asal.lmedpel,$asal.lstatis,$asal.lkkp,$asal.l128,
+			$asal.ufmhs,$asal.usbs,$asal.uspu,$asal.ukst,$asal.utn,$asal.ukhs,$asal.upro1,$asal.upro2,$asal.tgl_daftar,$asal.accstaff,
+			$asal.tglaccstaff,$asal.acckaprodi,$asal.status_outline,$asal.dospemfix,$asal.topikfix,$asal.outline_fix,$asal.komentar,
+			$asal.revisi,$asal.catatan,$asal.judul_revisi,$asal.outline_revisi,$asal.tglacckaprodi FROM $asal
 			WHERE $asal.$where = '$id'
 	        ");
 	}
