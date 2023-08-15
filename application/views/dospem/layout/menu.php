@@ -9,7 +9,7 @@
         </div>
         <div class="pull-left info">
           <p style="width: 150px; white-space: nowrap;
-    overflow: hidden;text-overflow: ellipsis;"><?=$this->session->userdata('name');?></p>
+            overflow: hidden;text-overflow: ellipsis;"><?=$this->session->userdata('name');?></p>
           <small class="label bg-green">Dosen</small>
           
         </div>
@@ -28,11 +28,11 @@
             <i class="fa fa-file-text"></i> <span>Proposal Outline</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
-              <small class="label pull-right bg-yellow"><?=$this->Model->dosenpa_verify_outline($this->session->userdata('username'))?></small>
+              <small class="label pull-right bg-yellow"><?php //=$this->Model->dosenpa_verify_outline($this->session->userdata('username'))?></small>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li id="status_outline" class=""><a href="<?php echo base_url(); ?>Dospem/status_outline/"><i class="fa fa-circle-o"></i> Status Outline <small class="label pull-right bg-yellow" style="margin-top: 3px;"><?=$this->Model->dosenpa_verify_outline($this->session->userdata('username'))?></small></a></li>
+            <li id="status_outline" class=""><a href="<?php echo base_url(); ?>Dospem/status_outline/"><i class="fa fa-circle-o"></i> Status Outline <small class="label pull-right bg-yellow" style="margin-top: 3px;"><?php //=$this->Model->dosenpa_verify_outline($this->session->userdata('username'))?></small></a></li>
           </ul>
         </li>
         <li id="log_book" class="">

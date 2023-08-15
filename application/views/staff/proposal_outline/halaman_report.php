@@ -111,16 +111,9 @@
                         <option value="">--Pilih--</option>
                         <option value="DAK">D3 Akuntansi</option>
                         <option value="DKP">D3 Keuangan & Perbankan</option>
-                        <option value="AK">S1 Akuntasi</option>
-                        <option value="M">S1 Manajemen</option>
-                        <option value="ES">S1 Ekonomi Syariah</option>
-                        <option value="TI">S1 Teknik Informatika</option>
-                        <option value="SI">S1 Sistem Informasi</option>
-                        <option value="SK">S1 Sistem Komputer</option>
-                        <option value="ADB">S1 Analitika Data Bisnis</option>
-                        <option value="MAKSI">S2 Magister Akuntansi</option>
-                        <option value="MM">S2 Magister Manajemen</option>
-                        <option value="PPAK">Pendidikan Profesi Akuntansi</option>
+                        <option value="SA">S1 Akuntasi</option>
+                        <option value="SM">S1 Manajemen</option>
+                        <option value="EKS">S1 Ekonomi Syariah</option>
                       </select>
                     </div>
                     <div class="form-group col-sm-2">

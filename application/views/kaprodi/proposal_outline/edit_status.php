@@ -157,7 +157,7 @@
                       </div>
                       <!-- Dospem Pilihan Mahasiswa-->
                       <div class="form-group col-md-6" id="dospem">
-                        <span class="glyphicon glyphicon-user"></span><label>&nbsp;&nbsp;Dosen Pembimbing Pilihan Mahasiswa</label>
+                        <span class="glyphicon glyphicon-user"></span><label>&nbsp;&nbsp;Dospem pilihan mahasiswa</label>
                         <?php $dosen=$this->Model->read_detail('noreg',$record->dospem,'dosen');?>
                         <input readonly="" required="" class="form-control" name="dospem" type="text" value="<?= '['.$dosen->noreg.'] '.$dosen->nama; ?>">
                       </div>

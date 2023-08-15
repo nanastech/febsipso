@@ -156,7 +156,7 @@
                       	<option value="DKP">D3 Keuangan & Perbankan</option>
                         <option value="SA">S1 Akuntasi</option>
                         <option value="SM">S1 Manajemen</option>
-                        <option value="SESyar">S1 Ekonomi Syariah</option>
+                        <option value="EKS">S1 Ekonomi Syariah</option>
                       </select>
                     </div>
                     <script type="text/javascript">

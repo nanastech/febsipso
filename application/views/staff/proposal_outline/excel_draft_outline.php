@@ -62,13 +62,17 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
 // header('Content-Disposition: attachment; filename='.$prodi.'-'.$tanggal.'_Draft_Peserta_Sidang-SubagLAA.xls');
 ?>
   <?php 
-    if ($prodi=='TI') {?>
-      <input type="button" onclick="tableToExcel('tabeldata', 'Teknik Informatika')" value="Export to Excel">
-    <?php }elseif ($prodi=='SI') {?>
-      <input type="button" onclick="tableToExcel('tabeldata', 'Sistem Informasi')" value="Export to Excel">
-    <?php }elseif ($prodi=='SK') {?>
-      <input type="button" onclick="tableToExcel('tabeldata', 'Sistem Komputer')" value="Export to Excel">
-    <?php }
+    if ($prodi=='DAK') {?>
+      <input type="button" onclick="tableToExcel('tabeldata', 'D3 Akuntansi')" value="Export to Excel">
+    <?php }elseif ($prodi=='DKP') {?>
+      <input type="button" onclick="tableToExcel('tabeldata', 'D3 Keuangan & Perbankan')" value="Export to Excel">
+    <?php }elseif ($prodi=='SA') {?>
+      <input type="button" onclick="tableToExcel('tabeldata', 'S1 Akuntansi')" value="Export to Excel">
+    <?php }elseif ($prodi=='SM') {?>
+      <input type="button" onclick="tableToExcel('tabeldata', 'S1 Manajemen')" value="Export to Excel">
+    <?php }elseif ($prodi=='EKS') {?>
+      <input type="button" onclick="tableToExcel('tabeldata', 'S1 Ekonomi Syariah')" value="Export to Excel">
+    <?php } 
   ?>
   <div id="tabeldata">
 	<table width="100%" >
@@ -79,12 +83,17 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
 		</tr>
     <tr>
       <td colspan="9">
-        <h3 align="center">FAKULTAS TEKNOLOGI INFORMASI<br><?php if ($prodi=='TI') {
-          echo "TEKNIK INFORMATIKA";
-        }elseif ($prodi=='SI') {
-          echo "SISTEM INFORMASI";
-        }elseif ($prodi=='SK') {
-          echo "SISTEM KOMPUTER";
+        <h3 align="center">FAKULTAS EKONOMI & BISNIS<br>
+        <?php if ($prodi=='DAK') {
+          echo "D3 Akuntansi";
+        }elseif ($prodi=='DKP') {
+          echo "D3 Keuangan & Perbankan";
+        }elseif ($prodi=='SA') {
+          echo "S1 Akuntansi";
+        }elseif ($prodi=='SM') {
+          echo "S1 Manajemen";
+        }elseif ($prodi=='EKS') {
+          echo "S1 Ekonomi Syariah";
         } ?>
         <br><small>PERIODE : <?=indonesian_date(strtotime($daritgl),'Y','')?>/<?= intval(indonesian_date(strtotime($sampaitgl),'Y',''))+1?></small></h3>
       </td>
@@ -106,20 +115,20 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
             <th style="width: 50px; text-align: center;" rowspan="2">NAMA</th>
             <th style="width: 50px; text-align: center;" rowspan="2">TEMPAT, TANGGAL LAHIR</th>
             <th style="width: 50px; text-align: center;" rowspan="2">ALAMAT</th>
-            <th style="width: 50px; text-align: center;" rowspan="2">TELP. RUMAH</th>
+            <!-- <th style="width: 50px; text-align: center;" rowspan="2">TELP. RUMAH</th> -->
             <th style="width: 50px; text-align: center;" rowspan="2">HP</th>
             <th style="width: 50px; text-align: center;" rowspan="2">EMAIL</th>
             <th style="width: 50px; text-align: center;" rowspan="2">JUDUL I</th>
             <th style="width: 50px; text-align: center;" rowspan="2">JUDUL II</th>
-            <th style="width: 50px; text-align: center;" rowspan="2">PEMBIMBING</th>
-            <th style="width: 50px; text-align: center;" colspan="3">STATUS VALIDASI</th>
+            <th style="width: 50px; text-align: center;" colspan="2">PEMBIMBING</th>
+            <th style="width: 50px; text-align: center;" colspan="2">STATUS VALIDASI</th>
             <th style="width: 50px; text-align: center;" colspan="12">STATUS PERSYARATAN</th>
           </tr>
           <tr>
-            <th style="width: 50px; text-align: center;">SUBAG LAA</th>
-            <th style="width: 50px; text-align: center;">DOSEN PA</th>
+            <th style="width: 50px; text-align: center;">I</th>
+            <th style="width: 50px; text-align: center;">II</th>
+            <th style="width: 50px; text-align: center;">LAP</th>
             <th style="width: 50px; text-align: center;">KAPRODI</th>
-
             <th style="width: 50px; text-align: center;">METODE PENELITIAN</th>
             <th style="width: 50px; text-align: center;">STATISTIK</th>
             <th style="width: 50px; text-align: center;">KKP</th>
@@ -140,6 +149,7 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
           $no1=1;
           foreach ($mahasiswas as $mahasiswa) { 
             $dosen=$this->Model->read_detail('noreg',$mahasiswa['dospem'],'dosen');
+            $dosens=$this->Model->read_detail('noreg',$mahasiswa['dospems'],'dosen');
             ?>
             <tr>
               <td style="vertical-align: middle; text-align: center;"><?= $no1;?></td>
@@ -147,36 +157,28 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
               <td style="vertical-align: middle;"><?=$mahasiswa['nama']?></td>
               <td style="vertical-align: middle;"><?=mb_strtoupper($mahasiswa['tempat'],'UTF-8')?>, <?=indonesian_date(strtotime($mahasiswa['tgllahir']),'d-m-Y','')?></td>
               <td align="justify" style="vertical-align: middle;"><?= mb_strtoupper($mahasiswa['alamat'],'UTF-8');?></td>
-              <td style="vertical-align: middle;"><?=str_replace("_","",$mahasiswa['tlpr']);?></td>
+              <!-- <td style="vertical-align: middle;"><?php //echo str_replace("_","",$mahasiswa['tlpr']);?></td> -->
               <td style="vertical-align: middle;"><?=str_replace("_","",$mahasiswa['nohp']);?></td>
               <td style="vertical-align: middle;"><?=$mahasiswa['email']?></td>
               <td align="justify" style="vertical-align: middle;"><?= mb_strtoupper($mahasiswa['topik1'],'UTF-8');?></td>
               <td align="justify" style="vertical-align: middle;"><?= mb_strtoupper($mahasiswa['topik2'],'UTF-8');?></td>
               <td style="vertical-align: middle;"><?=$dosen->nama?></td>
+              <td style="vertical-align: middle;"><?=$dosens->nama?></td>
               <?php if ($mahasiswa['accstaff']) {
                 echo '<td style="vertical-align: middle;background-color: #acfca1;">Validated ✓</td>';
               }else{
                 echo '<td style="vertical-align: middle;background-color: #fca7a1;">✘</td>';
               } ?>
-
-              <?php if ($mahasiswa['accdsnpa']) {
-                echo '<td style="vertical-align: middle;background-color: #acfca1;">Approved ✓</td>';
-              }else{
-                echo '<td style="vertical-align: middle;background-color: #fca7a1;">✘</td>';
-              } ?>
-
               <?php if ($mahasiswa['acckaprodi']) {
                 echo '<td style="vertical-align: middle;background-color: #acfca1;">Approved ✓</td>';
               }else{
                 echo '<td style="vertical-align: middle;background-color: #fca7a1;">✘</td>';
               } ?>
-
               <?php if (in_array($mahasiswa['nmp'], $lulus)) {
                 echo '<td style="vertical-align: middle;background-color: #acfca1;">✓</td>';
               }else{
                 echo '<td style="vertical-align: middle;background-color: #fca7a1;">✘</td>';
               } ?>
-
               <?php if (in_array($mahasiswa['ns'], $lulus)) {
                 echo '<td style="vertical-align: middle;background-color: #acfca1;">✓</td>';
               }else{

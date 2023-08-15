@@ -140,29 +140,15 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
       <td>Jenjang/ Program Studi</td>
       <td width="10">:</td>
       <td colspan="7"><?php if (!empty($record->jurusan)) {
-        if ($record->jurusan=='TI'){
-    		echo 'S1 Teknik Informatika';
-  		}elseif ($record->jurusan=='SK') {
-          echo 'S1 Sistem Komputer';
-        }elseif ($record->jurusan=='SI') {
-          echo 'S1 Sistem Informasi';
-        }elseif ($record->jurusan=='ADB') {
-          echo 'S1 Analitika Data Bisnis';
-        }elseif ($record->jurusan=='MAKSI') {
-          echo 'S2 Magister Akuntansi';
-        }elseif ($record->jurusan=='MM') {
-          echo 'S2 Magister Manajemen';
-        }elseif ($record->jurusan=='PPAK') {
-          echo 'Pendidikan Profesi Akuntansi';
-        }elseif ($record->jurusan=='DAK') {
+        if ($record->jurusan=='DAK') {
           echo 'D3 Akuntansi';
         }elseif ($record->jurusan=='DKP') {
           echo 'D3 Keuangan & Perbankan';
-        }elseif ($record->jurusan=='AK') {
+        }elseif ($record->jurusan=='SA') {
           echo 'S1 Akuntasi';
-        }elseif ($record->jurusan=='M') {
+        }elseif ($record->jurusan=='SM') {
           echo 'S1 Manajemen';
-        }elseif ($record->jurusan=='ES') {
+        }elseif ($record->jurusan=='EKS') {
           echo 'S1 Ekonomi Syariah';
         }else{
           echo "-";
@@ -221,29 +207,15 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
     </tr>
     <tr>
       <td colspan="9"><font>Kepala Program Studi <?php 
-        if ($record->jurusan=='TI'){
-    	  echo 'Teknik Informatika';
-        }elseif ($record->jurusan=='SK') {
-          echo 'Sistem Komputer';
-        }elseif ($record->jurusan=='SI') {
-          echo 'Sistem Informasi';
-        }elseif ($record->jurusan=='ADB') {
-          echo 'Analitika Data Bisnis';
-        }elseif ($record->jurusan=='MAKSI') {
-          echo 'Magister Akuntansi';
-        }elseif ($record->jurusan=='MM') {
-          echo 'Magister Manajemen';
-        }elseif ($record->jurusan=='PPAK') {
-          echo 'Pendidikan Profesi Akuntansi';
-        }elseif ($record->jurusan=='DAK') {
+        if ($record->jurusan=='DAK') {
           echo 'Akuntansi';
         }elseif ($record->jurusan=='DKP') {
           echo 'Keuangan & Perbankan';
-        }elseif ($record->jurusan=='AK') {
+        }elseif ($record->jurusan=='SA') {
           echo 'Akuntasi';
-        }elseif ($record->jurusan=='M') {
+        }elseif ($record->jurusan=='SM') {
           echo 'Manajemen';
-        }elseif ($record->jurusan=='ES') {
+        }elseif ($record->jurusan=='EKS') {
           echo 'Ekonomi Syariah';
   		} ?>,</font></td>
     </tr>

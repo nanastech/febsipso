@@ -62,13 +62,17 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
 // header('Content-Disposition: attachment; filename='.$prodi.'-'.$tanggal.'_Draft_Peserta_Sidang-SubagLAA.xls');
 ?>
   <?php 
-    if ($prodi=='TI') {?>
-      <input type="button" onclick="tableToExcel('tabeldata', 'Teknik Informatika')" value="Export to Excel">
-    <?php }elseif ($prodi=='SI') {?>
-      <input type="button" onclick="tableToExcel('tabeldata', 'Sistem Informasi')" value="Export to Excel">
-    <?php }elseif ($prodi=='SK') {?>
-      <input type="button" onclick="tableToExcel('tabeldata', 'Sistem Komputer')" value="Export to Excel">
-    <?php }
+    if ($prodi=='DAK') {?>
+      <input type="button" onclick="tableToExcel('tabeldata', 'D3 Akuntansi')" value="Export to Excel">
+    <?php }elseif ($prodi=='DKP') {?>
+      <input type="button" onclick="tableToExcel('tabeldata', 'D3 Keuangan & Perbankan')" value="Export to Excel">
+    <?php }elseif ($prodi=='SA') {?>
+      <input type="button" onclick="tableToExcel('tabeldata', 'S1 Akuntansi')" value="Export to Excel">
+    <?php }elseif ($prodi=='SM') {?>
+      <input type="button" onclick="tableToExcel('tabeldata', 'S1 Manajemen')" value="Export to Excel">
+    <?php }elseif ($prodi=='EKS') {?>
+      <input type="button" onclick="tableToExcel('tabeldata', 'S1 Ekonomi Syariah')" value="Export to Excel">
+    <?php } 
   ?>
   <div id="tabeldata">
 	<table width="100%" >
@@ -79,12 +83,17 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
 		</tr>
     <tr>
       <td colspan="9">
-        <h3 align="center">FAKULTAS TEKNOLOGI INFORMASI<br><?php if ($prodi=='TI') {
-          echo "TEKNIK INFORMATIKA";
-        }elseif ($prodi=='SI') {
-          echo "SISTEM INFORMASI";
-        }elseif ($prodi=='SK') {
-          echo "SISTEM KOMPUTER";
+        <h3 align="center">FAKULTAS EKONOMI & BISNIS<br>
+        <?php if ($prodi=='DAK') {
+          echo "D3 Akuntansi";
+        }elseif ($prodi=='DKP') {
+          echo "D3 Keuangan & Perbankan";
+        }elseif ($prodi=='SA') {
+          echo "S1 Akuntansi";
+        }elseif ($prodi=='SM') {
+          echo "S1 Manajemen";
+        }elseif ($prodi=='EKS') {
+          echo "S1 Ekonomi Syariah";
         } ?>
         <br><small>PERIODE : <?=indonesian_date(strtotime($daritgl),'Y','')?>/<?= intval(indonesian_date(strtotime($sampaitgl),'Y',''))+1?></small></h3>
       </td>
@@ -106,10 +115,10 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
             <th style="width: 50px; text-align: center;" >NAMA</th>
             <th style="width: 50px; text-align: center;" >TEMPAT, TANGGAL LAHIR</th>
             <th style="width: 50px; text-align: center;" >ALAMAT</th>
-            <th style="width: 50px; text-align: center;" >TELP. RUMAH</th>
+            <!-- <th style="width: 50px; text-align: center;" >TELP. RUMAH</th> -->
             <th style="width: 50px; text-align: center;" >HP</th>
             <th style="width: 50px; text-align: center;" >EMAIL</th>
-            <th style="width: 50px; text-align: center;">JUDUL</th>
+            <th style="width: 50px; text-align: center;" > JUDUL</th>
             <th style="width: 50px; text-align: center;" >PEMBIMBING</th>
             <th style="width: 50px; text-align: center;" >REVISI</th>
             <th style="width: 50px; text-align: center;" >STATUS</th>
@@ -142,7 +151,7 @@ function indonesian_date ($timestamp = '', $date_format = 'l, j F Y | H:i', $suf
               <td style="vertical-align: middle;"><?=$mahasiswa['nama']?></td>
               <td style="vertical-align: middle;"><?=mb_strtoupper($mahasiswa['tempat'],'UTF-8')?>, <?=indonesian_date(strtotime($mahasiswa['tgllahir']),'d-m-Y','')?></td>
               <td align="justify" style="vertical-align: middle;"><?= mb_strtoupper($mahasiswa['alamat'],'UTF-8');?></td>
-              <td style="vertical-align: middle;"><?=str_replace("_","",$mahasiswa['tlpr']);?></td>
+              <!-- <td style="vertical-align: middle;"><?php //echo str_replace("_","",$mahasiswa['tlpr']);?></td> -->
               <td style="vertical-align: middle;"><?=str_replace("_","",$mahasiswa['nohp']);?></td>
               <td style="vertical-align: middle;"><?=$mahasiswa['email']?></td>
               <td align="justify" style="vertical-align: middle;"><?php if ($mahasiswa['topikfix']) {

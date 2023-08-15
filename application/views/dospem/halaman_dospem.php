@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="wrapper">
 <!--======================================================================================-->
 <?php $this->load->view('dospem/layout/top'); ?>	
-<?php //$this->load->view('dospem/layout/menu'); ?>	
+<?php $this->load->view('dospem/layout/menu'); ?>	
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

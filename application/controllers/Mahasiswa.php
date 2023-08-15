@@ -1270,6 +1270,9 @@ class Mahasiswa extends CI_Controller {
 ///////////////////////////////////////Menu LOG BOOK//////////////////////////////////
 
 	public function log_book(){
+		$this->load->view('mahasiswa/layout/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log Book'
+		]);
 		$this->load->view('mahasiswa/log_book/halaman_log_book', [
 			'notification' => $this->session->flashdata('notification')
 			]);

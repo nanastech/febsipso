@@ -117,8 +117,15 @@
                        }else{
                         echo "-";
                         } ?></td>
-                      <td><button class="btn btn-primary btn-xs btn-block" data-toggle="modal" data-target=".bs-example-modal-sm<?= $mahasiswa['nim'] ?>"><span class="fa fa-plus"></span>&nbsp;&nbsp;No. Surat</button><br>
-                      <a class="btn btn-danger btn-xs btn-block" target="_blank" href="<?= base_url('Staff/cetak_surat/'.base64_encode($mahasiswa['nim'])) ?>"><span class="fa fa-file-pdf-o"></span>&nbsp;&nbsp;Cetak</a></td>
+                      <td>
+                      <?php if ($mahasiswa['no_surat']== NULL){ ?>
+                        <button class="btn btn-primary btn-xs btn-block" data-toggle="modal" data-target=".bs-example-modal-sm<?= $mahasiswa['nim'] ?>"><span class="fa fa-plus"></span>&nbsp;&nbsp;No. Surat</button>
+                      <?php }else{ ?>
+                        <button class="btn btn-primary btn-xs btn-block" data-toggle="modal" data-target=".bs-example-modal-sm<?= $mahasiswa['nim'] ?>"><span class="fa fa-plus"></span>&nbsp;&nbsp;No. Surat</button><br>
+                        <a class="btn btn-danger btn-xs btn-block" target="_blank" href="<?= base_url('Staff/cetak_surat/'.base64_encode($mahasiswa['nim'])) ?>"><span class="fa fa-file-pdf-o"></span>&nbsp;&nbsp;Cetak</a>
+                      <?php
+                      } ?>
+                      </td>
                         <!-- Small modal -->
                         <div class="modal fade bs-example-modal-sm<?= $mahasiswa['nim'] ?>" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                           <div class="modal-dialog" role="document">
