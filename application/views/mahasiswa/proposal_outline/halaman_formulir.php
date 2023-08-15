@@ -380,7 +380,7 @@
                               </div>
                               <input type="file" class="form-control" name="ufmhs" accept="image/*" >
                             </div>
-                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                           </div>
                           <!-- /.box-body -->
                         </div>
@@ -408,7 +408,7 @@
                               </div>
                               <input type="file" class="form-control" name="usbs" accept="image/*">
                             </div>
-                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                           </div>
                           <!-- /.box-body -->
                         </div>
@@ -436,7 +436,7 @@
                               </div>
                               <input type="file" class="form-control" name="uspu" accept="image/*">
                             </div>
-                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                           </div>
                           <!-- /.box-body -->
                         </div>
@@ -464,7 +464,7 @@
                               </div>
                               <input type="file" class="form-control" name="ukst" accept="image/*">
                             </div>
-                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                           </div>
                           <!-- /.box-body -->
                         </div>
@@ -492,7 +492,7 @@
                               </div>
                               <input type="file" class="form-control" name="ukhs" accept="image/*">
                             </div>
-                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                           </div>
                           <!-- /.box-body -->
                         </div>
@@ -520,7 +520,7 @@
                               </div>
                               <input type="file" class="form-control" name="utn" accept="image/*">
                             </div>
-                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                            <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                           </div>
                           <!-- /.box-body -->
                         </div>
@@ -982,7 +982,7 @@
                           </div>
                           <input type="file" class="form-control" name="ufmhs" accept="image/*" required="">
                         </div>
-                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                         <?= form_error('ufmhs');?>
                       </div>
                       <!-- usbs -->
@@ -995,7 +995,7 @@
                             </div>
                             <input type="file" class="form-control" name="usbs" accept="image/*" required="">
                           </div>
-                          <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                          <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                           <?= form_error('usbs');?>
                       </div>
                       <!-- uspu -->
@@ -1009,7 +1009,7 @@
                           </div>
                           <input type="file" class="form-control" name="uspu" accept="image/*" required="">
                         </div>
-                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                         <?= form_error('uspu');?>
                       </div>
                       <!-- ukst -->
@@ -1023,7 +1023,7 @@
                           </div>
                           <input type="file" class="form-control" name="ukst" accept="image/*" required="">
                         </div>
-                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                         <?= form_error('ukst');?>
                       </div>
                       <!-- ukhs -->
@@ -1037,7 +1037,7 @@
                           </div>
                           <input type="file" class="form-control" name="ukhs" accept="image/*" required="">
                         </div>
-                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                         <?= form_error('ukhs');?>
                       </div>
                       <!-- utn -->
@@ -1051,7 +1051,7 @@
                           </div>
                           <input type="file" class="form-control" name="utn" accept="image/*" required="">
                         </div>
-                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 2MB</strong></code></p>
+                        <p class="text-red"><code><strong>Format file : gif|jpg|png, Max file size : 1MB</strong></code></p>
                         <?= form_error('utn');?>
                       </div>
                       <!-- upro1 -->

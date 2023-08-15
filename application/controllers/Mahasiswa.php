@@ -95,7 +95,7 @@ class Mahasiswa extends CI_Controller {
 		$config=array();
 		$config['upload_path']          = './uploads/outline/';
     	$config['allowed_types']        = 'gif|png|jpg|jpeg';
-    	$config['max_size']             = '2048'; //2MB, 1024kilobytes = 1MB
+    	$config['max_size']             = '1024'; //2MB, 1024kilobytes = 1MB
 		$config['max_width']  = '0';
 		$config['max_height']  = '0';
 		$ufmhs='';
@@ -307,7 +307,7 @@ class Mahasiswa extends CI_Controller {
 			$config=array();
 			$config['upload_path']          = './uploads/outline/';
 	    	$config['allowed_types']        = 'gif|png|jpg|jpeg';
-	    	$config['max_size']             = '2048'; //2MB, 1024kilobytes = 1MB
+	    	$config['max_size']             = '1024'; //2MB, 1024kilobytes = 1MB
 			$config['max_width']  = '0';
 			$config['max_height']  = '0';
 			$ufmhs=$outline->ufmhs;
@@ -662,7 +662,7 @@ class Mahasiswa extends CI_Controller {
 			$config=array();
 			$config['upload_path']          = './uploads/sidang_skripsi/';
 	    	$config['allowed_types']        = 'gif|png|jpg';
-	    	$config['max_size']             = '2048'; //2MB, 1024kilobytes = 1MB
+	    	$config['max_size']             = '1024'; //2MB, 1024kilobytes = 1MB
 			$config['max_width']  = '0';
 			$config['max_height']  = '0';
 			$slipdu='';
@@ -837,7 +837,7 @@ class Mahasiswa extends CI_Controller {
 		$data_update=array();
 		$config['upload_path']          = './uploads/sidang_skripsi/';
     	$config['allowed_types']        = 'gif|png|jpg';
-    	$config['max_size']             = '2048'; //2MB, 1024kilobytes = 1MB
+    	$config['max_size']             = '1024'; //2MB, 1024kilobytes = 1MB
 		$config['max_width']  = '0';
 		$config['max_height']  = '0';
 		$ktp=$formulir->ktp;
