@@ -32,13 +32,13 @@ class Mahasiswa extends CI_Controller {
 		]);
 
 	}
-	public function about()
-	{
-		$this->load->view('mahasiswa/halaman_about', [
-			'notification' => $this->session->flashdata('notification')
-		]);
+	// public function about()
+	// {
+	// 	$this->load->view('mahasiswa/halaman_about', [
+	// 		'notification' => $this->session->flashdata('notification')
+	// 	]);
 
-	}
+	// }
 
 	public function daftar_dosenpa()
 	{
@@ -1358,6 +1358,9 @@ class Mahasiswa extends CI_Controller {
 ///////////////////////////////////////////////GANTI JUDUL////////////////////////////////////////////////////////////////////
 
 	public function ganti_judul(){
+		$this->load->view('mahasiswa/layout/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Judul'
+		]);
 		$this->load->view('mahasiswa/ganti_judul/halaman_ganti_judul', [
 			'notification' => $this->session->flashdata('notification')
 			]);
@@ -1408,9 +1411,12 @@ class Mahasiswa extends CI_Controller {
 
 
 	public function ganti_pembimbing(){
-			$this->load->view('mahasiswa/ganti_pembimbing/halaman_ganti_pembimbing', [
-				'notification' => $this->session->flashdata('notification')
-				]);
+		$this->load->view('mahasiswa/layout/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Dosen Pembimbing'
+		]);
+		$this->load->view('mahasiswa/ganti_pembimbing/halaman_ganti_pembimbing', [
+			'notification' => $this->session->flashdata('notification')
+			]);
 		}
 
 	public function proses_ganti_pembimbing($id=null){
@@ -1457,9 +1463,12 @@ class Mahasiswa extends CI_Controller {
 
 
 	public function help_desk(){
-			$this->load->view('mahasiswa/help_desk/halaman_help_desk', [
-				'notification' => $this->session->flashdata('notification')
-				]);
+		$this->load->view('mahasiswa/layout/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Helpdesk'
+		]);
+		$this->load->view('mahasiswa/help_desk/halaman_help_desk', [
+			'notification' => $this->session->flashdata('notification')
+			]);
 		}
 
 	public function proses_help_desk($id=null){
@@ -1486,20 +1495,6 @@ class Mahasiswa extends CI_Controller {
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	public function ganti_password()
 	{
 		$this->load->library('form_validation');
@@ -1512,15 +1507,12 @@ class Mahasiswa extends CI_Controller {
 		$this->form_validation->set_message('required','%s masih kosong, silahkan diisi!');
 		$this->form_validation->set_error_delimiters('<p class="text-red"><code><strong>','</strong></code></p>');
 
-
 		if($this->form_validation->run() == FALSE){
 			$this->load->view('mahasiswa/layout/header',[
 				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Passowrd'
 			]);
 			$this->load->view('mahasiswa/halaman_gantipass');
-
-		}
-		else{
+		}else{
 			$this->load->helper('site_helper');
 			$encrypt_password = bCrypt($input['passbaru'],12);//banyak encrypt nya 12
 			$data_update = array(

@@ -274,13 +274,13 @@
                               <img src="<?=base_url('uploads/outline/'.$form->ukhs)?>" onerror="this.src='<?= $notfound; ?>'" height="400px" width="500px">
                             </div>
                             <?php if (empty($form->upro1)) {?>
-                              <div class="form-group col-md-12">
+                              <div class="form-group col-md-6">
                                 <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 1 :</label>
                                 <br/>
                                 <a href="<?=base_url('uploads/outline/topik/'.$form->upro1)?>" class="btn btn-danger disabled" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
                               </div>
                             <?php }else{ ?>
-                              <div class="form-group col-md-12">
+                              <div class="form-group col-md-6">
                                 <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 1 :</label>
                                 <br/>
                                 <a href="<?=base_url('uploads/outline/topik/'.$form->upro1)?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
@@ -288,13 +288,13 @@
                             <?php  } ?>
 
                             <?php if (empty($form->upro2)) {?>
-                              <div class="form-group col-md-12">
+                              <div class="form-group col-md-6">
                               <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 2 :</label>
                               <br/>
                               <a href="<?=base_url('uploads/outline/topik/'.$form->upro2)?>" class="btn btn-danger disabled" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
                             </div>
                             <?php }else{ ?>
-                              <div class="form-group col-md-12">
+                              <div class="form-group col-md-6">
                                 <span class="fa fa-check-circle-o"></span><label>&nbsp;&nbsp;Proposal Outline 2 :</label>
                                 <br/>
                                 <a href="<?=base_url('uploads/outline/topik/'.$form->upro2)?>" class="btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
