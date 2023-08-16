@@ -288,8 +288,8 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 <!--======================================================================================-->
-<?php $this->load->view('mahasiswa/layout/top'); ?>	
-<?php $this->load->view('mahasiswa/layout/menu'); ?>	
+<?php $this->load->view('layout/dashboard/top'); ?>	
+<?php $this->load->view('layout/dashboard/menu'); ?>	
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -325,84 +325,147 @@
       ?>
       <!-- Default box -->
       <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3 style="font-size: 43px;"><?= $poutline;?>%</h3>
-              <p>Progress Outline</p>
+        <?php
+          $cek_skripsi=$this->Model->read_detail('nim',$this->session->userdata('username'),'judul_skripsi');
+          $cek_dospem=$this->Model->read_detail('nim',$this->session->userdata('username'),'dospem'); 
+          if ($cek_skripsi && $cek_dospem->noreg) {?>
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-aqua">
+                <div class="inner">
+                  <h3 style="font-size: 43px;"><?= $poutline;?>%</h3>
+                  <p>Progress Outline</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-file-text"></i>
+                </div>
+                <a href="<?= base_url('Mahasiswa/status_outline/')?>" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
             </div>
-            <div class="icon">
-              <i class="fa fa-file-text"></i>
+            <!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-yellow">
+                <div class="inner">
+                <?php if (empty($dsnpa->noreg)) { ?>
+                  <h3 style="font-size: 20px;">Kosong</h3>
+                  <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">Kosong</h3>
+                <?php }else{ ?>
+                  <h3 style="font-size: 20px;"><?= $dsnpa->noreg;?></h3>
+                  <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;"><?= $dsnpa->nama_dsn;?></h3>
+                <?php } ?>
+                  <p>Dosen PA</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-black-tie"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
             </div>
-            <a href="<?= base_url('Mahasiswa/status_outline/')?>" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
-            </a>
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-olive">
+                <div class="inner">
+                <?php if (empty($dospem->noreg)) { ?>
+                  <h3 style="font-size: 20px;">Kosong</h3>
+                  <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">Kosong</h3>
+                <?php }else{ ?>
+                  <h3 style="font-size: 20px;"><?= $dospem->noreg;?></h3>
+                  <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;"><?= $dospem->nama_dsn;?></h3>
+                <?php } ?>
+                  <p>Dosen Pembimbing</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-black-tie"></i>
+                </div>
+                <a href="#" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-green">
+                <div class="inner">
+                  <h3 style="font-size: 43px;"><?php if (empty($dospem)) {
+                    echo 0;
+                  }else{
+                    echo $this->Model->bimbingan($dospem->id_dospem);
+                  }?></h3>
+                  <p>Total Bimbingan</p>
+                </div>
+                <div class="icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </div>
+                <a href="<?= base_url('Mahasiswa/log_book/')?>" class="small-box-footer">
+                  More info <i class="fa fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div>
+        <?php  } else { ?>
+          <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+              <div class="inner">
+                <h3 style="font-size: 43px;"><?= $poutline;?>%</h3>
+                <p>Progress Outline</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-file-text"></i>
+              </div>
+              <a href="<?= base_url('Mahasiswa/status_outline/')?>" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+              </a>
+            </div>
           </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-            <?php if (empty($dsnpa->noreg)) { ?>
-              <h3 style="font-size: 20px;">Kosong</h3>
-              <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">Kosong</h3>
-            <?php }else{ ?>
-              <h3 style="font-size: 20px;"><?= $dsnpa->noreg;?></h3>
-              <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;"><?= $dsnpa->nama_dsn;?></h3>
-            <?php } ?>
-              <p>Dosen PA</p>
+          <!-- ./col -->
+          <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+              <div class="inner">
+              <?php if (empty($dsnpa->noreg)) { ?>
+                <h3 style="font-size: 20px;">Kosong</h3>
+                <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">Kosong</h3>
+              <?php }else{ ?>
+                <h3 style="font-size: 20px;"><?= $dsnpa->noreg;?></h3>
+                <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;"><?= $dsnpa->nama_dsn;?></h3>
+              <?php } ?>
+                <p>Dosen PA</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-black-tie"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+              </a>
             </div>
-            <div class="icon">
-              <i class="fa fa-black-tie"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
-            </a>
           </div>
-        </div>
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-olive">
-            <div class="inner">
-            <?php if (empty($dospem->noreg)) { ?>
-              <h3 style="font-size: 20px;">Kosong</h3>
-              <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">Kosong</h3>
-            <?php }else{ ?>
-              <h3 style="font-size: 20px;"><?= $dospem->noreg;?></h3>
-              <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;"><?= $dospem->nama_dsn;?></h3>
-            <?php } ?>
-              <p>Dosen Pembimbing</p>
+          <div class="col-lg-4 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-olive">
+              <div class="inner">
+              <?php if (empty($dospem->noreg)) { ?>
+                <h3 style="font-size: 20px;">Kosong</h3>
+                <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">Kosong</h3>
+              <?php }else{ ?>
+                <h3 style="font-size: 20px;"><?= $dospem->noreg;?></h3>
+                <h3 style="font-size: 15px;width: inherit; white-space: nowrap; overflow: hidden;text-overflow: ellipsis;"><?= $dospem->nama_dsn;?></h3>
+              <?php } ?>
+                <p>Dosen Pembimbing</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-black-tie"></i>
+              </div>
+              <a href="#" class="small-box-footer">
+                More info <i class="fa fa-arrow-circle-right"></i>
+              </a>
             </div>
-            <div class="icon">
-              <i class="fa fa-black-tie"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
-            </a>
           </div>
-        </div>
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-
-            <div class="inner">
-              <h3 style="font-size: 43px;"><?php if (empty($dospem)) {
-                echo 0;
-              }else{
-                echo $this->Model->bimbingan($dospem->id_dospem);
-              }?></h3>
-              <p>Total Bimbingan</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </div>
-            <a href="<?= base_url('Mahasiswa/log_book/')?>" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
-            </a>
-          </div>
-        </div>
+        <?php } ?>
       </div>
       <!-- /.box -->
        <div class="box">
@@ -435,7 +498,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-<?php $this->load->view('mahasiswa/layout/bot'); ?>
+<?php $this->load->view('layout/dashboard/bot'); ?>
 <!--======================================================================================-->
  </div>
 <!-- ./wrapper -->

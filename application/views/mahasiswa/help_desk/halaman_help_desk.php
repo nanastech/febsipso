@@ -116,8 +116,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Site wrapper -->
 <div class="wrapper">
 <!--======================================================================================-->
-<?php $this->load->view('mahasiswa/layout/top'); ?>	
-<?php $this->load->view('mahasiswa/layout/menu'); ?>	
+<?php $this->load->view('layout/dashboard/top'); ?>	
+<?php $this->load->view('layout/dashboard/menu'); ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -215,7 +215,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
   <!-- /.content-wrapper -->
 
-<?php $this->load->view('mahasiswa/layout/bot'); ?>
+  <?php $this->load->view('layout/dashboard/bot'); ?>
 
 <!--======================================================================================-->
  </div>
