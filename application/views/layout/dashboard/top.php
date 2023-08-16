@@ -98,7 +98,9 @@
                   <?php } elseif ($this->session->userdata('role')=='kaprodi') {?>
                     
                   <?php } elseif ($this->session->userdata('role')=='dosen') {?>
-
+                      <?=$this->session->userdata('name');?>
+                      <small><?=$this->session->userdata('username');?></small>
+                      <small class="label bg-green">Dosen</small>
                   <?php }?> 
                 </p>
               </li>
@@ -113,7 +115,7 @@
                 <?php } elseif ($this->session->userdata('role')=='kaprodi') {?>
                   
                 <?php } elseif ($this->session->userdata('role')=='dosen') {?>
-
+                    <a href="<?=base_url('Dospem/ganti_password');?>" class="btn btn-default btn-flat">Change Password</a>
                 <?php }?>
                 </div>
                 <!-- <div class="pull-right">

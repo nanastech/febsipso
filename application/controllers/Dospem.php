@@ -13,21 +13,27 @@ class Dospem extends CI_Controller {
 	}
 	public function index()
 	{
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
+		]);
 		$this->load->view('dospem/halaman_dospem', [
 			'notification' => $this->session->flashdata('notification')
 		]);
 
 	}
-	public function about()
-	{
-		$this->load->view('dospem/halaman_about', [
-			'notification' => $this->session->flashdata('notification')
-		]);
+	// public function about()
+	// {
+	// 	$this->load->view('dospem/halaman_about', [
+	// 		'notification' => $this->session->flashdata('notification')
+	// 	]);
 
-	}
+	// }
 
 ///////////////////////////////////Menu Outline//////////////////////////////////////////////////
 	public function status_outline(){
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Status Outline'
+		]);
 		$this->load->view('dospem/proposal_outline/halaman_status', [
 			'notification' => $this->session->flashdata('notification')
 			]);
@@ -56,12 +62,18 @@ class Dospem extends CI_Controller {
 	}
 ///////////////////////////////////////////////MEnu Log Book///////////////////////////////////////
 	public function log_book(){
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log Book'
+		]);
 		$this->load->view('dospem/log_book/halaman_list_bimbingan', [
 			'notification' => $this->session->flashdata('notification')
 			]);
 	}
 
 	public function detail_logbook($id=NULL){
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log Book'
+		]);
 		$this->load->view('dospem/log_book/halaman_log_book', [
 			'notification' => $this->session->flashdata('notification')
 			]);
@@ -405,6 +417,9 @@ class Dospem extends CI_Controller {
 
 	public function ganti_judul()
 	{	
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Judul'
+		]);	
 		$this->load->view('dospem/ganti_judul/halaman_ganti_judul', [
 				'notification' => $this->session->flashdata('notification')
 			]);		
@@ -436,8 +451,10 @@ class Dospem extends CI_Controller {
 
 ///////////////////////////////////////////////////////////////HELP_DESK/////////////////////////////////////////////////////
 
-	public function help_desk()
-	{	
+	public function help_desk(){
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Help Desk'
+		]);	
 		$this->load->view('dospem/help_desk/halaman_help_desk', [
 				'notification' => $this->session->flashdata('notification')
 			]);		
@@ -495,6 +512,9 @@ class Dospem extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<p class="text-red"><code><strong>','</strong></code></p>');
 
 		if($this->form_validation->run() == FALSE){
+			$this->load->view('layout/dashboard/header',[
+				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Password'
+			]);
 			$this->load->view('dospem/halaman_gantipass');
 
 		}

@@ -1,19 +1,3 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SIPSO | Status Outline</title>
-  <link rel="icon" href="https://portal.perbanas.id/images/favicon.ico" type="image/ico">
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
@@ -29,43 +13,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/timepicker/bootstrap-timepicker.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/select2/select2.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/skins/_all-skins.min.css">
-
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-	<script type="text/javascript">
-	    //set timezone
-	    <?php date_default_timezone_set('Asia/Jakarta'); ?>
-	    //buat object date berdasarkan waktu di server
-	    var serverTime = new Date(<?php print date('Y, m, d, H, i, s, 0'); ?>);
-	    //buat object date berdasarkan waktu di client
-	    var clientTime = new Date();
-	    //hitung selisih
-	    var Diff = serverTime.getTime() - clientTime.getTime();    
-	    //fungsi displayTime yang dipanggil di bodyOnLoad dieksekusi tiap 1000ms = 1detik
-	    function displayServerTime(){
-	    //buat object date berdasarkan waktu di client
-	    var clientTime = new Date();
-	    //buat object date dengan menghitung selisih waktu client dan server
-	    var time = new Date(clientTime.getTime() + Diff);
-	    //ambil nilai jam
-	    var sh = time.getHours().toString();
-	    //ambil nilai menit
-	    var sm = time.getMinutes().toString();
-	    //ambil nilai detik
-	    var ss = time.getSeconds().toString();
-	    //tampilkan jam:menit:detik dengan menambahkan angka 0 jika angkanya cuma satu digit (0-9)
-	    document.getElementById("clock").innerHTML = (sh.length==1?"0"+sh:sh) + ":" + (sm.length==1?"0"+sm:sm) + ":" + (ss.length==1?"0"+ss:ss);
-	}
-	</script>
 </head>
 <!-- ADD THE CLASS fixed TO GET A FIXED HEADER AND SIDEBAR LAYOUT -->
 <!-- the fixed layout is not compatible with sidebar-mini -->
@@ -95,8 +42,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Site wrapper -->
 <div class="wrapper">
 <!--======================================================================================-->
-<?php $this->load->view('dospem/layout/top'); ?>	
-<?php $this->load->view('dospem/layout/menu'); ?>	
+<?php $this->load->view('layout/dashboard/top'); ?>	
+<?php $this->load->view('layout/dashboard/menu'); ?>	
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -177,7 +124,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <!-- projurus -->
                                 <div class="form-group col-md-6">
                                   <i class="fa fa-fw fa-graduation-cap"></i><label>&nbsp;&nbsp;Program Jurusan</label>
-                                  <input readonly="" required="" class="form-control" name="projurus" type="text" placeholder="Masukan Nim" value="<?php if ($form->jurusan=='TI'){echo 'Teknik Informatika';}elseif ($form->jurusan=='SI'){echo 'Sistem Informasi';}elseif ($form->jurusan=='SK'){echo 'Sistem Komputer';}?>">
+                                  <input readonly="" required="" class="form-control" name="projurus" type="text" placeholder="Masukan Nim" value="<?php 
+                                    if ($form->jurusan=='DAK') {
+                                          echo 'D3 Akuntansi';
+                                        }elseif ($form->jurusan=='DKP') {
+                                          echo 'D3 Keuangan & Perbankan';
+                                        }elseif ($form->jurusan=='SA') {
+                                          echo 'S1 Akuntasi';
+                                        }elseif ($form->jurusan=='SM') {
+                                          echo 'S1 Manajemen';
+                                        }elseif ($form->jurusan=='EKS') {
+                                          echo 'S1 Ekonomi Syariah';
+                                        }?>">
                                 </div>
                                 <!-- nohp -->
                                 <div class="form-group col-md-6">
@@ -373,11 +331,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <td style="vertical-align: middle; text-align: center;">
                         <?php 
                         if (empty($form->acckaprodi)) {
-                          echo '<a type="button" class="btn btn-primary disabled" data-toggle="modal" data-target=".bs-example-modal-sm_commend"> Approve</a>';
+                            echo '<a type="button" class="btn btn-primary disabled" data-toggle="modal"> Approve</a>';
                          }elseif (!empty($form->acckaprodi)&&empty($form->revisi)) {
-                            echo '<button type="button" class="btn btn-success disabled" data-toggle="modal" > Approved</button>';
+                            echo '<a type="button" class="btn btn-success disabled" data-toggle="modal"> Approved</a>';
                           }elseif (!empty($form->acckaprodi)&&!empty($form->revisi)) {
-                             echo '<button type="button" class="btn btn-warning disabled" data-toggle="modal"> Revisi</button>';
+                            echo '<a type="button" class="btn btn-warning disabled" data-toggle="modal"> Revisi</a>';
                           }
                         ?>
                       </td>
@@ -413,74 +371,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
   <!-- /.content-wrapper -->
 
-<?php $this->load->view('dospem/layout/bot'); ?>
+<?php $this->load->view('layout/dashboard/bot'); ?>
 
 <!--======================================================================================-->
  </div>
 <!-- ./wrapper -->
-
-<!-- Menu -->
-<script>
-  var dashboard = document.getElementById("dashboard");
-  
-
-  var treeoutline = document.getElementById("treeoutline");
-  var status_outline = document.getElementById("status_outline");
-  
-  function clear_menu(){
-    dashboard.className = "";
-   
-    treeoutline.className = "treeview";
-    status_outline.className = "";
-  }
-
-  clear_menu();
-  treeoutline.className = "treeview active";
-  status_outline.className = "active";
-
-</script>
-<!-- jQuery 2.2.3 -->
-<script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
+<?php $this->load->view('layout/dashboard/footer'); ?>
 <!-- DataTables -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="<?php echo base_url(); ?>assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- FastClick -->
-<script src="<?php echo base_url(); ?>assets/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url(); ?>assets/dist/js/app.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
+  <!-- Menu -->
+  <script>
+    var dashboard = document.getElementById("dashboard");
+    
+
+    var treeoutline = document.getElementById("treeoutline");
+    var status_outline = document.getElementById("status_outline");
+    
+    function clear_menu(){
+      dashboard.className = "";
+    
+      treeoutline.className = "treeview";
+      status_outline.className = "";
+    }
+
+    clear_menu();
+    treeoutline.className = "treeview active";
+    status_outline.className = "active";
+
+  </script>
+  <script>
+    $(function () {
+      $("#example1").DataTable();
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
     });
-  });
-</script>
-
-
-<script src="<?php echo base_url(); ?>assets/plugins/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-  $('html').niceScroll({
-         // Do not hide scrollbar when mouse out
-    cursorborderradius: '10px', // Scroll cursor radius
-    background: '#E5E9E7',     // The scrollbar rail color
-    cursorwidth: '10px',       // Scroll cursor width
-    cursorcolor: '#67b0d1'     // Scroll cursor color
-  });
-});
-</script>
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('html').niceScroll({
+            // Do not hide scrollbar when mouse out
+        cursorborderradius: '10px', // Scroll cursor radius
+        background: '#E5E9E7',     // The scrollbar rail color
+        cursorwidth: '10px',       // Scroll cursor width
+        cursorcolor: '#67b0d1'     // Scroll cursor color
+      });
+    });
+  </script>
 </body>
 </html>

@@ -11,7 +11,6 @@
           <p style="width: 150px; white-space: nowrap;
             overflow: hidden;text-overflow: ellipsis;"><?=$this->session->userdata('name');?></p>
           <small class="label bg-green">Dosen</small>
-          
         </div>
       </div>
      
