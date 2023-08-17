@@ -54,8 +54,8 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 <!--======================================================================================-->
-<?php $this->load->view('kaprodi/layout/top'); ?>	
-<?php $this->load->view('kaprodi/layout/menu'); ?>	
+<?php $this->load->view('layout/dashboard/top'); ?>	
+<?php $this->load->view('layout/dashboard/menu'); ?>	
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -73,7 +73,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <?= $notification; ?>
+    <?php echo $notification; ?>
       <?php 
         if (!$this->Model->read('outline')) {?>
           <div class="alert alert-danger alert-dismissible">
@@ -398,11 +398,11 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-<?php $this->load->view('kaprodi/layout/bot'); ?>
+<?php $this->load->view('layout/dashboard/bot'); ?>
 <!--======================================================================================-->
  </div>
 <!-- ./wrapper -->
-<?php $this->load->view('kaprodi/layout/footer'); ?>
+<?php $this->load->view('layout/dashboard/footer'); ?>
   <!-- DataTables -->
   <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.min.js"></script>

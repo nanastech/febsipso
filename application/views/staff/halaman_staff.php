@@ -28,8 +28,8 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 <!--======================================================================================-->
-<?php $this->load->view('staff/layout/top'); ?>	
-<?php $this->load->view('staff/layout/menu'); ?>	
+<?php $this->load->view('layout/dashboard/top'); ?>	
+<?php $this->load->view('layout/dashboard/menu'); ?>	
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -49,7 +49,7 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Selamat Datang Subag LAP <?=$this->session->userdata('name');?> !</h3>
+          <h3 class="box-title">Selamat Datang Subag LAA <?=$this->session->userdata('name');?> !</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -74,12 +74,12 @@
   </div>
   <!-- /.content-wrapper -->
 
-<?php $this->load->view('staff/layout/bot'); ?>
+<?php $this->load->view('layout/dashboard/bot'); ?>
 
 <!--======================================================================================-->
  </div>
 <!-- ./wrapper -->
-<?php $this->load->view('staff/layout/footer'); ?>
+<?php $this->load->view('layout/dashboard/footer'); ?>
 <!-- Menu -->
   <!-- <script>
     var dashboard = document.getElementById("dashboard");

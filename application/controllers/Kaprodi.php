@@ -13,7 +13,7 @@ class Kaprodi extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('kaprodi/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
 		]);
 		
@@ -34,10 +34,12 @@ class Kaprodi extends CI_Controller {
 //////////////////////////////////////////Menu Outline /////////////////////////////////////
 
 	public function status_outline(){
-		$this->load->view('kaprodi/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Status Outline'
 		]);
-		$this->load->view('kaprodi/proposal_outline/halaman_status');
+		$this->load->view('kaprodi/proposal_outline/halaman_status', [
+			'notification' => $this->session->flashdata('notification')
+		]);
 	}
 	
 	public function edit_status($id=0){
@@ -47,7 +49,7 @@ class Kaprodi extends CI_Controller {
 			$data= array(
 				'record' => $this->Model->read_detail('nim',$valid,'outline')
 				);
-				$this->load->view('kaprodi/layout/header',[
+				$this->load->view('layout/dashboard/header',[
 					'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Edit Status Outline'
 				]);
 				$this->load->view('kaprodi/proposal_outline/edit_status',$data, [
@@ -267,12 +269,18 @@ class Kaprodi extends CI_Controller {
 
 ///////////////////////////////////////////////MEnu Log Book///////////////////////////////////////
 	public function log_book(){
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log Book'
+		]);
 		$this->load->view('kaprodi/log_book/halaman_list_bimbingan', [
 			'notification' => $this->session->flashdata('notification')
 			]);
 	}
 
 	public function detail_logbook($id=NULL){
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log Book'
+		]);
 		$this->load->view('kaprodi/log_book/halaman_log_book', [
 			'notification' => $this->session->flashdata('notification')
 			]);
@@ -284,6 +292,9 @@ class Kaprodi extends CI_Controller {
 /////////////////////////////////Menu Daftar Sidang/////////////////////////////////////////////
 	public function status_sidang()
 	{	
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Status Pendaftaran'
+		]);
 			$this->load->view('kaprodi/sidang_skripsi/halaman_status', [
 				'notification' => $this->session->flashdata('notification')
 			]);	
@@ -316,6 +327,9 @@ class Kaprodi extends CI_Controller {
 
 	public function jadwal_sidang()
 	{	
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Jadwal Sidang'
+		]);
 		$this->load->view('kaprodi/sidang_skripsi/halaman_jadwal', [
 				'notification' => $this->session->flashdata('notification')
 			]);		
@@ -379,6 +393,9 @@ class Kaprodi extends CI_Controller {
 ///////////////////////////////////////////////////GantiJUDUL//////////////////////////////////////////////////////
 public function ganti_judul()
 	{	
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Judul'
+		]);
 		$this->load->view('kaprodi/ganti_judul/halaman_ganti_judul', [
 				'notification' => $this->session->flashdata('notification')
 			]);		
@@ -409,6 +426,9 @@ public function ganti_judul()
 ////////////////////////////////////////////////GANTI PEMBIMBING/////////////////////////////////////////////////
 	public function ganti_pembimbing()
 	{	
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Pembimbing'
+		]);
 		$this->load->view('kaprodi/ganti_pembimbing/halaman_ganti_pembimbing', [
 				'notification' => $this->session->flashdata('notification')
 			]);		
@@ -443,6 +463,9 @@ public function ganti_judul()
 ////////////////////////////////////////////////Help Desk/////////////////////////////////////////////////
 	public function help_desk()
 	{	
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Help Desk'
+		]);
 		$this->load->view('kaprodi/help_desk/halaman_help_desk', [
 				'notification' => $this->session->flashdata('notification')
 			]);		
@@ -573,7 +596,7 @@ public function ganti_judul()
 
 
 		if($this->form_validation->run() == FALSE){
-			$this->load->view('kaprodi/layout/header',[
+			$this->load->view('layout/dashboard/header',[
 				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Password'
 			]);
 			$this->load->view('kaprodi/halaman_gantipass');

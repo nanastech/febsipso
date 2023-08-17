@@ -56,8 +56,8 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 <!--======================================================================================-->
-<?php $this->load->view('staff/layout/top'); ?>	
-<?php $this->load->view('staff/layout/menu'); ?>	
+<?php $this->load->view('layout/dashboard/top'); ?>	
+<?php $this->load->view('layout/dashboard/menu'); ?>	
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -159,7 +159,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-<?php $this->load->view('staff/layout/bot'); ?>
+<?php $this->load->view('layout/dashboard/bot'); ?>
 
 <!--======================================================================================-->
  </div>

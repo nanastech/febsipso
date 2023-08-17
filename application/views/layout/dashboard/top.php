@@ -96,7 +96,9 @@
                       <?=$this->session->userdata('name');?>
                       <small class="label bg-purple">Subag LAA</small>
                   <?php } elseif ($this->session->userdata('role')=='kaprodi') {?>
-                    
+                      <?=$this->session->userdata('name');?>
+                      <small><?=$this->session->userdata('username');?></small>
+                      <small class="label bg-maroon">Kepala Program Studi</small>
                   <?php } elseif ($this->session->userdata('role')=='dosen') {?>
                       <?=$this->session->userdata('name');?>
                       <small><?=$this->session->userdata('username');?></small>
@@ -111,9 +113,9 @@
                   if ($this->session->userdata('role')=='mahasiswa') { ?>
                     <a href="<?= base_url()?>Mahasiswa/ganti_password/" class="btn btn-default btn-flat">Change Password</a>
                 <?php } elseif ($this->session->userdata('role')=='staff') {?>
-                    
+                    <a href="<?= base_url('Staff/ganti_password')?>" class="btn btn-default btn-flat">Change Password</a>
                 <?php } elseif ($this->session->userdata('role')=='kaprodi') {?>
-                  
+                    <a href="<?= base_url('Kaprodi/ganti_password');?>" class="btn btn-default btn-flat">Change Password</a>
                 <?php } elseif ($this->session->userdata('role')=='dosen') {?>
                     <a href="<?=base_url('Dospem/ganti_password');?>" class="btn btn-default btn-flat">Change Password</a>
                 <?php }?>

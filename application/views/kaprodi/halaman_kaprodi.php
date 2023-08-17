@@ -28,8 +28,8 @@
 <!-- Site wrapper -->
 <div class="wrapper">
 <!--======================================================================================-->
-<?php $this->load->view('kaprodi/layout/top'); ?>	
-<?php $this->load->view('kaprodi/layout/menu'); ?>	
+<?php $this->load->view('layout/dashboard/top'); ?>	
+<?php $this->load->view('layout/dashboard/menu'); ?>	
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -48,11 +48,9 @@
       <?php echo $notification; ?>
        <!-- Default box -->
       <div class="row">
-
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-aqua">
-
             <div class="inner">
               <h3 style="font-size: 43px;"><?= $this->Model->widget_kaprodi_approve($this->session->userdata('prodi'))?> <span class="fa fa-child"></span></h3>
               <p>Approve Outline</p>
@@ -150,11 +148,11 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-<?php $this->load->view('kaprodi/layout/bot'); ?>
+<?php $this->load->view('layout/dashboard/bot'); ?>
 <!--======================================================================================-->
  </div>
 <!-- ./wrapper -->
-<?php $this->load->view('kaprodi/layout/footer'); ?>
+<?php $this->load->view('layout/dashboard/footer'); ?>
 <!-- Menu -->
 <!-- script baru dimatikan tgl 19/04/23 -->
 <!-- <script>
@@ -174,8 +172,6 @@
   dashboard.className = "active";
 
 </script> -->
-
-
   <script type="text/javascript">
     $(document).ready(function() {
       $('html').niceScroll({
