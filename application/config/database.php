@@ -97,10 +97,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'adminsipso',
-	'password' => 'zqxwceDB_2023',
-	'database' => 'datasipso',
+	'hostname' => '103.119.146.40',
+	'username' => 'sipso',
+	'password' => 'sipsoperbanas2019@123!',
+	'database' => 'febsipso',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
