@@ -127,8 +127,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Site wrapper -->
 <div class="wrapper">
 <!--======================================================================================-->
-<?php $this->load->view('staff/layout/top'); ?>	
-<?php $this->load->view('staff/layout/menu'); ?>	
+<?php $this->load->view('layout/dashboard/top'); ?>	
+<?php $this->load->view('layout/dashboard/menu'); ?>	
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -183,9 +183,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="form-group">
                       <span class="fa fa-download"></span><label>&nbsp;&nbsp;Outline Skripsi</label>
                       <?php if (empty($outline->outline_fix)) {?>
-                        <a href="<?=base_url('uploads/'.$outline->outline_fix)?>" class="form-control btn btn-danger disabled" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
+                        <a href="<?=base_url('uploads/outline/topik/'.$outline->outline_fix)?>" class="form-control btn btn-danger disabled" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
                       <?php }else{ ?>
-                          <a href="<?=base_url('uploads/'.$outline->outline_fix)?>" class="form-control btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
+                          <a href="<?=base_url('uploads/outline/topik/'.$outline->outline_fix)?>" class="form-control btn btn-success" target="_blank"><i class="fa fa-fw fa-file-pdf-o"></i>&nbsp;&nbsp;Tampilkan Outline</a>
                       <?php  } ?>
                     </div>
                   </div>

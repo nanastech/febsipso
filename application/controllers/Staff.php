@@ -12,7 +12,7 @@ class Staff extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('staff/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Dashboard'
 		]);
 		$this->load->view('staff/halaman_staff', [
@@ -25,7 +25,7 @@ class Staff extends CI_Controller {
 	// ====================Awal Daftar Akun====================
 	public function daftar_akun(){
 		$this->load->library('form_validation');
-		$this->load->view('staff/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Daftar Akun'
 		]);
 		$this->load->view('staff/data_akun/halaman_daftar_akun',[
@@ -58,7 +58,7 @@ class Staff extends CI_Controller {
             <h4><i class="icon fa fa-info-circle"></i> Terjadi Kesalahan!</h4>
             Gagal memproses!</div>';
 			$this->session->set_flashdata('notification', $notification);
-			$this->load->view('staff/layout/header',[
+			$this->load->view('layout/dashboard/header',[
 				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Daftar Akun'
 			]);
 			$this->load->view('staff/data_akun/halaman_daftar_akun', [
@@ -304,7 +304,7 @@ class Staff extends CI_Controller {
 	
 	// ====================Awal Daftar Mahasiswa====================
 	public function daftar_mhs(){
-		$this->load->view('staff/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Daftar Mahasiswa'
 		]);
 		$this->load->view('staff/data_akun/halaman_daftar_mhs',[
@@ -379,7 +379,7 @@ class Staff extends CI_Controller {
 
 	// ====================Awal Daftar Dosen====================
 	public function daftar_dosen(){
-		$this->load->view('staff/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Daftar Dosen'
 		]);
 		$this->load->view('staff/data_akun/halaman_daftar_dosen');
@@ -461,7 +461,7 @@ class Staff extends CI_Controller {
 			$this->session->set_flashdata('notification', $notification);
 			redirect(base_url('Staff/daftar_dosenpa'),'refresh');
 		}
-		$this->load->view('staff/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Daftar Dosen Penasihat Akademik'
 		]);
 		$this->load->view('staff/data_akun/halaman_daftar_dosenpa',[
@@ -478,7 +478,7 @@ class Staff extends CI_Controller {
 
 	// ====================Awal Daftar Kaprodi====================
 	public function daftar_kaprodi(){
-		$this->load->view('staff/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Daftar Kaprodi'
 		]);
 		$this->load->view('staff/data_akun/halaman_daftar_kaprodi',[
@@ -512,7 +512,7 @@ class Staff extends CI_Controller {
 	// ====================Akhir Daftar Kaprodi====================
 ///////////////////////////////////Menu Outline//////////////////////////////////////////////////
 	public function status_outline(){
-		$this->load->view('staff/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Status Outline'
 		]);
 		$this->load->view('staff/proposal_outline/halaman_status', [
@@ -563,7 +563,7 @@ class Staff extends CI_Controller {
 	
 	public function report_outline()
 	{
-		$this->load->view('staff/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Report Outline'
 		]);
 		$this->load->view('staff/proposal_outline/halaman_report', [
@@ -574,7 +574,7 @@ class Staff extends CI_Controller {
 
 	public function surat_outline()
 	{
-		$this->load->view('staff/layout/header',[
+		$this->load->view('layout/dashboard/header',[
 			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Surat Outline'
 		]);
 		$this->load->view('staff/proposal_outline/halaman_surat', [
@@ -632,12 +632,18 @@ class Staff extends CI_Controller {
 
 	///////////////////////////////////////////////MEnu Log Book///////////////////////////////////////
 	public function log_book(){
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log Book'
+		]);
 		$this->load->view('staff/log_book/halaman_list_bimbingan', [
 			'notification' => $this->session->flashdata('notification')
 			]);
 	}
 
 	public function detail_logbook($id=NULL){
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Log Book'
+		]);
 		$this->load->view('staff/log_book/halaman_log_book', [
 			'notification' => $this->session->flashdata('notification')
 			]);
@@ -1166,6 +1172,9 @@ class Staff extends CI_Controller {
 ////////////////////////////////////////////GANTI JUDUL/////////////////////////////////////
 	public function ganti_judul()
 	{	
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Judul'
+		]);
 		$this->load->view('staff/ganti_judul/halaman_ganti_judul', [
 				'notification' => $this->session->flashdata('notification')
 			]);		
@@ -1207,6 +1216,9 @@ class Staff extends CI_Controller {
 /////////////////////////////////////////////////////////GANTI PEMBIMBING//////////////////////////////////////////
 	public function ganti_pembimbing()
 	{	
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Dosen Pembimbing'
+		]);
 		$this->load->view('staff/ganti_pembimbing/halaman_ganti_pembimbing', [
 				'notification' => $this->session->flashdata('notification')
 			]);		
@@ -1252,6 +1264,9 @@ class Staff extends CI_Controller {
 /////////////////////////////////////////////////////////GANTI PEMBIMBING//////////////////////////////////////////
 	public function help_desk()
 	{	
+		$this->load->view('layout/dashboard/header',[
+			'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Help Desk'
+		]);
 		$this->load->view('staff/help_desk/halaman_help_desk', [
 				'notification' => $this->session->flashdata('notification')
 			]);		
@@ -1420,7 +1435,7 @@ class Staff extends CI_Controller {
 
 
 		if($this->form_validation->run() == FALSE){
-			$this->load->view('staff/layout/header',[
+			$this->load->view('layout/dashboard/header',[
 				'title' => 'Sistem Informasi Pelaksanaan Skripsi Online | Ganti Password'
 			]);
 			$this->load->view('staff/halaman_gantipass');
